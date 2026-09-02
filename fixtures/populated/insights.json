@@ -1,0 +1,23 @@
+[
+  {
+    "id": "budget-variance-clx8bl003",
+    "severity": "danger",
+    "kind": "budget_variance",
+    "title": "Shopping is $224 over its limit with 11 days left",
+    "body": "Pace suggests $1,290.00 by month end against $800.00."
+  },
+  {
+    "id": "new-recurring-clx8acc0002-CRUNCHYROLL",
+    "severity": "caution",
+    "kind": "new_recurring",
+    "title": "New recurring charge: Crunchyroll, $9.99 monthly",
+    "body": "Seen twice since Aug 16. Confirmed once a third charge lands."
+  },
+  {
+    "id": "liquidity-pace-2026-08",
+    "severity": "success",
+    "kind": "liquidity_pace",
+    "title": "Net liquidity is up $412.20 since the last sync",
+    "body": "Three syncs in a row moving the right way."
+  }
+]

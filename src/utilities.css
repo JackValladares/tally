@@ -1,0 +1,7 @@
+/* Tally — utilities layer. Generated from the proposal mockup on 2026-09-02; edit here, not there. */
+@layer utilities {
+.u-visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.u-num { font-variant-numeric: tabular-nums; }
+.u-end { text-align: end; }
+.u-grow { flex: 1; }
+}

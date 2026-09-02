@@ -1,0 +1,18 @@
+[
+  {
+    "id": "clx8goal001",
+    "name": "Japan trip, spring 2027",
+    "targetAmount": 6000,
+    "currentAmount": 2460,
+    "targetDate": "2027-03-15",
+    "progressPct": 41
+  },
+  {
+    "id": "clx8goal002",
+    "name": "Emergency fund",
+    "targetAmount": 10000,
+    "currentAmount": 1800,
+    "targetDate": null,
+    "progressPct": 18
+  }
+]

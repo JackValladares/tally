@@ -1,0 +1,29 @@
+{
+  "name": "tally",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A small, honest component suite: tokens, layouts, primitives and components as CSS plus ES modules. Built for the household budget app first.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "lint": "biome check . && stylelint \"src/**/*.css\" \"catalog/**/*.css\" && node scripts/check-tiers.mjs",
+    "lint:fix": "biome check --write . && stylelint \"src/**/*.css\" \"catalog/**/*.css\" --fix",
+    "fixtures:serve": "node scripts/serve-fixtures.mjs",
+    "catalog": "node scripts/serve-fixtures.mjs --catalog",
+    "sync-to": "node scripts/sync-to.mjs"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
+    "esbuild": "^0.28.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.0"
+  }
+}

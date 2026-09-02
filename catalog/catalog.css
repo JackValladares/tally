@@ -1,0 +1,56 @@
+/* Catalogue-page styles only (the `pages` layer). Not part of the library. */
+@layer pages {
+.spec-top { position: sticky; top: 0; z-index: 5; background: color-mix(in oklab, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-block-end: var(--line-w) solid var(--line); }
+.spec-top__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-2); flex-wrap: wrap; }
+.spec-brand { display: flex; align-items: baseline; gap: var(--space-3); }
+.spec-brand__name { font-size: var(--text-2); font-weight: 700; letter-spacing: -0.02em; }
+.spec-brand__tag { font-size: var(--text--1); color: var(--ink-mute); }
+.spec-nav { display: flex; gap: var(--space-1); flex-wrap: wrap; }
+.spec-nav a { font-size: var(--text--1); color: var(--ink-soft); text-decoration: none; padding: 0.3rem 0.6rem; border-radius: var(--radius-1); }
+.spec-nav a:hover { background: var(--surface-2); color: var(--ink); }
+.spec-hero { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; padding-block: var(--space-7) var(--space-6); }
+@media (width <= 48rem) { .spec-hero { grid-template-columns: 1fr; } }
+.spec-hero h1 { font-size: var(--text-4); letter-spacing: -0.02em; max-inline-size: 20ch; }
+.spec-hero p { max-inline-size: var(--measure); color: var(--ink-soft); font-size: var(--text-1); }
+.spec-hero__figure { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; }
+.spec-section { padding-block: var(--space-7); border-block-start: var(--line-w) solid var(--line); display: flex; flex-direction: column; gap: var(--space-6); }
+.spec-section > header { display: grid; gap: var(--space-2); max-inline-size: var(--measure); }
+.spec-section > header h2 { font-size: var(--text-3); letter-spacing: -0.015em; }
+.spec-section > header p { color: var(--ink-soft); }
+.spec-block { display: flex; flex-direction: column; gap: var(--space-3); container-type: inline-size; }
+.spec-block > h3 { font-size: var(--text-0); display: flex; align-items: baseline; gap: var(--space-3); }
+.spec-block > h3 code { font-weight: 400; color: var(--ink-mute); background: none; padding: 0; }
+.spec-block > p { font-size: var(--text--1); color: var(--ink-soft); max-inline-size: var(--measure); }
+.spec-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.spec-row--baseline { align-items: baseline; }
+.spec-row--states > * { position: relative; }
+.spec-caption { font-size: var(--text--2); color: var(--ink-mute); }
+.spec-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: var(--space-3); }
+.spec-swatch { display: grid; gap: var(--space-1); font-size: var(--text--2); }
+.spec-swatch__chip { block-size: 3rem; border-radius: var(--radius-2); border: var(--line-w) solid var(--line); background: var(--_sw); }
+.spec-swatch code { background: none; padding: 0; color: var(--ink-mute); font-size: 0.7rem; }
+.spec-type { display: grid; gap: var(--space-2); }
+.spec-type__row { display: grid; grid-template-columns: 5rem 1fr; gap: var(--space-4); align-items: baseline; border-block-end: var(--line-w) solid var(--line); padding-block: var(--space-2); }
+.spec-type__row code { background: none; padding: 0; color: var(--ink-mute); }
+.spec-space { display: flex; align-items: flex-end; gap: var(--space-3); flex-wrap: wrap; }
+.spec-space__box { display: grid; gap: 4px; justify-items: center; font-size: var(--text--2); color: var(--ink-mute); }
+.spec-space__box i { display: block; inline-size: var(--_s); block-size: var(--_s); background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 2px; }
+.spec-radii { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.spec-radii i { display: block; inline-size: 3rem; block-size: 3rem; background: var(--card); border: var(--line-w) solid var(--line-strong); border-radius: var(--_r); }
+.spec-outline > * { outline: 1px dashed color-mix(in oklab, var(--accent) 55%, transparent); outline-offset: -1px; }
+.spec-cell { background: var(--accent-soft); color: var(--accent); border-radius: var(--radius-1); padding: var(--space-2) var(--space-3); font-size: var(--text--2); font-weight: 600; text-align: center; min-inline-size: 3rem; }
+.spec-frame { background: var(--paper); border: var(--line-w) solid var(--line-strong); border-radius: var(--radius-3); box-shadow: var(--shadow-2); overflow: hidden; }
+.spec-frame__bar { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); border-block-end: var(--line-w) solid var(--line); background: var(--card); font-size: var(--text--2); color: var(--ink-mute); }
+.spec-frame__bar i { inline-size: 0.6rem; block-size: 0.6rem; border-radius: 50%; background: var(--line-strong); }
+.spec-frame__bar span { margin-inline-start: var(--space-2); font-family: var(--font-mono); }
+.spec-mock { position: relative; }
+.spec-mock .l-shell { padding-block: var(--space-5) var(--space-6); }
+.spec-mock__dock { position: sticky; bottom: var(--space-3); margin-block-start: var(--space-5); }
+.spec-conventions { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); }
+.spec-conventions .t-card { display: flex; flex-direction: column; gap: var(--space-2); }
+.spec-conventions h3 { font-size: var(--text-0); }
+.spec-conventions pre { margin: 0; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.5; background: var(--surface-2); padding: var(--space-3); border-radius: var(--radius-2); overflow-x: auto; color: var(--ink); }
+.spec-conventions ul { display: grid; gap: var(--space-1); font-size: var(--text--1); color: var(--ink-soft); padding-inline-start: 1.1em; list-style: disc; }
+.spec-foot { padding-block: var(--space-6); color: var(--ink-mute); font-size: var(--text--2); border-block-start: var(--line-w) solid var(--line); display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.spec-theme-note { font-size: var(--text--2); color: var(--ink-mute); }
+}

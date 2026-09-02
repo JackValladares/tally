@@ -1,0 +1,9 @@
+{
+  "chat": false,
+  "advisor": false,
+  "plaidLink": true,
+  "investments": false,
+  "liabilities": false,
+  "householdTimezone": "America/New_York",
+  "currency": "USD"
+}

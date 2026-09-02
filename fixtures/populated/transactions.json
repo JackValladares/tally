@@ -1,0 +1,96 @@
+{
+  "items": [
+    {
+      "id": "clx8f2k1a0001",
+      "date": "2026-08-20",
+      "amount": 29.83,
+      "direction": "EXPENSE",
+      "category": "Dining & Takeout",
+      "description": "Food delivery",
+      "merchantDisplay": "Uber Eats",
+      "pending": true,
+      "accountId": "clx8acc0005",
+      "accountName": "Platinum Card",
+      "institution": "American Express"
+    },
+    {
+      "id": "clx8f2k1a0002",
+      "date": "2026-08-17",
+      "amount": 1260.47,
+      "direction": "TRANSFER",
+      "category": "Transfer",
+      "description": "Card payment",
+      "merchantDisplay": "AMERICAN EXPRESS ACH PMT 260814 M2540 Jack Valladares",
+      "pending": false,
+      "accountId": "clx8acc0002",
+      "accountName": "Everyday Checking",
+      "institution": "Wells Fargo"
+    },
+    {
+      "id": "clx8f2k1a0003",
+      "date": "2026-08-13",
+      "amount": 2850,
+      "direction": "INCOME",
+      "category": "Income",
+      "description": "Payroll",
+      "merchantDisplay": "OTR Solutions payroll",
+      "pending": false,
+      "accountId": "clx8acc0001",
+      "accountName": "Everyday Checking",
+      "institution": "Wells Fargo"
+    },
+    {
+      "id": "clx8f2k1a0004",
+      "date": "2026-08-13",
+      "amount": 19.99,
+      "direction": "EXPENSE",
+      "category": "Subscriptions & Services",
+      "description": "Streaming subscription",
+      "merchantDisplay": "Netflix",
+      "pending": false,
+      "accountId": "clx8acc0005",
+      "accountName": "Platinum Card",
+      "institution": "American Express"
+    },
+    {
+      "id": "clx8f2k1a0005",
+      "date": "2026-08-12",
+      "amount": 79.27,
+      "direction": "EXPENSE",
+      "category": "Groceries",
+      "description": "Grocery store",
+      "merchantDisplay": "Kroger",
+      "pending": false,
+      "accountId": "clx8acc0006",
+      "accountName": "Discover it Card",
+      "institution": "Discover"
+    },
+    {
+      "id": "clx8f2k1a0006",
+      "date": "2026-08-11",
+      "amount": 1,
+      "direction": "EXPENSE",
+      "category": "Subscriptions & Services",
+      "description": "Investing round-up",
+      "merchantDisplay": "Acorns",
+      "pending": false,
+      "accountId": "clx8acc0002",
+      "accountName": "Everyday Checking",
+      "institution": "Wells Fargo"
+    },
+    {
+      "id": "clx8f2k1a0007",
+      "date": "2026-08-11",
+      "amount": 0,
+      "direction": "EXPENSE",
+      "category": "Fees & Interest",
+      "description": "Fee reversal",
+      "merchantDisplay": null,
+      "pending": false,
+      "accountId": "clx8acc0006",
+      "accountName": "Discover it Card",
+      "institution": "Discover"
+    }
+  ],
+  "nextCursor": "eyJkIjoiMjAyNi0wOC0xMSIsImkiOiJjbHg4ZjJrMWEwMDA3In0"
+}

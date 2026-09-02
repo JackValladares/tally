@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "clx8f2k1a0001",
+      "date": "2026-08-20",
+      "amount": 29.83,
+      "direction": "EXPENSE",
+      "category": "Dining & Takeout",
+      "description": "Food delivery",
+      "merchantDisplay": null,
+      "pending": true,
+      "accountId": "clx8acc0005",
+      "accountName": "Platinum Card",
+      "institution": "American Express"
+    },
+    {
+      "id": "clx8f2k1a0003",
+      "date": "2026-08-13",
+      "amount": 2850,
+      "direction": "INCOME",
+      "category": "Income",
+      "description": "Payroll",
+      "merchantDisplay": null,
+      "pending": false,
+      "accountId": "clx8acc0001",
+      "accountName": "Everyday Checking",
+      "institution": "Wells Fargo"
+    }
+  ],
+  "nextCursor": null
+}

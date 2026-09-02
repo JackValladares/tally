@@ -1,0 +1,72 @@
+[
+  {
+    "key": "clx8acc0002::RENT",
+    "merchant": "Rent",
+    "category": "Housing & Utilities",
+    "averageAmount": 1850,
+    "cadence": "monthly",
+    "cadenceLabel": "Monthly",
+    "cadenceDays": 30,
+    "occurrenceCount": 14,
+    "lastSeenDate": "2026-08-01",
+    "nextExpectedDate": "2026-09-01",
+    "daysUntilDue": 3,
+    "status": "confirmed"
+  },
+  {
+    "key": "clx8acc0005::NETFLIX",
+    "merchant": "Netflix",
+    "category": "Subscriptions & Services",
+    "averageAmount": 19.99,
+    "cadence": "monthly",
+    "cadenceLabel": "Monthly",
+    "cadenceDays": 30,
+    "occurrenceCount": 7,
+    "lastSeenDate": "2026-08-13",
+    "nextExpectedDate": "2026-09-13",
+    "daysUntilDue": 15,
+    "status": "confirmed"
+  },
+  {
+    "key": "clx8acc0005::SPOTIFY",
+    "merchant": "Spotify",
+    "category": "Subscriptions & Services",
+    "averageAmount": 11.99,
+    "cadence": "monthly",
+    "cadenceLabel": "Monthly",
+    "cadenceDays": 30,
+    "occurrenceCount": 11,
+    "lastSeenDate": "2026-08-22",
+    "nextExpectedDate": "2026-09-22",
+    "daysUntilDue": 24,
+    "status": "confirmed"
+  },
+  {
+    "key": "clx8acc0005::CRUNCH",
+    "merchant": "Crunch Fitness",
+    "category": "Health & Wellness",
+    "averageAmount": 136,
+    "cadence": "monthly",
+    "cadenceLabel": "Monthly",
+    "cadenceDays": 30,
+    "occurrenceCount": 6,
+    "lastSeenDate": "2026-07-13",
+    "nextExpectedDate": "2026-08-13",
+    "daysUntilDue": -16,
+    "status": "confirmed"
+  },
+  {
+    "key": "clx8acc0002::CRUNCHYROLL",
+    "merchant": "Crunchyroll",
+    "category": "Subscriptions & Services",
+    "averageAmount": 9.99,
+    "cadence": "monthly",
+    "cadenceLabel": "Monthly",
+    "cadenceDays": 30,
+    "occurrenceCount": 2,
+    "lastSeenDate": "2026-08-16",
+    "nextExpectedDate": "2026-09-16",
+    "daysUntilDue": 18,
+    "status": "early_detection"
+  }
+]

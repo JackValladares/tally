@@ -1,0 +1,27 @@
+{
+  "runId": "clx8run0008",
+  "status": "running",
+  "trigger": "manual",
+  "startedAt": "2026-09-02T11:14:00Z",
+  "finishedAt": null,
+  "items": [
+    {
+      "itemId": "clx8itm001",
+      "institution": "Chase",
+      "status": "succeeded",
+      "added": 4,
+      "modified": 1,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "clx8itm004",
+      "institution": "Discover",
+      "status": "failed",
+      "added": 0,
+      "modified": 0,
+      "removed": 0,
+      "error": { "code": "ITEM_LOGIN_REQUIRED", "message": "Discover needs to be reconnected" }
+    }
+  ]
+}

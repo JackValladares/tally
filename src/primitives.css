@@ -1,0 +1,161 @@
+/* Tally — primitives layer. Generated from the proposal mockup on 2026-09-02; edit here, not there. */
+@layer primitives {
+/* Text roles */
+.t-eyebrow { font-size: var(--text--2); font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--ink-mute); }
+.t-muted { color: var(--ink-soft); }
+.t-small { font-size: var(--text--1); }
+
+/* Money — the signature figure. One face; lg/xl step up to weight 600 and tighter tracking. */
+.t-money {
+  display: inline-flex; align-items: baseline;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 500; white-space: nowrap; letter-spacing: -0.01em;
+}
+.t-money__cur { font-size: 0.72em; color: var(--ink-soft); font-weight: 400; margin-inline-end: 0.06em; }
+.t-money__cents { font-size: 0.72em; color: var(--ink-soft); font-weight: 400; }
+.t-money__sign { font-weight: 400; margin-inline-end: 0.08em; }
+.t-money--sm { font-size: var(--text--1); }
+.t-money--md { font-size: var(--text-0); }
+.t-money--lg { font-size: var(--text-3); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.02em; }
+.t-money--xl { font-size: var(--text-5); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.t-money[data-valence="positive"] { color: var(--income); }
+.t-money[data-valence="negative"] { color: var(--expense); }
+.t-money[data-valence="positive"] .t-money__cur, .t-money[data-valence="negative"] .t-money__cur,
+.t-money[data-valence="positive"] .t-money__cents, .t-money[data-valence="negative"] .t-money__cents { color: color-mix(in oklab, currentcolor 70%, var(--paper)); }
+
+/* Button — six microstates, five variants */
+.t-btn {
+  --_bg: var(--card); --_fg: var(--ink); --_bd: var(--line-strong);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-block-size: 2.25rem; padding: 0 var(--space-4);
+  border-radius: var(--radius-2); border: var(--line-w) solid var(--_bd);
+  background: var(--_bg); color: var(--_fg);
+  font-size: var(--text--1); font-weight: 600; line-height: 1;
+  transition: background var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+  position: relative;
+}
+.t-btn:hover, .t-btn.is-hover { --_bg: var(--surface-2); }
+.t-btn:focus-visible, .t-btn.is-focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+.t-btn:active, .t-btn.is-active { transform: translateY(1px); }
+.t-btn:disabled, .t-btn.is-disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.t-btn.is-loading { color: transparent; pointer-events: none; }
+.t-btn.is-loading::after {
+  content: ""; position: absolute; inset: 0; margin: auto; inline-size: 1em; block-size: 1em;
+  border: 2px solid var(--_fg); border-right-color: transparent; border-radius: 50%;
+  animation: t-spin 0.8s linear infinite;
+  color: var(--_fg);
+}
+.t-btn.is-loading[data-variant="primary"]::after { border-color: var(--accent-ink); border-right-color: transparent; }
+.t-btn[data-variant="primary"] { --_bg: var(--accent); --_fg: var(--accent-ink); --_bd: var(--accent); }
+.t-btn[data-variant="primary"]:hover, .t-btn[data-variant="primary"].is-hover { --_bg: color-mix(in oklab, var(--accent) 88%, var(--ink)); }
+.t-btn[data-variant="subtle"] { --_bg: transparent; --_bd: transparent; --_fg: var(--ink-soft); }
+.t-btn[data-variant="subtle"]:hover, .t-btn[data-variant="subtle"].is-hover { --_bg: var(--surface-2); --_fg: var(--ink); }
+.t-btn[data-variant="danger"] { --_bg: transparent; --_bd: color-mix(in oklab, var(--expense) 45%, transparent); --_fg: var(--expense); }
+.t-btn[data-variant="danger"]:hover, .t-btn[data-variant="danger"].is-hover { --_bg: color-mix(in oklab, var(--expense) 10%, transparent); }
+.t-btn[data-variant="ai"] {
+  --_bg: linear-gradient(135deg, color-mix(in oklab, var(--accent) 16%, transparent), color-mix(in oklab, var(--accent) 4%, transparent));
+  --_bd: color-mix(in oklab, var(--accent) 40%, transparent); --_fg: var(--accent);
+}
+.t-btn[data-variant="ai"]:hover, .t-btn[data-variant="ai"].is-hover { --_bd: var(--accent); }
+.t-btn[data-size="sm"] { min-block-size: 1.75rem; padding-inline: var(--space-3); font-size: var(--text--2); }
+.t-btn[data-size="lg"] { min-block-size: 2.75rem; padding-inline: var(--space-5); font-size: var(--text-0); }
+.t-btn--icon { padding-inline: 0; inline-size: 2.25rem; }
+@keyframes t-spin { to { transform: rotate(360deg); } }
+
+/* Field — label, control, help, error as one object */
+.t-field { display: flex; flex-direction: column; gap: var(--space-1); min-inline-size: 0; }
+.t-field__label { font-size: var(--text--1); font-weight: 600; color: var(--ink); }
+.t-field__help { font-size: var(--text--2); color: var(--ink-mute); }
+.t-field__error { font-size: var(--text--2); color: var(--expense); font-weight: 500; }
+.t-control {
+  inline-size: 100%; min-block-size: 2.25rem; padding: 0 var(--space-3);
+  border: var(--line-w) solid var(--line-strong); border-radius: var(--radius-2);
+  background: var(--card); color: var(--ink); font-size: var(--text--1);
+  transition: border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+}
+.t-control::placeholder { color: var(--ink-mute); }
+.t-control:hover { border-color: color-mix(in oklab, var(--line-strong) 60%, var(--ink)); }
+.t-control:focus-visible { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 25%, transparent); }
+.t-control:disabled { opacity: 0.55; background: var(--surface-2); cursor: not-allowed; }
+.t-field[data-invalid] .t-control { border-color: var(--expense); }
+textarea.t-control { min-block-size: 5rem; padding-block: var(--space-2); resize: vertical; }
+select.t-control { appearance: none; padding-inline-end: 2rem; background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%); background-position: calc(100% - 0.95rem) 50%, calc(100% - 0.65rem) 50%; background-size: 0.3rem 0.3rem; background-repeat: no-repeat; }
+.t-control--money { font-variant-numeric: tabular-nums; text-align: end; }
+.t-check { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text--1); cursor: pointer; }
+.t-check input { inline-size: 1rem; block-size: 1rem; accent-color: var(--accent); margin: 0; }
+.t-switch { --_w: 2.25rem; --_h: 1.25rem; position: relative; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text--1); cursor: pointer; }
+.t-switch input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
+.t-switch__track { inline-size: var(--_w); block-size: var(--_h); border-radius: var(--radius-round); background: var(--line-strong); position: relative; transition: background var(--dur-2) var(--ease-out); }
+.t-switch__track::after { content: ""; position: absolute; inset-block: 2px; inset-inline-start: 2px; inline-size: calc(var(--_h) - 4px); border-radius: 50%; background: var(--card); box-shadow: var(--shadow-1); transition: translate var(--dur-2) var(--ease-out); }
+.t-switch :checked + .t-switch__track { background: var(--accent); }
+.t-switch :checked + .t-switch__track::after { translate: calc(var(--_w) - var(--_h)) 0; }
+.t-switch :focus-visible + .t-switch__track { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Badge family — shape shared, meaning by axis */
+.t-badge { display: inline-flex; align-items: center; gap: 0.3em; padding: 0.15em 0.6em; border-radius: var(--radius-round); font-size: var(--text--2); font-weight: 600; letter-spacing: 0.02em; line-height: 1.5; white-space: nowrap; }
+/* Each semantic axis maps onto one tone triple. The axis stays in the markup
+   (direction ≠ health ≠ due), the colours come from one verified place. */
+.t-badge[data-direction="INCOME"] { background: var(--tone-positive-bg); color: var(--tone-positive-fg); }
+.t-badge[data-direction="EXPENSE"] { background: var(--tone-negative-bg); color: var(--tone-negative-fg); }
+.t-badge[data-direction="TRANSFER"] { background: var(--tone-neutral-bg); color: var(--tone-neutral-fg); }
+.t-badge[data-tone="neutral"] { background: var(--tone-neutral-bg); color: var(--tone-neutral-fg); }
+.t-badge[data-tone="accent"] { background: var(--tone-info-bg); color: var(--tone-info-fg); }
+.t-status { display: inline-flex; align-items: center; gap: 0.4em; padding: 0.15em 0.6em 0.15em 0.5em; border-radius: var(--radius-round); font-size: var(--text--2); font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.t-status::before { content: ""; inline-size: 0.45em; block-size: 0.45em; border-radius: 50%; background: currentcolor; }
+.t-status[data-health="good"] { background: var(--tone-positive-bg); color: var(--tone-positive-fg); }
+.t-status[data-health="caution"] { background: var(--tone-caution-bg); color: var(--tone-caution-fg); }
+.t-status[data-health="danger"] { background: var(--tone-negative-bg); color: var(--tone-negative-fg); }
+.t-status[data-health="danger"]::before { border-radius: 1px; transform: rotate(45deg); }
+.t-status[data-health="caution"]::before { border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.t-chip { display: inline-flex; align-items: center; gap: 0.35em; padding: 0.15em 0.55em; border-radius: var(--radius-1); border: var(--line-w) solid var(--tone-neutral-bd); font-size: var(--text--2); font-weight: 600; color: var(--tone-neutral-fg); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.t-chip[data-due="soon"] { border-color: var(--tone-caution-bd); color: var(--tone-caution-fg); background: var(--tone-caution-bg); }
+.t-chip[data-due="overdue"] { border-color: var(--tone-negative-bd); color: var(--tone-negative-fg); background: var(--tone-negative-bg); }
+.t-trend { display: inline-flex; align-items: center; gap: 0.3em; font-size: var(--text--1); font-weight: 600; font-variant-numeric: tabular-nums; }
+.t-trend[data-valence="positive"] { color: var(--income); }
+.t-trend[data-valence="negative"] { color: var(--expense); }
+.t-trend[data-valence="neutral"] { color: var(--ink-soft); }
+.t-trend__arrow { font-size: 0.8em; }
+
+/* Avatar — institutions and members share one language */
+.t-avatar { display: inline-grid; place-items: center; inline-size: 1.75rem; block-size: 1.75rem; border-radius: 50%; background: var(--_avatar, var(--ink-soft)); color: var(--on-brand); font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; flex-shrink: 0; }
+.t-avatar[data-size="lg"] { inline-size: 2.5rem; block-size: 2.5rem; font-size: 0.85rem; }
+.t-avatar[data-size="sm"] { inline-size: 1.35rem; block-size: 1.35rem; font-size: 0.5rem; }
+.t-avatar[data-kind="member"] { border-radius: var(--radius-2); background: var(--accent-soft); color: var(--accent); }
+
+/* Progress */
+.t-bar { display: flex; flex-direction: column; gap: var(--space-1); }
+.t-bar__meta { display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--text--2); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.t-bar__track { block-size: 8px; border-radius: var(--radius-round); background: var(--surface-2); overflow: hidden; }
+.t-bar__fill { block-size: 100%; border-radius: inherit; background: var(--accent); inline-size: var(--pct, 0%); transition: inline-size var(--dur-3) var(--ease-out); }
+.t-bar[data-health="good"] .t-bar__fill { background: var(--income); }
+.t-bar[data-health="caution"] .t-bar__fill { background: var(--caution); }
+.t-bar[data-health="danger"] .t-bar__fill { background: var(--expense); }
+.t-ring { --pct: 0; --_c: var(--accent); --_size: 5.5rem; --_w: 9px; inline-size: var(--_size); block-size: var(--_size); border-radius: 50%; display: grid; place-items: center; position: relative; flex-shrink: 0;
+  background: conic-gradient(var(--_c) calc(var(--pct) * 1%), var(--surface-2) 0); }
+.t-ring::before { content: ""; position: absolute; inset: var(--_w); border-radius: 50%; background: var(--card); }
+.t-ring__label { position: relative; font-weight: 600; font-variant-numeric: tabular-nums; font-size: var(--text-0); }
+.t-ring[data-health="good"] { --_c: var(--income); }
+.t-ring[data-health="caution"] { --_c: var(--caution); }
+.t-ring[data-health="danger"] { --_c: var(--expense); }
+.t-ring[data-size="lg"] { --_size: 8.5rem; --_w: 12px; }
+.t-ring[data-size="lg"] .t-ring__label { font-size: var(--text-2); }
+
+/* Sparkline (SVG) */
+/* viewBox keeps its aspect: never preserveAspectRatio="none" on anything with a dot or a glyph (audit F-05) */
+.t-spark { inline-size: 100%; block-size: auto; overflow: visible; }
+.t-spark__area { fill: color-mix(in oklab, var(--accent) 14%, transparent); }
+.t-spark__line { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.t-spark__end { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+
+/* Skeleton */
+.t-skeleton { display: block; background: linear-gradient(90deg, var(--surface-2) 25%, color-mix(in oklab, var(--surface-2) 60%, var(--card)) 50%, var(--surface-2) 75%); background-size: 200% 100%; border-radius: var(--radius-1); animation: t-shimmer 1.4s ease infinite; block-size: 1em; }
+@keyframes t-shimmer { to { background-position: -200% 0; } }
+
+/* Tooltip (hover + focus) */
+.t-tip { position: relative; display: inline-flex; }
+.t-tip__body { position: absolute; inset-block-end: calc(100% + 6px); inset-inline-start: 50%; translate: -50% 0; background: var(--ink); color: var(--paper); font-size: var(--text--2); padding: 0.3rem 0.55rem; border-radius: var(--radius-1); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity var(--dur-1) var(--ease-out); z-index: 2; }
+.t-tip:hover .t-tip__body, .t-tip:focus-within .t-tip__body, .t-tip.is-open .t-tip__body { opacity: 1; }
+
+.t-divider { border: 0; border-block-start: var(--line-w) solid var(--line); }
+.t-kbd { font-family: var(--font-mono); font-size: 0.75em; padding: 0.1em 0.4em; border: var(--line-w) solid var(--line-strong); border-block-end-width: 2px; border-radius: var(--radius-1); background: var(--card); }
+}

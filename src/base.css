@@ -1,0 +1,15 @@
+/* Tally — base layer. Generated from the proposal mockup on 2026-09-02; edit here, not there. */
+@layer base {
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-1); }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface-2); padding: 0.05em 0.35em; border-radius: var(--radius-1); }
+::selection { background: var(--accent-soft); }
+}

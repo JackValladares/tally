@@ -1,0 +1,16 @@
+[
+  {
+    "id": "clx8mem001",
+    "name": "Jack",
+    "email": "jack@example.test",
+    "theme": "light",
+    "isAdmin": true
+  },
+  {
+    "id": "clx8mem002",
+    "name": "Grace",
+    "email": "grace@example.test",
+    "theme": "sunset",
+    "isAdmin": false
+  }
+]

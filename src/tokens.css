@@ -1,0 +1,186 @@
+/* Tally — tokens layer. Generated from the proposal mockup on 2026-09-02; edit here, not there. */
+/* Vendored so a self-hosted install never calls out to a font CDN. Variable: wdth 75–100, wght 400–700. */
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("./fonts/InstrumentSans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: italic;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("./fonts/InstrumentSans-latin-italic.woff2") format("woff2");
+}
+
+@layer tokens {
+:root {
+  /* type */
+  --font-ui: "Instrument Sans", "Segoe UI", system-ui, -apple-system, "Helvetica", "Arial", sans-serif;
+  /* decided 2 Sep 2026: one face throughout; statement-size money is the same grotesk at 600, not a serif */
+  --font-figure: var(--font-ui);
+  --font-mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  /* fluid scale: minor third at 360px → major third at 1280px */
+  --text--2: clamp(0.69rem, 0.66rem + 0.13vw, 0.78rem);
+  --text--1: clamp(0.78rem, 0.75rem + 0.16vw, 0.88rem);
+  --text-0:  clamp(0.875rem, 0.84rem + 0.17vw, 0.95rem);
+  --text-1:  clamp(1rem, 0.96rem + 0.25vw, 1.15rem);
+  --text-2:  clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-3:  clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --text-4:  clamp(1.9rem, 1.6rem + 1.5vw, 2.75rem);
+  --text-5:  clamp(2.4rem, 2rem + 2.2vw, 3.6rem);
+  --leading-tight: 1.15; --leading-body: 1.5;
+  --tracking-caps: 0.06em;
+  /* space: 4px base */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --measure: 64ch;
+  --shell-max: 1120px;
+  /* shape */
+  --radius-1: 4px; --radius-2: 8px; --radius-3: 12px; --radius-round: 999px;
+  --line-w: 1px;
+  /* motion */
+  --dur-1: 120ms; --dur-2: 200ms; --dur-3: 320ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.3, 1);
+
+  /* ---- semantic colour, theme "Paper" (default, light) ---- */
+  color-scheme: light;
+  --paper: #f5f5fa;
+  --card: #ffffff;
+  --surface-2: #ecedf4;
+  --ink: #1d2029;
+  --ink-soft: #5f6577;
+  --ink-mute: #8b91a1;
+  --line: #e2e4ec;
+  --line-strong: #c7cad7;
+  --accent: #4f4ec4;
+  --accent-ink: #ffffff;
+  --on-brand: #ffffff; /* text on institution/brand colours; same in every theme */
+  --accent-soft: #ebebfa;
+  --focus: #4f4ec4;
+  --income: #1f8a4c;
+  --expense: #c2483a;
+  --transfer: #857a67;
+  --caution: #a8720a;
+  --warn: #c2483a;
+  --shadow-1: 0 1px 2px rgb(29 32 41 / 6%), 0 0 0 1px rgb(29 32 41 / 3%);
+  --shadow-2: 0 8px 24px rgb(29 32 41 / 12%), 0 1px 3px rgb(29 32 41 / 8%);
+  --bubble-user: var(--accent);
+  --bubble-assistant: var(--surface-2);
+  /* paired tone triples: every badge, chip and status reads bg/fg/bd from one of these,
+     so contrast is verified once per theme instead of per component (audit F-12) */
+  --tone-positive-bg: #e3f2e8; --tone-positive-fg: #1a6b3c; --tone-positive-bd: #b7dfc6;
+  --tone-negative-bg: #f8e3e0; --tone-negative-fg: #9c3529; --tone-negative-bd: #ecc0b9;
+  --tone-caution-bg: #f7ecd6;  --tone-caution-fg: #7a5208;  --tone-caution-bd: #e7d3a3;
+  --tone-info-bg: #ebebfa;     --tone-info-fg: #3f3ea6;     --tone-info-bd: #c9c8f0;
+  --tone-neutral-bg: #ecedf4;  --tone-neutral-fg: #5f6577;  --tone-neutral-bd: #d6d8e2;
+}
+/* theme "Slate" (dark) — same slots, re-stepped, not inverted */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #141519;
+  --card: #1b1d24;
+  --surface-2: #23252e;
+  --ink: #eceef3;
+  --ink-soft: #9aa0af;
+  --ink-mute: #6c7282;
+  --line: #2b2e39;
+  --line-strong: #3b404e;
+  --accent: #8e8df2;
+  --accent-ink: #0f1020;
+  --accent-soft: #272a4a;
+  --focus: #a3a2ff;
+  --income: #5bcf86;
+  --expense: #e58b7c;
+  --transfer: #b4a98e;
+  --caution: #e2b45c;
+  --warn: #e58b7c;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 40%), 0 0 0 1px rgb(255 255 255 / 4%);
+  --shadow-2: 0 12px 32px rgb(0 0 0 / 55%), 0 1px 3px rgb(0 0 0 / 40%);
+  --tone-positive-bg: #1c3327; --tone-positive-fg: #7ddc9f; --tone-positive-bd: #2f5a41;
+  --tone-negative-bg: #3a2320; --tone-negative-fg: #f0a191; --tone-negative-bd: #63382f;
+  --tone-caution-bg: #352b16;  --tone-caution-fg: #e9c26f;  --tone-caution-bd: #5c4a23;
+  --tone-info-bg: #272a4a;     --tone-info-fg: #b0affa;     --tone-info-bd: #3f4380;
+  --tone-neutral-bg: #23252e;  --tone-neutral-fg: #9aa0af;  --tone-neutral-bd: #3b404e;
+}
+/* an unstamped viewer whose OS is dark gets Slate; an explicit light stamp wins */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --paper: #141519; --card: #1b1d24; --surface-2: #23252e;
+    --ink: #eceef3; --ink-soft: #9aa0af; --ink-mute: #6c7282;
+    --line: #2b2e39; --line-strong: #3b404e;
+    --accent: #8e8df2; --accent-ink: #0f1020; --accent-soft: #272a4a; --focus: #a3a2ff;
+    --income: #5bcf86; --expense: #e58b7c; --transfer: #b4a98e; --caution: #e2b45c; --warn: #e58b7c;
+    --shadow-1: 0 1px 2px rgb(0 0 0 / 40%), 0 0 0 1px rgb(255 255 255 / 4%);
+    --shadow-2: 0 12px 32px rgb(0 0 0 / 55%), 0 1px 3px rgb(0 0 0 / 40%);
+    --tone-positive-bg: #1c3327; --tone-positive-fg: #7ddc9f; --tone-positive-bd: #2f5a41;
+    --tone-negative-bg: #3a2320; --tone-negative-fg: #f0a191; --tone-negative-bd: #63382f;
+    --tone-caution-bg: #352b16;  --tone-caution-fg: #e9c26f;  --tone-caution-bd: #5c4a23;
+    --tone-info-bg: #272a4a;     --tone-info-fg: #b0affa;     --tone-info-bd: #3f4380;
+    --tone-neutral-bg: #23252e;  --tone-neutral-fg: #9aa0af;  --tone-neutral-bd: #3b404e;
+  }
+}
+/* theme "Fern" — a mood, not a hue swap: greener ink, chalkier paper, accent is the income green */
+:root[data-theme="green"] {
+  color-scheme: light;
+  --paper: #f1f4f0;
+  --card: #fbfcfa;
+  --surface-2: #e5ebe4;
+  --ink: #17231b;
+  --ink-soft: #55675b;
+  --ink-mute: #7d8d82;
+  --line: #d8e0d8;
+  --line-strong: #b7c5b9;
+  --accent: #2c6b4b;
+  --accent-ink: #ffffff;
+  --accent-soft: #dfeae2;
+  --focus: #2c6b4b;
+  --income: #2c6b4b;
+  --expense: #a8473a;
+  --transfer: #7f7862;
+  --caution: #9c6c0a;
+  --warn: #a8473a;
+  --shadow-1: 0 1px 2px rgb(23 35 27 / 7%), 0 0 0 1px rgb(23 35 27 / 4%);
+  --shadow-2: 0 8px 24px rgb(23 35 27 / 14%), 0 1px 3px rgb(23 35 27 / 8%);
+  --tone-positive-bg: #dfeae2; --tone-positive-fg: #245b3f; --tone-positive-bd: #b5cfbd;
+  --tone-negative-bg: #f4e1dc; --tone-negative-fg: #8f3a2e; --tone-negative-bd: #e3bcb2;
+  --tone-caution-bg: #f2e8d0;  --tone-caution-fg: #6f4c06;  --tone-caution-bd: #dfcc9a;
+  --tone-info-bg: #dfeae2;     --tone-info-fg: #2c6b4b;     --tone-info-bd: #b5cfbd;
+  --tone-neutral-bg: #e5ebe4;  --tone-neutral-fg: #55675b;  --tone-neutral-bd: #c9d4ca;
+}
+/* theme "Dusk" — warm paper, ember accent, softer rules */
+:root[data-theme="sunset"] {
+  color-scheme: light;
+  --paper: #faf3eb;
+  --card: #fffdfa;
+  --surface-2: #f2e7da;
+  --ink: #2b211a;
+  --ink-soft: #74655a;
+  --ink-mute: #9b8c7f;
+  --line: #e9dccc;
+  --line-strong: #d3c0ab;
+  --accent: #c4621d;
+  --accent-ink: #ffffff;
+  --accent-soft: #f9e3cf;
+  --focus: #c4621d;
+  --income: #3b8c60;
+  --expense: #be4634;
+  --transfer: #9c7457;
+  --caution: #a86c0a;
+  --warn: #be4634;
+  --shadow-1: 0 1px 2px rgb(43 33 26 / 7%), 0 0 0 1px rgb(43 33 26 / 4%);
+  --shadow-2: 0 8px 24px rgb(43 33 26 / 14%), 0 1px 3px rgb(43 33 26 / 8%);
+  --tone-positive-bg: #e0eee4; --tone-positive-fg: #2f6f4c; --tone-positive-bd: #b6d5c0;
+  --tone-negative-bg: #f7e0d9; --tone-negative-fg: #9a3527; --tone-negative-bd: #ebbfb2;
+  --tone-caution-bg: #f5e6cc;  --tone-caution-fg: #7c4f06;  --tone-caution-bd: #e4cd9c;
+  --tone-info-bg: #f9e3cf;     --tone-info-fg: #9c4a12;     --tone-info-bd: #ecc4a3;
+  --tone-neutral-bg: #f2e7da;  --tone-neutral-fg: #74655a;  --tone-neutral-bd: #dcccb9;
+}
+}

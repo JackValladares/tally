@@ -1,0 +1,93 @@
+{
+  "from": "2026-08-01",
+  "to": "2026-08-31",
+  "totalIncome": 25447.49,
+  "totalExpenses": 21654.5,
+  "net": 3792.99,
+  "byCategory": [
+    {
+      "category": "Income",
+      "total": 23738.78,
+      "expenseTotal": 0,
+      "incomeTotal": 23738.78,
+      "transactionCount": 9
+    },
+    {
+      "category": "Travel",
+      "total": 5714.61,
+      "expenseTotal": 5714.61,
+      "incomeTotal": 0,
+      "transactionCount": 12
+    },
+    {
+      "category": "Housing & Utilities",
+      "total": 4898.59,
+      "expenseTotal": 4898.59,
+      "incomeTotal": 0,
+      "transactionCount": 7
+    },
+    {
+      "category": "Shopping",
+      "total": 3577.55,
+      "expenseTotal": 3577.55,
+      "incomeTotal": 0,
+      "transactionCount": 41
+    },
+    {
+      "category": "Subscriptions & Services",
+      "total": 2524.41,
+      "expenseTotal": 2524.41,
+      "incomeTotal": 0,
+      "transactionCount": 28
+    },
+    {
+      "category": "Dining & Takeout",
+      "total": 2269.1,
+      "expenseTotal": 2269.1,
+      "incomeTotal": 0,
+      "transactionCount": 63
+    },
+    {
+      "category": "Other",
+      "total": 1406.12,
+      "expenseTotal": 1350.12,
+      "incomeTotal": 56,
+      "transactionCount": 11
+    },
+    {
+      "category": "Health & Wellness",
+      "total": 1236.69,
+      "expenseTotal": 1236.69,
+      "incomeTotal": 0,
+      "transactionCount": 6
+    },
+    {
+      "category": "Entertainment & Recreation",
+      "total": 854.79,
+      "expenseTotal": 854.79,
+      "incomeTotal": 0,
+      "transactionCount": 14
+    },
+    {
+      "category": "Groceries",
+      "total": 558.24,
+      "expenseTotal": 558.24,
+      "incomeTotal": 0,
+      "transactionCount": 17
+    },
+    {
+      "category": "Fees & Interest",
+      "total": 215,
+      "expenseTotal": 215,
+      "incomeTotal": 0,
+      "transactionCount": 3
+    },
+    {
+      "category": "Transportation",
+      "total": 108.11,
+      "expenseTotal": 108.11,
+      "incomeTotal": 0,
+      "transactionCount": 4
+    }
+  ]
+}

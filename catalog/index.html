@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tally</title>
+<link rel="stylesheet" href="../dist/tally.css">
+<link rel="stylesheet" href="./catalog.css">
+</head>
+<body>
+
+<!-- ====================================================================== -->
+<header class="spec-top">
+  <div class="l-center spec-top__inner">
+    <div class="spec-brand">
+      <span class="spec-brand__name">Tally</span>
+      <span class="spec-brand__tag">component suite · proposal</span>
+    </div>
+    <nav class="spec-nav" aria-label="Sections">
+      <a href="#foundations">Foundations</a>
+      <a href="#primitives">Primitives</a>
+      <a href="#layouts">Layouts</a>
+      <a href="#components">Components</a>
+      <a href="#page">Page</a>
+      <a href="#conventions">Conventions</a>
+    </nav>
+    <div class="t-seg" role="group" aria-label="Theme" id="themeSeg">
+      <button class="t-seg__opt" data-theme-pick="" aria-pressed="true">System</button>
+      <button class="t-seg__opt" data-theme-pick="light">Paper</button>
+      <button class="t-seg__opt" data-theme-pick="dark">Slate</button>
+      <button class="t-seg__opt" data-theme-pick="green">Fern</button>
+      <button class="t-seg__opt" data-theme-pick="sunset">Dusk</button>
+    </div>
+  </div>
+</header>
+
+<main class="l-center">
+
+  <section class="spec-hero">
+    <div class="l-stack">
+      <p class="t-eyebrow">Household budget · UI library proposal</p>
+      <h1>A small, honest component suite that makes a shared ledger feel like one.</h1>
+      <p>Everything on this page is built from the proposed CSS: one token sheet, four themes as moods, one money figure used at every size, and layouts that decide their own breakpoints. Switch the theme in the header to see the whole suite re-resolve. Figures are example data.</p>
+    </div>
+    <div class="spec-hero__figure">
+      <span class="t-eyebrow">Net liquidity</span>
+      <span class="t-money t-money--xl" data-valence="positive"><span class="t-money__cur">$</span>15,373<span class="t-money__cents">.68</span></span>
+      <span class="t-stat__foot"><span class="t-trend" data-valence="positive"><span class="t-trend__arrow">▲</span>$412.20</span><span>since last sync · Aug 19</span></span>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="foundations">
+    <header>
+      <p class="t-eyebrow">Foundations</p>
+      <h2>Tokens first. Components consume roles, never hex.</h2>
+      <p>Semantic slots stay the same in every theme, so a component written once resolves in all four. Income and expense keep the financial convention of green and red on purpose, and they never carry meaning alone: a sign, a label or a glyph always travels with the colour.</p>
+    </header>
+
+    <div class="spec-block">
+      <h3>Colour roles <code>--paper · --card · --surface-2 · --ink · --ink-soft · --ink-mute · --line · --accent · --income · --expense · --transfer · --caution</code></h3>
+      <div class="spec-swatches">
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--paper)"></i><span>paper</span><code>page ground</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--card)"></i><span>card</span><code>lifted surface</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--surface-2)"></i><span>surface-2</span><code>inset / track</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--ink)"></i><span>ink</span><code>text</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--ink-soft)"></i><span>ink-soft</span><code>secondary text</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--ink-mute)"></i><span>ink-mute</span><code>labels, meta</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--line)"></i><span>line</span><code>rules</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--accent)"></i><span>accent</span><code>actions only</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--accent-soft)"></i><span>accent-soft</span><code>selected, AI</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--income)"></i><span>income</span><code>+ valence</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--expense)"></i><span>expense</span><code>− valence</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--transfer)"></i><span>transfer</span><code>neutral move</code></div>
+        <div class="spec-swatch"><i class="spec-swatch__chip" style="--_sw: var(--caution)"></i><span>caution</span><code>middle state</code></div>
+      </div>
+      <p class="spec-theme-note">Themes: Paper (light), Slate (dark), Fern, Dusk. System follows the OS between Paper and Slate. The four names are the existing per-member preferences, re-stepped so each is a mood rather than a hue swap.</p>
+    </div>
+
+    <div class="spec-block">
+      <h3>Type <code>Instrument Sans throughout · variable width and weight · true tabular numerals · statement-size money at weight 600</code></h3>
+      <div class="spec-type">
+        <div class="spec-type__row"><code>text-5</code><span style="font-size: var(--text-5); font-weight: 600; letter-spacing: -0.03em; line-height: 1;" class="u-num">$25,447.49</span></div>
+        <div class="spec-type__row"><code>text-4</code><span style="font-size: var(--text-4); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;">Household Budget</span></div>
+        <div class="spec-type__row"><code>text-3</code><span style="font-size: var(--text-3); font-weight: 600; letter-spacing: -0.02em;" class="u-num">$3,792.99 net this period</span></div>
+        <div class="spec-type__row"><code>text-2</code><span style="font-size: var(--text-2); font-weight: 600;">Running expenses vs. income</span></div>
+        <div class="spec-type__row"><code>text-1</code><span style="font-size: var(--text-1);">Cumulative spend across the selected period, against total income.</span></div>
+        <div class="spec-type__row"><code>text-0</code><span>Body copy sits at 14–15px and stays under 64 characters a line. Dates, amounts and counts always set tabular: 1,234.56 vs 1,111.11.</span></div>
+        <div class="spec-type__row"><code>text--1</code><span style="font-size: var(--text--1);">Table cells, field labels, secondary actions.</span></div>
+        <div class="spec-type__row"><code>text--2</code><span class="t-eyebrow">Eyebrows, column heads, badges</span></div>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 44rem">
+      <div class="spec-block">
+        <h3>Space <code>4px base, eight steps, one fluid gutter</code></h3>
+        <div class="spec-space">
+          <div class="spec-space__box"><i style="--_s: var(--space-1)"></i>1</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-2)"></i>2</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-3)"></i>3</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-4)"></i>4</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-5)"></i>5</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-6)"></i>6</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-7)"></i>7</div>
+          <div class="spec-space__box"><i style="--_s: var(--space-8)"></i>8</div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Shape <code>radius-1 4 · radius-2 8 · radius-3 12 · round</code></h3>
+        <div class="spec-radii">
+          <i style="--_r: var(--radius-1)"></i><i style="--_r: var(--radius-2)"></i><i style="--_r: var(--radius-3)"></i><i style="--_r: var(--radius-round)"></i>
+        </div>
+        <p>Chips and inputs take 4, buttons 8, cards 12. Nothing else. Shadows exist at two levels only: resting card and floating surface.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="primitives">
+    <header>
+      <p class="t-eyebrow">Primitives</p>
+      <h2>One element, every state, on the same page.</h2>
+      <p>A primitive is done when its six microstates are drawn and it survives the ugly cases: a forty-character name, a negative balance, a list of one. These are the pieces everything else is composed from.</p>
+    </header>
+
+    <div class="spec-block">
+      <h3>Money <code>.t-money · size sm/md/lg/xl · data-valence</code></h3>
+      <p>The signature. Currency and cents recede so the integer carries the eye. One face at every size; statement sizes go to weight 600 with tighter tracking. Negative is a true minus, never parentheses.</p>
+      <div class="spec-row spec-row--baseline" style="gap: var(--space-6)">
+        <span class="t-money t-money--xl"><span class="t-money__cur">$</span>16,055<span class="t-money__cents">.07</span></span>
+        <span class="t-money t-money--lg" data-valence="negative"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>681<span class="t-money__cents">.39</span></span>
+        <span class="t-money t-money--md" data-valence="positive"><span class="t-money__sign">+</span><span class="t-money__cur">$</span>2,850<span class="t-money__cents">.00</span></span>
+        <span class="t-money t-money--sm"><span class="t-money__cur">$</span>1<span class="t-money__cents">.00</span></span>
+        <span class="t-money t-money--sm t-muted"><span class="t-money__cur">$</span>0<span class="t-money__cents">.00</span></span>
+      </div>
+    </div>
+
+    <div class="spec-block">
+      <h3>Button <code>.t-btn · data-variant primary/secondary/subtle/danger/ai · data-size sm/md/lg</code></h3>
+      <div class="spec-row spec-row--states">
+        <button class="t-btn" data-variant="primary">Sync now</button>
+        <button class="t-btn is-hover" data-variant="primary">Sync now</button>
+        <button class="t-btn is-focus" data-variant="primary">Sync now</button>
+        <button class="t-btn is-active" data-variant="primary">Sync now</button>
+        <button class="t-btn" data-variant="primary" disabled>Sync now</button>
+        <button class="t-btn is-loading" data-variant="primary">Sync now</button>
+      </div>
+      <p class="spec-caption">default · hover · focus · active · disabled · loading</p>
+      <div class="spec-row">
+        <button class="t-btn">Save budget</button>
+        <button class="t-btn" data-variant="subtle">Dismiss</button>
+        <button class="t-btn" data-variant="danger">Remove account</button>
+        <button class="t-btn" data-variant="ai"><span aria-hidden="true">✦</span> Help me set limits</button>
+        <button class="t-btn" data-size="sm">Edit</button>
+        <button class="t-btn" data-size="lg" data-variant="primary">Link a bank</button>
+        <button class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
+      </div>
+    </div>
+
+    <div class="spec-block">
+      <h3>Field <code>.t-field · .t-control · label, help, error as one object</code></h3>
+      <div class="l-grid" style="--grid-min: 13rem">
+        <div class="t-field">
+          <label class="t-field__label" for="f1">Goal name</label>
+          <input class="t-control" id="f1" placeholder="Emergency fund" value="Japan trip, spring 2027">
+          <span class="t-field__help">Shown to both of you.</span>
+        </div>
+        <div class="t-field">
+          <label class="t-field__label" for="f2">Monthly limit</label>
+          <input class="t-control t-control--money" id="f2" value="450.00" inputmode="decimal">
+          <span class="t-field__help">Dining &amp; takeout, whole household</span>
+        </div>
+        <div class="t-field" data-invalid>
+          <label class="t-field__label" for="f3">Target date</label>
+          <input class="t-control" id="f3" type="date" value="2026-01-15" aria-describedby="f3e">
+          <span class="t-field__error" id="f3e">That date has already passed. Pick one after today.</span>
+        </div>
+        <div class="t-field">
+          <label class="t-field__label" for="f4">Household member</label>
+          <select class="t-control" id="f4"><option>Whole household</option><option>Jack</option><option>Grace</option></select>
+        </div>
+        <div class="t-field">
+          <label class="t-field__label" for="f5">Disabled</label>
+          <input class="t-control" id="f5" value="Read only" disabled>
+        </div>
+        <div class="t-field">
+          <span class="t-field__label">Toggles</span>
+          <div class="l-cluster" style="--cluster-gap: var(--space-4)">
+            <label class="t-check"><input type="checkbox" checked> Include pending</label>
+            <label class="t-switch"><input type="checkbox" checked><span class="t-switch__track"></span>Auto-sync</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 52rem">
+      <div class="spec-block">
+        <h3>Badge family <code>.t-badge · .t-status · .t-chip · .t-trend</code></h3>
+        <p>Same shape, four axes of meaning that never share a selector: direction, health, due date, delta. Health badges add a shape as well as a colour.</p>
+        <div class="spec-row">
+          <span class="t-badge" data-direction="INCOME">Income</span>
+          <span class="t-badge" data-direction="EXPENSE">Expense</span>
+          <span class="t-badge" data-direction="TRANSFER">Transfer</span>
+          <span class="t-badge" data-tone="neutral">Inactive</span>
+          <span class="t-badge" data-tone="accent">✦ Suggested</span>
+        </div>
+        <div class="spec-row">
+          <span class="t-status" data-health="good">On track</span>
+          <span class="t-status" data-health="caution">Watch</span>
+          <span class="t-status" data-health="danger">Over limit</span>
+          <span class="t-chip">Due Sep 14</span>
+          <span class="t-chip" data-due="soon">Due in 3 days</span>
+          <span class="t-chip" data-due="overdue">2 days late</span>
+        </div>
+        <div class="spec-row">
+          <span class="t-trend" data-valence="positive"><span class="t-trend__arrow">▲</span>4.2%</span>
+          <span class="t-trend" data-valence="negative"><span class="t-trend__arrow">▲</span>$312 spending</span>
+          <span class="t-trend" data-valence="neutral"><span class="t-trend__arrow">–</span>flat</span>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Avatar <code>.t-avatar · data-kind institution/member · data-size</code></h3>
+        <p>The one distinctive element already in the app, extended to members and categories so the whole page speaks it.</p>
+        <div class="spec-row">
+          <span class="t-avatar" style="--_avatar:#c8102e">WF</span>
+          <span class="t-avatar" style="--_avatar:#117aca">C</span>
+          <span class="t-avatar" style="--_avatar:#006fcf">AE</span>
+          <span class="t-avatar" style="--_avatar:#ff6000">D</span>
+          <span class="t-avatar">?</span>
+          <span class="t-avatar" data-kind="member">J</span>
+          <span class="t-avatar" data-kind="member">G</span>
+          <span class="t-avatar" data-kind="member" data-size="lg">JG</span>
+          <span class="t-avatar" data-size="sm" style="--_avatar:#117aca">C</span>
+        </div>
+        <h3 style="margin-block-start: var(--space-2)">Skeleton, tooltip, kbd</h3>
+        <div class="spec-row">
+          <span class="t-skeleton" style="inline-size: 9rem"></span>
+          <span class="t-skeleton" style="inline-size: 5rem; block-size: 2rem"></span>
+          <span class="t-tip is-open"><button class="t-btn" data-size="sm">Hover me</button><span class="t-tip__body" role="tooltip">Last synced 2 min ago</span></span>
+          <span class="t-small t-muted">Press <kbd class="t-kbd">⌘</kbd> <kbd class="t-kbd">K</kbd> to ask</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 52rem">
+      <div class="spec-block">
+        <h3>Progress bar <code>.t-bar · --pct · data-health</code></h3>
+        <div class="l-stack" style="--stack-gap: var(--space-3)">
+          <div class="t-bar" data-health="good"><div class="t-bar__meta"><span>Groceries</span><span>$412 of $600</span></div><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 69%"></div></div></div>
+          <div class="t-bar" data-health="caution"><div class="t-bar__meta"><span>Dining &amp; takeout</span><span>$388 of $450</span></div><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 86%"></div></div></div>
+          <div class="t-bar" data-health="danger"><div class="t-bar__meta"><span>Shopping</span><span>$1,024 of $800</span></div><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 100%"></div></div></div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Progress ring &amp; sparkline <code>.t-ring · .t-spark</code></h3>
+        <div class="spec-row" style="gap: var(--space-5)">
+          <div class="t-ring" data-health="good" style="--pct: 62"><span class="t-ring__label">62%</span></div>
+          <div class="t-ring" data-health="caution" style="--pct: 84"><span class="t-ring__label">84%</span></div>
+          <div class="t-ring" data-size="lg" style="--pct: 41"><span class="t-ring__label">41%</span></div>
+          <div style="inline-size: 12rem">
+            <svg class="t-spark" viewBox="0 0 120 36" role="img" aria-label="Net worth, last 12 syncs, rising">
+              <path class="t-spark__area" d="M0,28 L11,26 L22,27 L33,22 L44,23 L55,18 L66,19 L77,14 L88,15 L99,11 L110,9 L120,6 L120,36 L0,36 Z"/>
+              <polyline class="t-spark__line" points="0,28 11,26 22,27 33,22 44,23 55,18 66,19 77,14 88,15 99,11 110,9 120,6"/>
+              <circle class="t-spark__end" cx="120" cy="6" r="3"/>
+            </svg>
+            <span class="spec-caption">Net worth · 12 syncs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="layouts">
+    <header>
+      <p class="t-eyebrow">Layouts</p>
+      <h2>Layouts decide their own breakpoints.</h2>
+      <p>Seven composable layout primitives after Every Layout. None of them know the viewport; each one wraps, stacks or switches based on the room it actually has. Pages are built by nesting them, and components use container queries for the rest.</p>
+    </header>
+    <div class="l-grid" style="--grid-min: 20rem; --grid-gap: var(--space-5)">
+      <div class="spec-block"><h3>Stack <code>.l-stack · --stack-gap</code></h3><div class="l-stack spec-outline" style="--stack-gap: var(--space-2)"><div class="spec-cell">heading</div><div class="spec-cell">paragraph</div><div class="spec-cell">list</div></div></div>
+      <div class="spec-block"><h3>Cluster <code>.l-cluster · wraps, aligns</code></h3><div class="l-cluster spec-outline"><div class="spec-cell">This month</div><div class="spec-cell">Last 3 months</div><div class="spec-cell">YTD</div><div class="spec-cell">All time</div><div class="spec-cell">Custom</div></div></div>
+      <div class="spec-block"><h3>Sidebar <code>.l-sidebar · --sidebar-w, --sidebar-min</code></h3><div class="l-sidebar spec-outline" style="--sidebar-w: 6rem; --sidebar-min: 60%"><div class="spec-cell">ring</div><div class="spec-cell">text that takes the rest, and drops below when it cannot keep 60%</div></div></div>
+      <div class="spec-block"><h3>Switcher <code>.l-switcher · --switcher-at</code></h3><div class="l-switcher spec-outline" style="--switcher-at: 22rem"><div class="spec-cell">Cash</div><div class="spec-cell">Debt</div><div class="spec-cell">Net</div></div></div>
+      <div class="spec-block"><h3>Grid <code>.l-grid · --grid-min</code></h3><div class="l-grid spec-outline" style="--grid-min: 6rem; --grid-gap: var(--space-2)"><div class="spec-cell">tile</div><div class="spec-cell">tile</div><div class="spec-cell">tile</div><div class="spec-cell">tile</div><div class="spec-cell">tile</div></div></div>
+      <div class="spec-block"><h3>Reel <code>.l-reel · scroll-snap</code></h3><div class="l-reel spec-outline"><div class="spec-cell" style="inline-size: 9rem">Discover</div><div class="spec-cell" style="inline-size: 9rem">Wells Fargo</div><div class="spec-cell" style="inline-size: 9rem">Chase</div><div class="spec-cell" style="inline-size: 9rem">American Express</div><div class="spec-cell" style="inline-size: 9rem">Ally</div></div></div>
+    </div>
+    <div class="spec-block">
+      <h3>Shell &amp; section <code>.l-shell · .l-section · .t-pagehead</code></h3>
+      <p>A page is a shell with a header and a stack of sections. Sections sit on the ground; only tiles and account groups lift as cards. Tables and lists use rules, so a page reads as one document rather than a wall of boxes.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="components">
+    <header>
+      <p class="t-eyebrow">Components</p>
+      <h2>Composed from primitives, fed by one typed payload each.</h2>
+      <p>Every component below takes a data shape and nothing else. The shapes are in the proposal document; the fixtures behind these examples include the awkward cases on purpose.</p>
+    </header>
+
+    <div class="spec-block">
+      <h3>Stat tiles <code>.t-stats--headline · .t-stat</code></h3>
+      <p>The headline figure is bigger, not merely first. Secondary tiles take the interface face so the hierarchy is typographic before it is spatial.</p>
+      <div class="t-stats t-stats--headline">
+        <div class="t-card t-stat">
+          <span class="t-stat__label">Net liquidity</span>
+          <span class="t-money t-money--xl" data-valence="positive"><span class="t-money__cur">$</span>15,373<span class="t-money__cents">.68</span></span>
+          <span class="t-stat__foot"><span class="t-trend" data-valence="positive"><span class="t-trend__arrow">▲</span>$412.20</span><span>since last sync</span></span>
+        </div>
+        <div class="t-card t-stat">
+          <span class="t-stat__label">Saved</span>
+          <span class="t-money t-money--lg"><span class="t-money__cur">$</span>16,055<span class="t-money__cents">.07</span></span>
+          <span class="t-stat__foot">4 accounts</span>
+        </div>
+        <div class="t-card t-stat">
+          <span class="t-stat__label">Debt</span>
+          <span class="t-money t-money--lg" data-valence="negative"><span class="t-money__cur">$</span>681<span class="t-money__cents">.39</span></span>
+          <span class="t-stat__foot"><span class="t-chip" data-due="soon">Discover due in 3 days</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-block">
+      <h3>Attention strip <code>.t-attention · severity stripe, one action</code></h3>
+      <p>Replaces the empty chat box at the top of the dashboard. Exceptions first; when nothing needs you, it is one calm line. Insights are computed live and have no dismissal state, so there is no dismiss control: an item leaves when the condition does. The action is a jump to the panel that explains it.</p>
+      <div class="t-attention">
+        <div class="t-attention__item" data-severity="danger">
+          <div class="t-attention__body"><span class="t-attention__title">Shopping is $224 over its limit with 11 days left</span><span class="t-attention__text">Three orders this week. Pace suggests $1,290 by month end against $800.</span></div>
+          <div class="t-attention__actions"><button class="t-btn" data-size="sm">Open budgets</button></div>
+        </div>
+        <div class="t-attention__item" data-severity="caution">
+          <div class="t-attention__body"><span class="t-attention__title">New recurring charge: Crunchyroll, $9.99 monthly</span><span class="t-attention__text">Seen twice since Aug 16. Confirmed once a third charge lands.</span></div>
+          <div class="t-attention__actions"><button class="t-btn" data-size="sm">See bills</button></div>
+        </div>
+        <div class="t-attention__item" data-severity="info">
+          <div class="t-attention__body"><span class="t-attention__title">Wells Fargo needs a fresh login before the next sync</span><span class="t-attention__text">Two accounts stop updating on Sep 4 if you skip this.</span></div>
+          <div class="t-attention__actions"><button class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div>
+        </div>
+      </div>
+      <div class="t-attention__clear">Everything else is on track. Next bill: Rent, $1,850 on Sep 1.</div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>Tabs, segmented control, date range</h3>
+        <div class="t-tabs" role="tablist" aria-label="Dashboard sections">
+          <button class="t-tab" role="tab" aria-selected="true">Cash flow</button>
+          <button class="t-tab" role="tab" aria-selected="false">Liquidity</button>
+          <button class="t-tab" role="tab" aria-selected="false">Budgets <span class="t-tab__count">2</span></button>
+          <button class="t-tab" role="tab" aria-selected="false">Goals</button>
+          <button class="t-tab" role="tab" aria-selected="false">Insights <span class="t-tab__count">3</span></button>
+        </div>
+        <div class="t-range">
+          <div class="t-seg" role="group" aria-label="Preset range">
+            <button class="t-seg__opt" aria-pressed="false">This month</button>
+            <button class="t-seg__opt" aria-pressed="false">Last 3 months</button>
+            <button class="t-seg__opt" aria-pressed="false">YTD</button>
+            <button class="t-seg__opt" aria-pressed="true">All time</button>
+          </div>
+          <div class="t-range__dates"><label class="u-visually-hidden" for="d1">From</label><input class="t-control" id="d1" type="date" value="2026-05-21"><span>to</span><label class="u-visually-hidden" for="d2">To</label><input class="t-control" id="d2" type="date" value="2026-08-20"></div>
+        </div>
+        <div class="t-seg" role="radiogroup" aria-label="Household member">
+          <button class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Whole household</button>
+          <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span>Jack</button>
+          <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span>Grace</button>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Category bars <code>.t-cats · direction fill, optional budget ghost</code></h3>
+        <div class="t-cats">
+          <div class="t-cat"><span class="t-cat__name">Income</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="INCOME" style="inline-size: 100%"></div></div><span class="t-cat__amt t-money t-money--sm" data-valence="positive"><span class="t-money__cur">$</span>23,738<span class="t-money__cents">.78</span></span></div>
+          <div class="t-cat"><span class="t-cat__name">Travel</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 24%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>5,714<span class="t-money__cents">.61</span></span></div>
+          <div class="t-cat"><span class="t-cat__name">Housing &amp; utilities</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 20.6%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>4,898<span class="t-money__cents">.59</span></span></div>
+          <div class="t-cat"><span class="t-cat__name">Shopping</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 15%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>3,577<span class="t-money__cents">.55</span></span></div>
+          <div class="t-cat"><span class="t-cat__name">Subscriptions &amp; services and other long labels</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 10.6%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>2,524<span class="t-money__cents">.41</span></span></div>
+          <div class="t-cat"><span class="t-cat__name">Transportation</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 0.5%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>108<span class="t-money__cents">.11</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-block">
+      <h3>Data table <code>.t-table · rules not boxes · truncation, pending, footer</code></h3>
+      <div class="t-table-wrap">
+        <table class="t-table">
+          <thead><tr><th scope="col">Date</th><th scope="col">Category</th><th scope="col">Description</th><th scope="col"><span class="u-visually-hidden">Direction</span></th><th scope="col" class="is-num">Amount</th><th scope="col">Account</th></tr></thead>
+          <tbody>
+            <tr data-pending><td class="is-dim">Aug 20</td><td>Dining &amp; takeout</td><td class="t-cell-desc is-truncate">Uber Eats</td><td><span class="t-badge" data-direction="EXPENSE">Expense</span></td><td class="is-num"><span class="t-money t-money--sm"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>29<span class="t-money__cents">.83</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#006fcf">AE</span>Platinum Card</span></td></tr>
+            <tr><td class="is-dim">Aug 17</td><td>Transfer</td><td class="t-cell-desc is-truncate" title="AMERICAN EXPRESS ACH PMT 260814 M2540 Jack Valladares">AMERICAN EXPRESS ACH PMT 260814 M2540 Jack Valladares</td><td><span class="t-badge" data-direction="TRANSFER">Transfer</span></td><td class="is-num"><span class="t-money t-money--sm t-muted"><span class="t-money__cur">$</span>1,260<span class="t-money__cents">.47</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#c8102e">WF</span>Checking ···4688</span></td></tr>
+            <tr><td class="is-dim">Aug 13</td><td>Income</td><td class="t-cell-desc is-truncate">Payroll</td><td><span class="t-badge" data-direction="INCOME">Income</span></td><td class="is-num"><span class="t-money t-money--sm" data-valence="positive"><span class="t-money__sign">+</span><span class="t-money__cur">$</span>2,850<span class="t-money__cents">.00</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#c8102e">WF</span>Checking ···5954</span></td></tr>
+            <tr><td class="is-dim">Aug 13</td><td>Subscriptions</td><td class="t-cell-desc is-truncate">Netflix</td><td><span class="t-badge" data-direction="EXPENSE">Expense</span></td><td class="is-num"><span class="t-money t-money--sm"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>19<span class="t-money__cents">.99</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#006fcf">AE</span>Platinum Card</span></td></tr>
+            <tr><td class="is-dim">Aug 12</td><td>Groceries</td><td class="t-cell-desc is-truncate">Kroger</td><td><span class="t-badge" data-direction="EXPENSE">Expense</span></td><td class="is-num"><span class="t-money t-money--sm"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>79<span class="t-money__cents">.27</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#ff6000">D</span>Discover it Card</span></td></tr>
+            <tr><td class="is-dim">Aug 11</td><td>Subscriptions</td><td class="t-cell-desc is-truncate">Acorns round-up</td><td><span class="t-badge" data-direction="EXPENSE">Expense</span></td><td class="is-num"><span class="t-money t-money--sm"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>1<span class="t-money__cents">.00</span></span></td><td><span class="t-cell-acct"><span class="t-avatar" data-size="sm" style="--_avatar:#c8102e">WF</span>Checking ···4688</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="t-table__foot"><span>50 per page, newest first · keyset paging, so no total count is shown · description falls back to the sanitized one when the merchant is hidden</span><div class="l-cluster"><button class="t-btn" data-size="sm" data-variant="subtle" disabled>Newer</button><button class="t-btn" data-size="sm">Older</button></div></div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>Account list <code>.t-acct · institution avatar, health, balance</code></h3>
+        <div class="t-card" style="padding-block: var(--space-2)">
+          <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Everyday Checking ···5954</div><div class="t-acct__sub">Wells Fargo <span class="t-status" data-health="good">Synced</span></div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>8,703<span class="t-money__cents">.91</span></span></div></div>
+          <div class="t-acct"><span class="t-avatar" style="--_avatar:#006fcf">AE</span><div><div class="t-acct__name">High Yield Savings Account</div><div class="t-acct__sub">American Express <span class="t-status" data-health="good">Synced</span></div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>475<span class="t-money__cents">.50</span></span></div></div>
+          <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Way2Save Savings ···2155</div><div class="t-acct__sub">Wells Fargo <span class="t-status" data-health="caution">Login required</span></div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>13<span class="t-money__cents">.45</span></span></div></div>
+          <div class="t-acct"><span class="t-avatar" style="--_avatar:#ff6000">D</span><div><div class="t-acct__name">Discover it Card</div><div class="t-acct__sub">Discover <span class="t-chip" data-due="soon">Due Sep 5</span></div></div><div class="t-acct__bal"><span class="t-money t-money--md" data-valence="negative"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>622<span class="t-money__cents">.31</span></span></div></div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Goal card &amp; budget rows <code>.t-goal · .t-budget</code></h3>
+        <div class="t-card t-goal">
+          <div class="t-ring" data-health="good" style="--pct: 41"><span class="t-ring__label">41%</span></div>
+          <div class="l-stack" style="--stack-gap: var(--space-1)">
+            <div class="t-goal__name">Japan trip, spring 2027</div>
+            <div><span class="t-money t-money--md"><span class="t-money__cur">$</span>2,460</span> <span class="t-muted t-small">of $6,000</span></div>
+            <div class="t-goal__pace"><span class="t-trend" data-valence="positive"><span class="t-trend__arrow">▲</span>on pace</span> · $295/mo keeps Mar 15</div>
+          </div>
+        </div>
+        <div>
+          <div class="t-budget"><div><div class="t-budget__name">Groceries</div><div class="t-budget__left">$188 left · 11 days</div></div><div class="t-bar" data-health="good"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 69%"></div></div></div><span class="t-status" data-health="good">On track</span></div>
+          <div class="t-budget"><div><div class="t-budget__name">Dining &amp; takeout</div><div class="t-budget__left">$62 left · 11 days</div></div><div class="t-bar" data-health="caution"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 86%"></div></div></div><span class="t-status" data-health="caution">Watch</span></div>
+          <div class="t-budget"><div><div class="t-budget__name">Shopping</div><div class="t-budget__left">$224 over</div></div><div class="t-bar" data-health="danger"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 100%"></div></div></div><span class="t-status" data-health="danger">Over</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>Trend chart <code>.t-chart · one scale, reference line, crosshair</code></h3>
+        <div class="t-chart" id="trendChart">
+          <svg viewBox="0 0 720 230" role="img" aria-label="Cumulative spend against income, May 20 to Aug 20. Spend reaches $21,654.50 of $25,447.49 income.">
+            <g class="t-chart__grid">
+              <line x1="40" x2="700" y1="190" y2="190"/><line x1="40" x2="700" y1="147.5" y2="147.5"/><line x1="40" x2="700" y1="105" y2="105"/><line x1="40" x2="700" y1="62.5" y2="62.5"/><line x1="40" x2="700" y1="20" y2="20"/>
+            </g>
+            <g class="t-chart__axis">
+              <text x="34" y="194" text-anchor="end">$0</text><text x="34" y="151" text-anchor="end">$7k</text><text x="34" y="109" text-anchor="end">$14k</text><text x="34" y="66" text-anchor="end">$21k</text><text x="34" y="24" text-anchor="end">$28k</text>
+              <text x="40" y="214">May 20</text><text x="229" y="214" text-anchor="middle">Jun 17</text><text x="417" y="214" text-anchor="middle">Jul 15</text><text x="606" y="214" text-anchor="middle">Aug 12</text><text x="700" y="214" text-anchor="end">Aug 20</text>
+            </g>
+            <line class="t-chart__ref" x1="40" x2="700" y1="35.5" y2="35.5"/>
+            <text class="t-chart__ref-label" x="700" y="30" text-anchor="end">Income $25,447</text>
+            <path class="t-chart__area" d="M40,190 L134,158.4 L229,136 L323,113.5 L417,96.5 L511,81.3 L606,66.8 L700,58.5 L700,190 Z"/>
+            <polyline class="t-chart__series" points="40,190 134,158.4 229,136 323,113.5 417,96.5 511,81.3 606,66.8 700,58.5"/>
+            <circle class="t-chart__end" cx="700" cy="58.5" r="4"/>
+            <text class="t-chart__end-label" x="692" y="52" text-anchor="end">$21,654 spent</text>
+            <line class="t-chart__cross" id="crossX" x1="40" x2="40" y1="20" y2="190"/>
+            <circle class="t-chart__end" id="crossDot" cx="40" cy="190" r="4" style="opacity:0"/>
+            <rect class="t-chart__hit" x="40" y="20" width="660" height="170"/>
+          </svg>
+          <div class="t-chart__tip" id="chartTip"><strong>Jun 17</strong>$8,900 spent · 35% of income</div>
+        </div>
+        <div class="t-legend"><span class="t-legend__item"><i class="t-legend__swatch" style="--_c: var(--expense)"></i>Cumulative spend</span><span class="t-legend__item"><i class="t-legend__swatch" style="--_c: var(--income)"></i>Income for period</span></div>
+      </div>
+      <div class="spec-block">
+        <h3>Bills &amp; subscriptions <code>.t-bill · cadence, due chip, amount</code></h3>
+        <div>
+          <div class="t-bill"><span class="t-avatar" data-size="sm">R</span><div><div class="t-bill__name">Rent</div><div class="t-bill__cadence">Monthly · 1st</div></div><span class="t-chip" data-due="soon">Sep 1</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>1,850<span class="t-money__cents">.00</span></span></div>
+          <div class="t-bill"><span class="t-avatar" data-size="sm" style="--_avatar:#e50914">N</span><div><div class="t-bill__name">Netflix</div><div class="t-bill__cadence">Monthly · 13th</div></div><span class="t-chip">Sep 13</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>19<span class="t-money__cents">.99</span></span></div>
+          <div class="t-bill"><span class="t-avatar" data-size="sm" style="--_avatar:#1db954">S</span><div><div class="t-bill__name">Spotify</div><div class="t-bill__cadence">Monthly · 22nd <span class="t-trend" data-valence="negative"><span class="t-trend__arrow">▲</span>$1</span></div></div><span class="t-chip">Sep 22</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>11<span class="t-money__cents">.99</span></span></div>
+          <div class="t-bill"><span class="t-avatar" data-size="sm" style="--_avatar:#f47521">C</span><div><div class="t-bill__name">Crunch Fitness</div><div class="t-bill__cadence">Monthly · 13th</div></div><span class="t-chip" data-due="overdue">Aug 13 unpaid</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>136<span class="t-money__cents">.00</span></span></div>
+        </div>
+        <h3 style="margin-block-start: var(--space-3)">Suggestion row <code>.t-suggest</code></h3>
+        <div>
+          <div class="t-suggest"><span class="t-badge" data-tone="accent">✦</span><div class="t-suggest__main">Set <strong>Dining &amp; takeout</strong> to <span class="t-money t-money--sm"><span class="t-money__cur">$</span>450</span>/mo<div class="t-suggest__why">Median of the last 6 months, rounded up</div></div><div class="t-suggest__actions"><button class="t-btn" data-size="sm" data-variant="primary">Accept</button><button class="t-btn" data-size="sm">Edit</button><button class="t-btn" data-size="sm" data-variant="subtle">Skip</button></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>Ask bar <code>.t-ask · empty state, transcript, suggestions</code></h3>
+        <p>The chat no longer reserves a void. Empty, it is one line and a prompt; once asked, the transcript grows to a cap and scrolls.</p>
+        <div class="t-ask">
+          <div class="t-ask__empty"><span class="t-avatar" data-kind="member">✦</span><div><strong>Ask about your budget</strong>Answers use live figures, never merchant names.</div></div>
+          <div class="t-ask__suggest"><button class="t-btn" data-size="sm">How are we tracking this month?</button><button class="t-btn" data-size="sm">Break down last month by category</button><button class="t-btn" data-size="sm">Biggest category this year?</button></div>
+          <div class="t-ask__row"><label class="u-visually-hidden" for="ask1">Ask about your budget</label><input class="t-control" id="ask1" placeholder="Ask anything about the household budget…"><button class="t-btn" data-variant="primary">Ask</button></div>
+        </div>
+        <div class="t-ask" style="margin-block-start: var(--space-3)">
+          <div class="t-ask__log">
+            <div class="t-msg" data-role="user">How are we tracking this month?</div>
+            <div class="t-msg" data-role="assistant">Through Aug 20 you have spent $4,120 of $6,300 planned, with 11 days left. Shopping is over its limit; everything else is on pace.<span class="t-msg__meta">Used get_budget_variance · 0.8s</span></div>
+          </div>
+          <div class="t-ask__row"><label class="u-visually-hidden" for="ask2">Ask a follow-up</label><input class="t-control" id="ask2" placeholder="Follow up…"><button class="t-btn" data-variant="primary">Ask</button></div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Empty state, dialog, toast</h3>
+        <div class="t-empty"><strong>No goals yet</strong><span>A goal is a target amount and a date. Start with the one you talk about most.</span><button class="t-btn" data-variant="primary" data-size="sm">Add a goal</button></div>
+        <div class="spec-row" style="margin-block-start: var(--space-2)">
+          <button class="t-btn" id="openDialog">Open dialog</button>
+          <div class="t-toast">Budget saved <button class="t-btn" data-size="sm">Undo</button></div>
+        </div>
+        <dialog class="t-dialog" id="demoDialog">
+          <form method="dialog" class="t-dialog__body">
+            <h3 class="t-dialog__title">Remove Discover it Card?</h3>
+            <p class="t-muted t-small">Its 41 transactions stay in history. Balances stop updating and the card leaves the debt total.</p>
+            <div class="t-dialog__actions"><button class="t-btn" value="cancel">Keep it</button><button class="t-btn" data-variant="danger" value="remove">Remove account</button></div>
+          </form>
+        </dialog>
+      </div>
+    </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>Sync run <code>.t-syncrun · 202 then poll · partial results per item</code></h3>
+        <p>Sync is asynchronous now. The button shows the run, not the request; a second click attaches to the run already in flight instead of erroring. Items are keyed by item id, never by institution name, because two logins can share one.</p>
+        <div class="t-card t-syncrun">
+          <div class="t-syncrun__head"><button class="t-btn is-loading" data-variant="primary">Sync now</button><span>Syncing · started 11:04 by poll</span><span class="t-status" data-health="caution">Partial</span></div>
+          <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#117aca">C</span><span><strong>Chase</strong> · done</span><span class="t-syncrun__counts">+4 · ~1 · −0</span></div>
+          <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#ff6000">D</span><span><strong>Discover</strong> · needs to be reconnected</span><button class="t-btn" data-size="sm">Reconnect</button></div>
+          <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#c8102e">WF</span><span><strong>Wells Fargo</strong> · running</span><span class="t-skeleton" style="inline-size: 4rem"></span></div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Error state, feature off, passphrase gate</h3>
+        <div class="t-error"><span aria-hidden="true">◆</span><div><strong>Couldn't reach the bank</strong>Plaid didn't answer. Balances shown are from the last sync at 11:04. Try again in a minute.<div class="t-error__code">UPSTREAM_ERROR · retryable</div></div></div>
+        <div class="t-error" data-tone="info" style="margin-block-start: var(--space-2)"><span aria-hidden="true">✦</span><div><strong>Ask is off on this install</strong>No Anthropic key is configured, so questions and suggestions are hidden rather than broken.<div class="t-error__code">capabilities.chat === false</div></div></div>
+        <form class="t-card t-gate" style="margin-block-start: var(--space-3)" onsubmit="return false">
+          <div><h3 class="t-dialog__title">Who's here?</h3><p class="t-muted t-small">A passphrase per person. Sessions last until you sign out.</p></div>
+          <div class="t-gate__who t-seg" role="radiogroup" aria-label="Member"><button type="button" class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">J</span>Jack</button><button type="button" class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span>Grace</button></div>
+          <div class="t-field"><label class="t-field__label" for="pw1">Passphrase</label><input class="t-control" id="pw1" type="password" value="correct horse" autocomplete="current-password"></div>
+          <button class="t-btn" data-variant="primary" type="submit">Open the ledger</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="page">
+    <header>
+      <p class="t-eyebrow">Page</p>
+      <h2>The dashboard, recomposed from the suite.</h2>
+      <p>Exceptions first, the headline figure biggest, the chat docked instead of parked. Everything here is the same CSS as above; nothing page-specific except the sticky dock.</p>
+    </header>
+    <div class="spec-frame">
+      <div class="spec-frame__bar"><i></i><i></i><i></i><span>budget.jacklabs.home</span></div>
+      <div class="spec-mock">
+        <div class="l-shell l-stack" style="--stack-gap: var(--space-6)">
+          <header class="t-pagehead">
+            <div><h1 class="t-pagehead__title">Household Budget</h1><p class="t-pagehead__sub">May 20 → Aug 20, 2026 · synced 4 minutes ago</p></div>
+            <div class="t-pagehead__actions">
+              <div class="t-seg" role="radiogroup" aria-label="Household member">
+                <button class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Household</button>
+                <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span></button>
+                <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span></button>
+              </div>
+              <button class="t-btn" data-variant="primary">Sync now</button>
+              <button class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
+            </div>
+          </header>
+
+          <div class="t-attention">
+            <div class="t-attention__item" data-severity="danger"><div class="t-attention__body"><span class="t-attention__title">Shopping is $224 over its limit with 11 days left</span><span class="t-attention__text">Pace suggests $1,290 by month end against $800.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm">Open budgets</button></div></div>
+            <div class="t-attention__item" data-severity="caution"><div class="t-attention__body"><span class="t-attention__title">New recurring charge: Crunchyroll, $9.99 monthly</span><span class="t-attention__text">Seen twice since Aug 16.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm">See bills</button></div></div>
+            <div class="t-attention__item" data-severity="info"><div class="t-attention__body"><span class="t-attention__title">Wells Fargo needs a fresh login before the next sync</span><span class="t-attention__text">Two accounts stop updating on Sep 4 if you skip this.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div></div>
+          </div>
+
+          <div class="t-stats t-stats--headline">
+            <div class="t-card t-stat"><span class="t-stat__label">Net liquidity</span><span class="t-money t-money--xl" data-valence="positive"><span class="t-money__cur">$</span>15,373<span class="t-money__cents">.68</span></span><span class="t-stat__foot"><span class="t-trend" data-valence="positive"><span class="t-trend__arrow">▲</span>$412.20</span><span>since last sync</span></span></div>
+            <div class="t-card t-stat"><span class="t-stat__label">Saved</span><span class="t-money t-money--lg"><span class="t-money__cur">$</span>16,055<span class="t-money__cents">.07</span></span><span class="t-stat__foot">4 accounts</span></div>
+            <div class="t-card t-stat"><span class="t-stat__label">Debt</span><span class="t-money t-money--lg" data-valence="negative"><span class="t-money__cur">$</span>681<span class="t-money__cents">.39</span></span><span class="t-stat__foot"><span class="t-chip" data-due="soon">Due in 3 days</span></span></div>
+          </div>
+
+          <div class="l-stack" style="--stack-gap: var(--space-4)">
+            <div class="t-tabs" role="tablist" aria-label="Dashboard sections" id="mockTabs">
+              <button class="t-tab" role="tab" aria-selected="true" aria-controls="mock-cash">Cash flow</button>
+              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-liq">Liquidity</button>
+              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-bud">Budgets <span class="t-tab__count">1</span></button>
+              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-goals">Goals</button>
+              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-ins">Insights <span class="t-tab__count">2</span></button>
+            </div>
+
+            <div id="mock-cash" role="tabpanel" class="l-stack" style="--stack-gap: var(--space-5)">
+              <div class="t-range">
+                <div class="t-seg" role="group" aria-label="Preset range"><button class="t-seg__opt" aria-pressed="false">This month</button><button class="t-seg__opt" aria-pressed="false">Last 3 months</button><button class="t-seg__opt" aria-pressed="false">YTD</button><button class="t-seg__opt" aria-pressed="true">All time</button></div>
+                <div class="t-range__dates"><input class="t-control" type="date" value="2026-05-21" aria-label="From"><span>to</span><input class="t-control" type="date" value="2026-08-20" aria-label="To"></div>
+              </div>
+              <div class="t-stats">
+                <div class="t-stat"><span class="t-stat__label">Income</span><span class="t-money t-money--lg" data-valence="positive"><span class="t-money__cur">$</span>25,447<span class="t-money__cents">.49</span></span></div>
+                <div class="t-stat"><span class="t-stat__label">Expenses</span><span class="t-money t-money--lg"><span class="t-money__cur">$</span>21,654<span class="t-money__cents">.50</span></span></div>
+                <div class="t-stat"><span class="t-stat__label">Net</span><span class="t-money t-money--lg" data-valence="positive"><span class="t-money__sign">+</span><span class="t-money__cur">$</span>3,792<span class="t-money__cents">.99</span></span></div>
+              </div>
+              <div class="t-panel">
+                <div class="t-panel__head"><div><div class="t-panel__title">Running expenses vs. income</div><div class="t-panel__note">Cumulative spend across the period, against total income for the same period</div></div><div class="t-legend"><span class="t-legend__item"><i class="t-legend__swatch" style="--_c: var(--expense)"></i>Spend</span><span class="t-legend__item"><i class="t-legend__swatch" style="--_c: var(--income)"></i>Income</span></div></div>
+                <div class="t-chart">
+                  <svg viewBox="0 0 720 230" role="img" aria-label="Cumulative spend against income">
+                    <g class="t-chart__grid"><line x1="40" x2="700" y1="190" y2="190"/><line x1="40" x2="700" y1="147.5" y2="147.5"/><line x1="40" x2="700" y1="105" y2="105"/><line x1="40" x2="700" y1="62.5" y2="62.5"/><line x1="40" x2="700" y1="20" y2="20"/></g>
+                    <g class="t-chart__axis"><text x="34" y="194" text-anchor="end">$0</text><text x="34" y="151" text-anchor="end">$7k</text><text x="34" y="109" text-anchor="end">$14k</text><text x="34" y="66" text-anchor="end">$21k</text><text x="34" y="24" text-anchor="end">$28k</text><text x="40" y="214">May 20</text><text x="229" y="214" text-anchor="middle">Jun 17</text><text x="417" y="214" text-anchor="middle">Jul 15</text><text x="606" y="214" text-anchor="middle">Aug 12</text><text x="700" y="214" text-anchor="end">Aug 20</text></g>
+                    <line class="t-chart__ref" x1="40" x2="700" y1="35.5" y2="35.5"/><text class="t-chart__ref-label" x="700" y="30" text-anchor="end">Income $25,447</text>
+                    <path class="t-chart__area" d="M40,190 L134,158.4 L229,136 L323,113.5 L417,96.5 L511,81.3 L606,66.8 L700,58.5 L700,190 Z"/>
+                    <polyline class="t-chart__series" points="40,190 134,158.4 229,136 323,113.5 417,96.5 511,81.3 606,66.8 700,58.5"/>
+                    <circle class="t-chart__end" cx="700" cy="58.5" r="4"/><text class="t-chart__end-label" x="692" y="52" text-anchor="end">$21,654 spent</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="l-switcher" style="--switcher-at: 44rem; --switcher-gap: var(--space-6)">
+                <div class="t-panel">
+                  <div class="t-panel__head"><div class="t-panel__title">By category</div><span class="t-panel__note">13 buckets, sanitized</span></div>
+                  <div class="t-cats">
+                    <div class="t-cat"><span class="t-cat__name">Income</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="INCOME" style="inline-size: 100%"></div></div><span class="t-cat__amt t-money t-money--sm" data-valence="positive"><span class="t-money__cur">$</span>23,738<span class="t-money__cents">.78</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Travel</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 24%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>5,714<span class="t-money__cents">.61</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Housing &amp; utilities</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 20.6%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>4,898<span class="t-money__cents">.59</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Shopping</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 15%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>3,577<span class="t-money__cents">.55</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Subscriptions &amp; services</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 10.6%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>2,524<span class="t-money__cents">.41</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Dining &amp; takeout</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 9.5%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>2,269<span class="t-money__cents">.10</span></span></div>
+                    <div class="t-cat"><span class="t-cat__name">Groceries</span><div class="t-cat__track"><div class="t-cat__fill" data-direction="EXPENSE" style="inline-size: 2.4%"></div></div><span class="t-cat__amt t-money t-money--sm"><span class="t-money__cur">$</span>558<span class="t-money__cents">.24</span></span></div>
+                  </div>
+                </div>
+                <div class="t-panel">
+                  <div class="t-panel__head"><div class="t-panel__title">Linked accounts</div><a href="#" class="t-small">Manage</a></div>
+                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#ff6000">D</span><div><div class="t-acct__name">Discover</div><div class="t-acct__sub">Jack · 1 account <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
+                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Wells Fargo</div><div class="t-acct__sub">Jack · 3 accounts <span class="t-status" data-health="caution">Login required</span></div></div><button class="t-btn" data-size="sm">Reconnect</button></div>
+                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#117aca">C</span><div><div class="t-acct__name">Chase</div><div class="t-acct__sub">Jack · 1 account <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
+                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#006fcf">AE</span><div><div class="t-acct__name">American Express</div><div class="t-acct__sub">Jack · 2 accounts <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="mock-liq" role="tabpanel" hidden class="l-switcher" style="--switcher-at: 44rem; --switcher-gap: var(--space-6)">
+              <div class="t-panel"><div class="t-panel__head"><div class="t-panel__title">Cash &amp; savings</div><span class="t-money t-money--md"><span class="t-money__cur">$</span>16,055<span class="t-money__cents">.07</span></span></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Everyday Checking ···5954</div><div class="t-acct__sub">Wells Fargo</div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>8,703<span class="t-money__cents">.91</span></span></div></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Everyday Checking ···4688</div><div class="t-acct__sub">Wells Fargo</div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>6,862<span class="t-money__cents">.21</span></span></div></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#006fcf">AE</span><div><div class="t-acct__name">High Yield Savings</div><div class="t-acct__sub">American Express</div></div><div class="t-acct__bal"><span class="t-money t-money--md"><span class="t-money__cur">$</span>475<span class="t-money__cents">.50</span></span></div></div>
+              </div>
+              <div class="t-panel"><div class="t-panel__head"><div class="t-panel__title">Debt</div><span class="t-money t-money--md" data-valence="negative"><span class="t-money__sign">−</span><span class="t-money__cur">$</span>681<span class="t-money__cents">.39</span></span></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#ff6000">D</span><div><div class="t-acct__name">Discover it Card</div><div class="t-acct__sub">22.9% APR <span class="t-chip" data-due="soon">Due Sep 5</span></div></div><div class="t-acct__bal"><span class="t-money t-money--md" data-valence="negative"><span class="t-money__cur">$</span>622<span class="t-money__cents">.31</span></span></div></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#117aca">C</span><div><div class="t-acct__name">Credit Card</div><div class="t-acct__sub">Chase</div></div><div class="t-acct__bal"><span class="t-money t-money--md" data-valence="negative"><span class="t-money__cur">$</span>33<span class="t-money__cents">.78</span></span></div></div>
+                <div class="t-acct"><span class="t-avatar" style="--_avatar:#006fcf">AE</span><div><div class="t-acct__name">Platinum Card</div><div class="t-acct__sub">American Express</div></div><div class="t-acct__bal"><span class="t-money t-money--md" data-valence="negative"><span class="t-money__cur">$</span>25<span class="t-money__cents">.30</span></span></div></div>
+              </div>
+            </div>
+
+            <div id="mock-bud" role="tabpanel" hidden class="t-panel">
+              <div class="t-panel__head"><div class="t-panel__title">August budgets</div><button class="t-btn" data-size="sm" data-variant="ai">✦ Help me set limits</button></div>
+              <div class="t-budget"><div><div class="t-budget__name">Groceries</div><div class="t-budget__left">$188 left · 11 days</div></div><div class="t-bar" data-health="good"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 69%"></div></div></div><span class="t-status" data-health="good">On track</span></div>
+              <div class="t-budget"><div><div class="t-budget__name">Dining &amp; takeout</div><div class="t-budget__left">$62 left</div></div><div class="t-bar" data-health="caution"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 86%"></div></div></div><span class="t-status" data-health="caution">Watch</span></div>
+              <div class="t-budget"><div><div class="t-budget__name">Shopping</div><div class="t-budget__left">$224 over</div></div><div class="t-bar" data-health="danger"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 100%"></div></div></div><span class="t-status" data-health="danger">Over</span></div>
+            </div>
+
+            <div id="mock-goals" role="tabpanel" hidden class="l-grid" style="--grid-min: 18rem">
+              <div class="t-card t-goal"><div class="t-ring" data-health="good" style="--pct: 41"><span class="t-ring__label">41%</span></div><div class="l-stack" style="--stack-gap: var(--space-1)"><div class="t-goal__name">Japan trip, spring 2027</div><div><span class="t-money t-money--md"><span class="t-money__cur">$</span>2,460</span> <span class="t-muted t-small">of $6,000</span></div><div class="t-goal__pace">$295/mo keeps Mar 15</div></div></div>
+              <div class="t-card t-goal"><div class="t-ring" data-health="caution" style="--pct: 18"><span class="t-ring__label">18%</span></div><div class="l-stack" style="--stack-gap: var(--space-1)"><div class="t-goal__name">Emergency fund</div><div><span class="t-money t-money--md"><span class="t-money__cur">$</span>1,800</span> <span class="t-muted t-small">of $10,000</span></div><div class="t-goal__pace"><span class="t-trend" data-valence="negative"><span class="t-trend__arrow">▼</span>behind</span> · needs $410/mo</div></div></div>
+            </div>
+
+            <div id="mock-ins" role="tabpanel" hidden class="l-sidebar" style="--sidebar-w: 16rem; --sidebar-min: 55%">
+              <div class="t-card l-stack" style="align-items: center; text-align: center">
+                <span class="t-stat__label">Safe to spend</span>
+                <div class="t-ring" data-size="lg" data-health="good" style="--pct: 58"><span class="t-ring__label">$1,140</span></div>
+                <span class="t-small t-muted">after bills, goals and today's pace · 11 days</span>
+              </div>
+              <div class="t-panel"><div class="t-panel__head"><div class="t-panel__title">Bills &amp; subscriptions</div><span class="t-panel__note">$2,018 still due this month</span></div>
+                <div class="t-bill"><span class="t-avatar" data-size="sm">R</span><div><div class="t-bill__name">Rent</div><div class="t-bill__cadence">Monthly · 1st</div></div><span class="t-chip" data-due="soon">Sep 1</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>1,850<span class="t-money__cents">.00</span></span></div>
+                <div class="t-bill"><span class="t-avatar" data-size="sm" style="--_avatar:#e50914">N</span><div><div class="t-bill__name">Netflix</div><div class="t-bill__cadence">Monthly · 13th</div></div><span class="t-chip">Sep 13</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>19<span class="t-money__cents">.99</span></span></div>
+                <div class="t-bill"><span class="t-avatar" data-size="sm" style="--_avatar:#f47521">C</span><div><div class="t-bill__name">Crunch Fitness</div><div class="t-bill__cadence">Monthly · 13th</div></div><span class="t-chip" data-due="overdue">Aug 13 unpaid</span><span class="t-money t-money--sm"><span class="t-money__cur">$</span>136<span class="t-money__cents">.00</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spec-mock__dock">
+            <div class="t-ask">
+              <div class="t-ask__row"><span class="t-avatar" data-kind="member">✦</span><label class="u-visually-hidden" for="ask3">Ask about your budget</label><input class="t-control" id="ask3" placeholder="Ask about your budget… answers use live figures, never merchant names"><button class="t-btn" data-variant="primary">Ask</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <section class="spec-section" id="conventions">
+    <header>
+      <p class="t-eyebrow">Conventions</p>
+      <h2>The rules this page was written under.</h2>
+      <p>The full set, with lint configuration, lives in the proposal document beside this file. These are the ones that shape every line above.</p>
+    </header>
+    <div class="spec-conventions">
+      <div class="t-card"><h3>Cascade order is the contract</h3><pre>@layer reset, tokens, base, layouts,
+       primitives, components, pages, utilities;</pre><ul><li>Every rule lives in a layer. Only the reduced-motion override sits outside, so it beats everything without <code>!important</code>.</li><li>A later layer always wins. Specificity inside a layer stays at one class, one attribute.</li></ul></div>
+      <div class="t-card"><h3>Tokens in three tiers</h3><pre>--p-indigo-600   primitive, tokens file only
+--accent         semantic, what components use
+--_bg            component-local, underscore</pre><ul><li>No hex outside <code>@layer tokens</code>. Stylelint enforces it.</li><li>Four themes redefine semantic slots only. Components never mention a theme.</li></ul></div>
+      <div class="t-card"><h3>Naming</h3><pre>.t-money .t-money__cents .t-money--xl
+[data-valence] [data-health] [data-variant]
+.l-stack .l-cluster   .u-num   .is-loading</pre><ul><li><code>t-</code> primitives and components, <code>l-</code> layouts, <code>u-</code> utilities, <code>is-</code> transient state.</li><li>Meaning goes in a data attribute, never a second class.</li></ul></div>
+      <div class="t-card"><h3>Numbers are typeset, not printed</h3><ul><li><code>tabular-nums</code> on every figure, date and count.</li><li>Money is one primitive at four sizes. Sign is a true minus.</li><li>Colour never carries meaning alone: sign, label or glyph travels with it.</li><li>Charts share one scale; text wears text tokens.</li></ul></div>
+      <div class="t-card"><h3>Six states or it is not done</h3><ul><li>default · hover · focus-visible · active · disabled · loading, drawn on the specimen page.</li><li>Empty, error and worst-case content states beside the happy path.</li><li>Reduced motion respected; focus ring is a token.</li></ul></div>
+      <div class="t-card"><h3>The seam</h3><pre>import type { BudgetVariance } from "../api/budgets";
+fetch("/api/v1/x")  →  fixtures/x.json  (dev)</pre><ul><li>Components take payloads, never fetch. The server's exported types are the types.</li><li>Money is a number in currency units, 2dp, as the backend contract decides. Money formats it; nothing else touches it.</li><li>Due days, ring percent and budget status come from the server. The client never re-derives them.</li></ul></div>
+    </div>
+  </section>
+
+  <footer class="spec-foot">
+    <span>Tally · proposal mockup · example figures throughout</span>
+    <span>Instrument Sans · four themes · zero dependencies</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var seg = document.getElementById('themeSeg');
+  function setTheme(v, persist) {
+    if (v) root.setAttribute('data-theme', v); else root.removeAttribute('data-theme');
+    seg.querySelectorAll('[data-theme-pick]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-pick') === (v || ''))); });
+    if (persist) { try { localStorage.setItem('tally-theme', v || ''); } catch (e) {} }
+  }
+  var saved = null; try { saved = localStorage.getItem('tally-theme'); } catch (e) {}
+  if (saved !== null) setTheme(saved, false); else if (root.getAttribute('data-theme')) setTheme(root.getAttribute('data-theme'), false);
+  seg.addEventListener('click', function (e) { var b = e.target.closest('[data-theme-pick]'); if (b) setTheme(b.getAttribute('data-theme-pick'), true); });
+
+  // tabs in the page mock: ARIA tabs pattern — roving tabindex, arrow keys, selection in the hash
+  var tabs = document.getElementById('mockTabs');
+  var tabEls = Array.prototype.slice.call(tabs.querySelectorAll('[role="tab"]'));
+  function selectTab(t, focus) {
+    tabEls.forEach(function (x) {
+      var on = x === t; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(x.getAttribute('aria-controls')); if (p) p.hidden = !on;
+    });
+    if (focus) t.focus();
+    try { history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); } catch (e) {}
+  }
+  tabEls.forEach(function (x, i) { x.tabIndex = i === 0 ? 0 : -1; });
+  tabs.addEventListener('click', function (e) { var t = e.target.closest('[role="tab"]'); if (t) selectTab(t, false); });
+  tabs.addEventListener('keydown', function (e) {
+    var i = tabEls.indexOf(document.activeElement); if (i < 0) return;
+    var n = e.key === 'ArrowRight' ? (i + 1) % tabEls.length : e.key === 'ArrowLeft' ? (i - 1 + tabEls.length) % tabEls.length : e.key === 'Home' ? 0 : e.key === 'End' ? tabEls.length - 1 : -1;
+    if (n >= 0) { e.preventDefault(); selectTab(tabEls[n], true); }
+  });
+  var fromHash = location.hash && tabEls.filter(function (x) { return '#' + x.getAttribute('aria-controls') === location.hash; })[0];
+  if (fromHash) selectTab(fromHash, false);
+
+  // trend chart crosshair
+  var chart = document.getElementById('trendChart');
+  var pts = [[40,190,'May 20',0],[134,158.4,'Jun 3',5200],[229,136,'Jun 17',8900],[323,113.5,'Jul 1',12600],[417,96.5,'Jul 15',15400],[511,81.3,'Jul 29',17900],[606,66.8,'Aug 12',20300],[700,58.5,'Aug 20',21654.5]];
+  var svg = chart.querySelector('svg'), tip = document.getElementById('chartTip'), cx = document.getElementById('crossX'), dot = document.getElementById('crossDot');
+  var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+  chart.addEventListener('mousemove', function (e) {
+    var r = svg.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width * 720;
+    var best = pts[0]; pts.forEach(function (p) { if (Math.abs(p[0] - x) < Math.abs(best[0] - x)) best = p; });
+    cx.setAttribute('x1', best[0]); cx.setAttribute('x2', best[0]); dot.setAttribute('cx', best[0]); dot.setAttribute('cy', best[1]); dot.style.opacity = 1;
+    tip.innerHTML = '<strong>' + best[2] + '</strong>' + fmt(best[3]) + ' spent · ' + Math.round(best[3] / 25447.49 * 100) + '% of income';
+    tip.style.left = (best[0] / 720 * 100) + '%'; tip.style.top = (best[1] / 230 * 100) + '%';
+    chart.classList.add('is-hover');
+  });
+  chart.addEventListener('mouseleave', function () { chart.classList.remove('is-hover'); dot.style.opacity = 0; });
+
+  // dialog
+  var dlg = document.getElementById('demoDialog');
+  document.getElementById('openDialog').addEventListener('click', function () { dlg.showModal(); });
+})();
+</script>
+</body>
+</html>

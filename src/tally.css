@@ -1,0 +1,15 @@
+/* Tally entry point. Layer order is the contract; esbuild inlines the imports. */
+@layer reset, tokens, base, layouts, primitives, components, pages, utilities;
+@import "./reset.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./layouts.css";
+@import "./primitives.css";
+@import "./components.css";
+@import "./utilities.css";
+
+/* Outside every layer on purpose: beats any layered animation without !important */
+/* Outside every layer on purpose: beats any layered animation without !important */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

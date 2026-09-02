@@ -1,0 +1,73 @@
+{
+  "totalSaved": 16055.07,
+  "totalDebt": 681.39,
+  "totalInvestment": 0,
+  "netLiquidity": 15373.68,
+  "updatedAt": "2026-08-19T14:02:11Z",
+  "accounts": [
+    {
+      "accountId": "clx8acc0001",
+      "name": "EVERYDAY CHECKING",
+      "mask": "5954",
+      "institution": "Wells Fargo",
+      "role": "cash",
+      "balance": 8703.91
+    },
+    {
+      "accountId": "clx8acc0002",
+      "name": "EVERYDAY CHECKING",
+      "mask": "4688",
+      "institution": "Wells Fargo",
+      "role": "cash",
+      "balance": 6862.21
+    },
+    {
+      "accountId": "clx8acc0003",
+      "name": "High Yield Savings Account",
+      "mask": null,
+      "institution": "American Express",
+      "role": "cash",
+      "balance": 475.5
+    },
+    {
+      "accountId": "clx8acc0004",
+      "name": "WAY2SAVE SAVINGS",
+      "mask": "2155",
+      "institution": "Wells Fargo",
+      "role": "cash",
+      "balance": 13.45
+    },
+    {
+      "accountId": "clx8acc0006",
+      "name": "Discover it Card",
+      "mask": null,
+      "institution": "Discover",
+      "role": "debt",
+      "balance": 622.31
+    },
+    {
+      "accountId": "clx8acc0007",
+      "name": "CREDIT CARD",
+      "mask": null,
+      "institution": "Chase",
+      "role": "debt",
+      "balance": 33.78
+    },
+    {
+      "accountId": "clx8acc0005",
+      "name": "Platinum Card",
+      "mask": null,
+      "institution": "American Express",
+      "role": "debt",
+      "balance": 25.3
+    },
+    {
+      "accountId": "clx8acc0008",
+      "name": "Brokerage",
+      "mask": "9001",
+      "institution": "Fidelity",
+      "role": "investment",
+      "balance": 0
+    }
+  ]
+}

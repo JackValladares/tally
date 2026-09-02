@@ -1,0 +1,134 @@
+[
+  {
+    "itemId": "clx8itm001",
+    "institution": "Chase",
+    "memberId": "clx8mem001",
+    "linkedBy": "Jack",
+    "status": "ACTIVE",
+    "needsReauth": false,
+    "consentExpiresAt": null,
+    "lastSyncedAt": "2026-08-19T14:02:11Z",
+    "accounts": [
+      {
+        "accountId": "clx8acc0007",
+        "name": "CREDIT CARD",
+        "mask": null,
+        "type": "credit",
+        "subtype": "credit card",
+        "role": "debt",
+        "balance": 33.78
+      }
+    ]
+  },
+  {
+    "itemId": "clx8itm002",
+    "institution": "Wells Fargo",
+    "memberId": "clx8mem001",
+    "linkedBy": "Jack",
+    "status": "LOGIN_REQUIRED",
+    "needsReauth": true,
+    "consentExpiresAt": "2026-09-04T00:00:00Z",
+    "lastSyncedAt": "2026-08-19T14:02:11Z",
+    "accounts": [
+      {
+        "accountId": "clx8acc0001",
+        "name": "EVERYDAY CHECKING",
+        "mask": "5954",
+        "type": "depository",
+        "subtype": "checking",
+        "role": "cash",
+        "balance": 8703.91
+      },
+      {
+        "accountId": "clx8acc0002",
+        "name": "EVERYDAY CHECKING",
+        "mask": "4688",
+        "type": "depository",
+        "subtype": "checking",
+        "role": "cash",
+        "balance": 6862.21
+      },
+      {
+        "accountId": "clx8acc0004",
+        "name": "WAY2SAVE SAVINGS",
+        "mask": "2155",
+        "type": "depository",
+        "subtype": "savings",
+        "role": "cash",
+        "balance": 13.45
+      }
+    ]
+  },
+  {
+    "itemId": "clx8itm003",
+    "institution": "American Express",
+    "memberId": "clx8mem001",
+    "linkedBy": "Jack",
+    "status": "ACTIVE",
+    "needsReauth": false,
+    "consentExpiresAt": null,
+    "lastSyncedAt": "2026-08-19T14:02:11Z",
+    "accounts": [
+      {
+        "accountId": "clx8acc0003",
+        "name": "High Yield Savings Account",
+        "mask": null,
+        "type": "depository",
+        "subtype": "savings",
+        "role": "cash",
+        "balance": 475.5
+      },
+      {
+        "accountId": "clx8acc0005",
+        "name": "Platinum Card",
+        "mask": null,
+        "type": "credit",
+        "subtype": "credit card",
+        "role": "debt",
+        "balance": 25.3
+      }
+    ]
+  },
+  {
+    "itemId": "clx8itm004",
+    "institution": "Discover",
+    "memberId": "clx8mem001",
+    "linkedBy": "Jack",
+    "status": "ACTIVE",
+    "needsReauth": false,
+    "consentExpiresAt": null,
+    "lastSyncedAt": "2026-08-19T14:02:11Z",
+    "accounts": [
+      {
+        "accountId": "clx8acc0006",
+        "name": "Discover it Card",
+        "mask": null,
+        "type": "credit",
+        "subtype": "credit card",
+        "role": "debt",
+        "balance": 622.31
+      }
+    ]
+  },
+  {
+    "itemId": "clx8itm005",
+    "institution": "Fidelity",
+    "memberId": "clx8mem002",
+    "linkedBy": "Grace",
+    "status": "ACTIVE",
+    "needsReauth": false,
+    "consentExpiresAt": null,
+    "lastSyncedAt": "2026-08-19T14:02:11Z",
+    "accounts": [
+      {
+        "accountId": "clx8acc0008",
+        "name": "Brokerage",
+        "mask": "9001",
+        "type": "investment",
+        "subtype": "brokerage",
+        "role": "investment",
+        "balance": 0
+      }
+    ]
+  }
+]

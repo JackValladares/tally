@@ -1,0 +1,83 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "custom-property-pattern": [
+      "^(p-[a-z0-9-]+|_[a-z0-9-]+|tone-(positive|negative|caution|info|neutral)-(bg|fg|bd)|[a-z][a-z0-9-]*)$",
+      {
+        "message": "Tokens: --p-* primitive, --name semantic, --tone-*-{bg,fg,bd}, --_name component-local"
+      }
+    ],
+    "selector-class-pattern": [
+      "^(t|l|u|is|spec)-[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      {
+        "message": "Classes: t-block__element--modifier, l-layout, u-utility, is-state"
+      }
+    ],
+    "selector-max-specificity": "0,3,1",
+    "selector-max-id": 0,
+    "selector-max-compound-selectors": 3,
+    "declaration-no-important": true,
+    "color-no-hex": true,
+    "color-named": "never",
+    "function-disallowed-list": ["rgb", "rgba", "hsl", "hsla"],
+    "property-disallowed-list": [
+      "margin-left",
+      "margin-right",
+      "margin-top",
+      "margin-bottom",
+      "padding-left",
+      "padding-right",
+      "padding-top",
+      "padding-bottom",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "min-height",
+      "max-height",
+      "left",
+      "right",
+      "top",
+      "bottom"
+    ],
+    "declaration-property-value-disallowed-list": {
+      "text-align": ["left", "right"]
+    },
+    "media-feature-range-notation": "context",
+    "import-notation": "string",
+    "declaration-block-single-line-max-declarations": null,
+    "rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "order/order": ["custom-properties", "declarations", "rules"]
+  },
+  "overrides": [
+    {
+      "files": ["src/tokens.css"],
+      "rules": {
+        "color-no-hex": null,
+        "color-hex-length": "long",
+        "function-disallowed-list": null,
+        "order/order": null
+      }
+    },
+    {
+      "files": ["src/reset.css", "src/utilities.css", "src/tally.css"],
+      "rules": {
+        "property-disallowed-list": null,
+        "declaration-no-important": null
+      }
+    },
+    {
+      "files": ["catalog/**/*.css"],
+      "rules": {
+        "property-disallowed-list": null,
+        "selector-max-specificity": null,
+        "no-descending-specificity": null
+      }
+    }
+  ]
+}
