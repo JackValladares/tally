@@ -171,7 +171,11 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 
 /* Passphrase gate: the whole sign-in surface for two people on a tailnet */
 .t-gate { display: flex; flex-direction: column; gap: var(--space-4); max-inline-size: 22rem; }
-.t-gate__who { display: flex; gap: var(--space-2); }
+/* Composed with .t-seg, which is inline-flex and sizes to its options.
+   Re-declaring display here overrode that to block-level flex, so the
+   track stretched to the dialog's full width and left dead grey space
+   beside the last member. Only the alignment belongs to the gate. */
+.t-gate__who { align-self: start; }
 
 /* Page header */
 .t-pagehead { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
