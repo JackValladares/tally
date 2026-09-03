@@ -62,7 +62,15 @@ createServer(async (req, res) => {
       );
     }
     if (catalog) {
-      const p = url.pathname === "/" ? "/catalog/index.html" : url.pathname;
+      if (url.pathname === "/") {
+        // A real redirect, not just an internal path swap: the catalogue's
+        // own relative asset links (./catalog.css, ./catalog.js) resolve
+        // against the browser's address bar, so it has to actually say
+        // /catalog/index.html or those 404 while the page still 200s.
+        res.writeHead(302, { location: "/catalog/index.html" });
+        return res.end();
+      }
+      const p = url.pathname;
       if (p.startsWith("/catalog") || p.startsWith("/dist") || p.startsWith("/fixtures")) {
         const f = path.join(root, p);
         const body = await readFile(f).catch(() => null);
