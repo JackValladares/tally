@@ -27,11 +27,11 @@
       <a href="#conventions">Conventions</a>
     </nav>
     <div class="t-seg" role="group" aria-label="Theme" id="themeSeg">
-      <button class="t-seg__opt" data-theme-pick="" aria-pressed="true">System</button>
-      <button class="t-seg__opt" data-theme-pick="light">Paper</button>
-      <button class="t-seg__opt" data-theme-pick="dark">Slate</button>
-      <button class="t-seg__opt" data-theme-pick="green">Fern</button>
-      <button class="t-seg__opt" data-theme-pick="sunset">Dusk</button>
+      <button type="button" class="t-seg__opt" data-theme-pick="" aria-pressed="true">System</button>
+      <button type="button" class="t-seg__opt" data-theme-pick="light">Paper</button>
+      <button type="button" class="t-seg__opt" data-theme-pick="dark">Slate</button>
+      <button type="button" class="t-seg__opt" data-theme-pick="green">Fern</button>
+      <button type="button" class="t-seg__opt" data-theme-pick="sunset">Dusk</button>
     </div>
   </div>
 </header>
@@ -140,22 +140,22 @@
     <div class="spec-block">
       <h3>Button <code>.t-btn · data-variant primary/secondary/subtle/danger/ai · data-size sm/md/lg</code></h3>
       <div class="spec-row spec-row--states">
-        <button class="t-btn" data-variant="primary">Sync now</button>
-        <button class="t-btn is-hover" data-variant="primary">Sync now</button>
-        <button class="t-btn is-focus" data-variant="primary">Sync now</button>
-        <button class="t-btn is-active" data-variant="primary">Sync now</button>
-        <button class="t-btn" data-variant="primary" disabled>Sync now</button>
-        <button class="t-btn is-loading" data-variant="primary">Sync now</button>
+        <button type="button" class="t-btn" data-variant="primary">Sync now</button>
+        <button type="button" class="t-btn is-hover" data-variant="primary">Sync now</button>
+        <button type="button" class="t-btn is-focus" data-variant="primary">Sync now</button>
+        <button type="button" class="t-btn is-active" data-variant="primary">Sync now</button>
+        <button type="button" class="t-btn" data-variant="primary" disabled>Sync now</button>
+        <button type="button" class="t-btn is-loading" data-variant="primary">Sync now</button>
       </div>
       <p class="spec-caption">default · hover · focus · active · disabled · loading</p>
       <div class="spec-row">
-        <button class="t-btn">Save budget</button>
-        <button class="t-btn" data-variant="subtle">Dismiss</button>
-        <button class="t-btn" data-variant="danger">Remove account</button>
-        <button class="t-btn" data-variant="ai"><span aria-hidden="true">✦</span> Help me set limits</button>
-        <button class="t-btn" data-size="sm">Edit</button>
-        <button class="t-btn" data-size="lg" data-variant="primary">Link a bank</button>
-        <button class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
+        <button type="button" class="t-btn">Save budget</button>
+        <button type="button" class="t-btn" data-variant="subtle">Dismiss</button>
+        <button type="button" class="t-btn" data-variant="danger">Remove account</button>
+        <button type="button" class="t-btn" data-variant="ai"><span aria-hidden="true">✦</span> Help me set limits</button>
+        <button type="button" class="t-btn" data-size="sm">Edit</button>
+        <button type="button" class="t-btn" data-size="lg" data-variant="primary">Link a bank</button>
+        <button type="button" class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
       </div>
     </div>
 
@@ -238,7 +238,7 @@
         <div class="spec-row">
           <span class="t-skeleton" style="inline-size: 9rem"></span>
           <span class="t-skeleton" style="inline-size: 5rem; block-size: 2rem"></span>
-          <span class="t-tip is-open"><button class="t-btn" data-size="sm">Hover me</button><span class="t-tip__body" role="tooltip">Last synced 2 min ago</span></span>
+          <span class="t-tip is-open"><button type="button" class="t-btn" data-size="sm">Hover me</button><span class="t-tip__body" role="tooltip">Last synced 2 min ago</span></span>
           <span class="t-small t-muted">Press <kbd class="t-kbd">⌘</kbd> <kbd class="t-kbd">K</kbd> to ask</span>
         </div>
       </div>
@@ -311,10 +311,10 @@
         <h3><code>resource()</code> · <code>store()</code></h3>
         <p>Idle → loading → ready/empty/error, with an AbortController per key so a second call cancels the first instead of racing it. This one resource is live against <code>/api/v1/transactions</code>; the buttons switch the fixture server's state (<code>/__state/&lt;name&gt;</code>). "populated" and "empty" are genuinely different responses; "error" is the raw-hidden fixture, <code>merchantDisplay: null</code> on every row, rendered as <code>merchantDisplay ?? description</code> with no indicator that anything is hidden; "midsync" has no transactions fixture of its own, so it falls back to "populated" and briefly shows the "panels keep last data" row of the ten-state table while the request is in flight.</p>
         <div class="l-cluster" id="libStateSwitch" style="margin-block-end: var(--space-2)">
-          <button class="t-btn" data-size="sm" data-fixture-state="populated">populated</button>
-          <button class="t-btn" data-size="sm" data-fixture-state="empty">empty</button>
-          <button class="t-btn" data-size="sm" data-fixture-state="error">error</button>
-          <button class="t-btn" data-size="sm" data-fixture-state="midsync">midsync</button>
+          <button type="button" class="t-btn" data-size="sm" data-fixture-state="populated">populated</button>
+          <button type="button" class="t-btn" data-size="sm" data-fixture-state="empty">empty</button>
+          <button type="button" class="t-btn" data-size="sm" data-fixture-state="error">error</button>
+          <button type="button" class="t-btn" data-size="sm" data-fixture-state="midsync">midsync</button>
         </div>
         <div class="t-card" id="libResourceDemo">
           <span class="t-skeleton" style="inline-size: 60%"></span>
@@ -368,15 +368,15 @@
       <div class="t-attention">
         <div class="t-attention__item" data-severity="danger">
           <div class="t-attention__body"><span class="t-attention__title">Shopping is $224 over its limit with 11 days left</span><span class="t-attention__text">Three orders this week. Pace suggests $1,290 by month end against $800.</span></div>
-          <div class="t-attention__actions"><button class="t-btn" data-size="sm">Open budgets</button></div>
+          <div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm">Open budgets</button></div>
         </div>
         <div class="t-attention__item" data-severity="caution">
           <div class="t-attention__body"><span class="t-attention__title">New recurring charge: Crunchyroll, $9.99 monthly</span><span class="t-attention__text">Seen twice since Aug 16. Confirmed once a third charge lands.</span></div>
-          <div class="t-attention__actions"><button class="t-btn" data-size="sm">See bills</button></div>
+          <div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm">See bills</button></div>
         </div>
         <div class="t-attention__item" data-severity="info">
           <div class="t-attention__body"><span class="t-attention__title">Wells Fargo needs a fresh login before the next sync</span><span class="t-attention__text">Two accounts stop updating on Sep 4 if you skip this.</span></div>
-          <div class="t-attention__actions"><button class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div>
+          <div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div>
         </div>
       </div>
       <div class="t-attention__clear">Everything else is on track. Next bill: Rent, $1,850 on Sep 1.</div>
@@ -386,25 +386,25 @@
       <div class="spec-block">
         <h3>Tabs, segmented control, date range</h3>
         <div class="t-tabs" role="tablist" aria-label="Dashboard sections">
-          <button class="t-tab" role="tab" aria-selected="true">Cash flow</button>
-          <button class="t-tab" role="tab" aria-selected="false">Liquidity</button>
-          <button class="t-tab" role="tab" aria-selected="false">Budgets <span class="t-tab__count">2</span></button>
-          <button class="t-tab" role="tab" aria-selected="false">Goals</button>
-          <button class="t-tab" role="tab" aria-selected="false">Insights <span class="t-tab__count">3</span></button>
+          <button type="button" class="t-tab" role="tab" aria-selected="true">Cash flow</button>
+          <button type="button" class="t-tab" role="tab" aria-selected="false">Liquidity</button>
+          <button type="button" class="t-tab" role="tab" aria-selected="false">Budgets <span class="t-tab__count">2</span></button>
+          <button type="button" class="t-tab" role="tab" aria-selected="false">Goals</button>
+          <button type="button" class="t-tab" role="tab" aria-selected="false">Insights <span class="t-tab__count">3</span></button>
         </div>
         <div class="t-range">
           <div class="t-seg" role="group" aria-label="Preset range">
-            <button class="t-seg__opt" aria-pressed="false">This month</button>
-            <button class="t-seg__opt" aria-pressed="false">Last 3 months</button>
-            <button class="t-seg__opt" aria-pressed="false">YTD</button>
-            <button class="t-seg__opt" aria-pressed="true">All time</button>
+            <button type="button" class="t-seg__opt" aria-pressed="false">This month</button>
+            <button type="button" class="t-seg__opt" aria-pressed="false">Last 3 months</button>
+            <button type="button" class="t-seg__opt" aria-pressed="false">YTD</button>
+            <button type="button" class="t-seg__opt" aria-pressed="true">All time</button>
           </div>
           <div class="t-range__dates"><label class="u-visually-hidden" for="d1">From</label><input class="t-control" id="d1" type="date" value="2026-05-21"><span>to</span><label class="u-visually-hidden" for="d2">To</label><input class="t-control" id="d2" type="date" value="2026-08-20"></div>
         </div>
         <div class="t-seg" role="radiogroup" aria-label="Household member">
-          <button class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Whole household</button>
-          <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span>Jack</button>
-          <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span>Grace</button>
+          <button type="button" class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Whole household</button>
+          <button type="button" class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span>Jack</button>
+          <button type="button" class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span>Grace</button>
         </div>
       </div>
       <div class="spec-block">
@@ -435,7 +435,7 @@
           </tbody>
         </table>
       </div>
-      <div class="t-table__foot"><span>50 per page, newest first · keyset paging, so no total count is shown · description falls back to the sanitized one when the merchant is hidden</span><div class="l-cluster"><button class="t-btn" data-size="sm" data-variant="subtle" disabled>Newer</button><button class="t-btn" data-size="sm">Older</button></div></div>
+      <div class="t-table__foot"><span>50 per page, newest first · keyset paging, so no total count is shown · description falls back to the sanitized one when the merchant is hidden</span><div class="l-cluster"><button type="button" class="t-btn" data-size="sm" data-variant="subtle" disabled>Newer</button><button type="button" class="t-btn" data-size="sm">Older</button></div></div>
     </div>
 
     <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
@@ -502,7 +502,7 @@
         </div>
         <h3 style="margin-block-start: var(--space-3)">Suggestion row <code>.t-suggest</code></h3>
         <div>
-          <div class="t-suggest"><span class="t-badge" data-tone="accent">✦</span><div class="t-suggest__main">Set <strong>Dining &amp; takeout</strong> to <span class="t-money t-money--sm"><span class="t-money__cur">$</span>450</span>/mo<div class="t-suggest__why">Median of the last 6 months, rounded up</div></div><div class="t-suggest__actions"><button class="t-btn" data-size="sm" data-variant="primary">Accept</button><button class="t-btn" data-size="sm">Edit</button><button class="t-btn" data-size="sm" data-variant="subtle">Skip</button></div></div>
+          <div class="t-suggest"><span class="t-badge" data-tone="accent">✦</span><div class="t-suggest__main">Set <strong>Dining &amp; takeout</strong> to <span class="t-money t-money--sm"><span class="t-money__cur">$</span>450</span>/mo<div class="t-suggest__why">Median of the last 6 months, rounded up</div></div><div class="t-suggest__actions"><button type="button" class="t-btn" data-size="sm" data-variant="primary">Accept</button><button type="button" class="t-btn" data-size="sm">Edit</button><button type="button" class="t-btn" data-size="sm" data-variant="subtle">Skip</button></div></div>
         </div>
       </div>
     </div>
@@ -513,29 +513,29 @@
         <p>The chat no longer reserves a void. Empty, it is one line and a prompt; once asked, the transcript grows to a cap and scrolls.</p>
         <div class="t-ask">
           <div class="t-ask__empty"><span class="t-avatar" data-kind="member">✦</span><div><strong>Ask about your budget</strong>Answers use live figures, never merchant names.</div></div>
-          <div class="t-ask__suggest"><button class="t-btn" data-size="sm">How are we tracking this month?</button><button class="t-btn" data-size="sm">Break down last month by category</button><button class="t-btn" data-size="sm">Biggest category this year?</button></div>
-          <div class="t-ask__row"><label class="u-visually-hidden" for="ask1">Ask about your budget</label><input class="t-control" id="ask1" placeholder="Ask anything about the household budget…"><button class="t-btn" data-variant="primary">Ask</button></div>
+          <div class="t-ask__suggest"><button type="button" class="t-btn" data-size="sm">How are we tracking this month?</button><button type="button" class="t-btn" data-size="sm">Break down last month by category</button><button type="button" class="t-btn" data-size="sm">Biggest category this year?</button></div>
+          <div class="t-ask__row"><label class="u-visually-hidden" for="ask1">Ask about your budget</label><input class="t-control" id="ask1" placeholder="Ask anything about the household budget…"><button type="button" class="t-btn" data-variant="primary">Ask</button></div>
         </div>
         <div class="t-ask" style="margin-block-start: var(--space-3)">
           <div class="t-ask__log">
             <div class="t-msg" data-role="user">How are we tracking this month?</div>
             <div class="t-msg" data-role="assistant">Through Aug 20 you have spent $4,120 of $6,300 planned, with 11 days left. Shopping is over its limit; everything else is on pace.<span class="t-msg__meta">Used get_budget_variance · 0.8s</span></div>
           </div>
-          <div class="t-ask__row"><label class="u-visually-hidden" for="ask2">Ask a follow-up</label><input class="t-control" id="ask2" placeholder="Follow up…"><button class="t-btn" data-variant="primary">Ask</button></div>
+          <div class="t-ask__row"><label class="u-visually-hidden" for="ask2">Ask a follow-up</label><input class="t-control" id="ask2" placeholder="Follow up…"><button type="button" class="t-btn" data-variant="primary">Ask</button></div>
         </div>
       </div>
       <div class="spec-block">
         <h3>Empty state, dialog, toast</h3>
-        <div class="t-empty"><strong>No goals yet</strong><span>A goal is a target amount and a date. Start with the one you talk about most.</span><button class="t-btn" data-variant="primary" data-size="sm">Add a goal</button></div>
+        <div class="t-empty"><strong>No goals yet</strong><span>A goal is a target amount and a date. Start with the one you talk about most.</span><button type="button" class="t-btn" data-variant="primary" data-size="sm">Add a goal</button></div>
         <div class="spec-row" style="margin-block-start: var(--space-2)">
-          <button class="t-btn" id="openDialog">Open dialog</button>
-          <div class="t-toast">Budget saved <button class="t-btn" data-size="sm">Undo</button></div>
+          <button type="button" class="t-btn" id="openDialog">Open dialog</button>
+          <div class="t-toast">Budget saved <button type="button" class="t-btn" data-size="sm">Undo</button></div>
         </div>
         <dialog class="t-dialog" id="demoDialog">
           <form method="dialog" class="t-dialog__body">
             <h3 class="t-dialog__title">Remove Discover it Card?</h3>
             <p class="t-muted t-small">Its 41 transactions stay in history. Balances stop updating and the card leaves the debt total.</p>
-            <div class="t-dialog__actions"><button class="t-btn" value="cancel">Keep it</button><button class="t-btn" data-variant="danger" value="remove">Remove account</button></div>
+            <div class="t-dialog__actions"><button type="button" class="t-btn" value="cancel">Keep it</button><button type="button" class="t-btn" data-variant="danger" value="remove">Remove account</button></div>
           </form>
         </dialog>
       </div>
@@ -546,9 +546,9 @@
         <h3>Sync run <code>.t-syncrun · 202 then poll · partial results per item</code></h3>
         <p>Sync is asynchronous now. The button shows the run, not the request; a second click attaches to the run already in flight instead of erroring. Items are keyed by item id, never by institution name, because two logins can share one.</p>
         <div class="t-card t-syncrun">
-          <div class="t-syncrun__head"><button class="t-btn is-loading" data-variant="primary">Sync now</button><span>Syncing · started 11:04 by poll</span><span class="t-status" data-health="caution">Partial</span></div>
+          <div class="t-syncrun__head"><button type="button" class="t-btn is-loading" data-variant="primary">Sync now</button><span>Syncing · started 11:04 by poll</span><span class="t-status" data-health="caution">Partial</span></div>
           <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#117aca">C</span><span><strong>Chase</strong> · done</span><span class="t-syncrun__counts">+4 · ~1 · −0</span></div>
-          <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#ff6000">D</span><span><strong>Discover</strong> · needs to be reconnected</span><button class="t-btn" data-size="sm">Reconnect</button></div>
+          <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#ff6000">D</span><span><strong>Discover</strong> · needs to be reconnected</span><button type="button" class="t-btn" data-size="sm">Reconnect</button></div>
           <div class="t-syncrun__item"><span class="t-avatar" data-size="sm" style="--_avatar:#c8102e">WF</span><span><strong>Wells Fargo</strong> · running</span><span class="t-skeleton" style="inline-size: 4rem"></span></div>
         </div>
       </div>
@@ -581,19 +581,19 @@
             <div><h1 class="t-pagehead__title">Household Budget</h1><p class="t-pagehead__sub">May 20 → Aug 20, 2026 · synced 4 minutes ago</p></div>
             <div class="t-pagehead__actions">
               <div class="t-seg" role="radiogroup" aria-label="Household member">
-                <button class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Household</button>
-                <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span></button>
-                <button class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span></button>
+                <button type="button" class="t-seg__opt" role="radio" aria-checked="true"><span class="t-avatar" data-kind="member" data-size="sm">JG</span>Household</button>
+                <button type="button" class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">J</span></button>
+                <button type="button" class="t-seg__opt" role="radio" aria-checked="false"><span class="t-avatar" data-kind="member" data-size="sm">G</span></button>
               </div>
-              <button class="t-btn" data-variant="primary">Sync now</button>
-              <button class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
+              <button type="button" class="t-btn" data-variant="primary">Sync now</button>
+              <button type="button" class="t-btn t-btn--icon" aria-label="Settings">⚙</button>
             </div>
           </header>
 
           <div class="t-attention">
-            <div class="t-attention__item" data-severity="danger"><div class="t-attention__body"><span class="t-attention__title">Shopping is $224 over its limit with 11 days left</span><span class="t-attention__text">Pace suggests $1,290 by month end against $800.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm">Open budgets</button></div></div>
-            <div class="t-attention__item" data-severity="caution"><div class="t-attention__body"><span class="t-attention__title">New recurring charge: Crunchyroll, $9.99 monthly</span><span class="t-attention__text">Seen twice since Aug 16.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm">See bills</button></div></div>
-            <div class="t-attention__item" data-severity="info"><div class="t-attention__body"><span class="t-attention__title">Wells Fargo needs a fresh login before the next sync</span><span class="t-attention__text">Two accounts stop updating on Sep 4 if you skip this.</span></div><div class="t-attention__actions"><button class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div></div>
+            <div class="t-attention__item" data-severity="danger"><div class="t-attention__body"><span class="t-attention__title">Shopping is $224 over its limit with 11 days left</span><span class="t-attention__text">Pace suggests $1,290 by month end against $800.</span></div><div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm">Open budgets</button></div></div>
+            <div class="t-attention__item" data-severity="caution"><div class="t-attention__body"><span class="t-attention__title">New recurring charge: Crunchyroll, $9.99 monthly</span><span class="t-attention__text">Seen twice since Aug 16.</span></div><div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm">See bills</button></div></div>
+            <div class="t-attention__item" data-severity="info"><div class="t-attention__body"><span class="t-attention__title">Wells Fargo needs a fresh login before the next sync</span><span class="t-attention__text">Two accounts stop updating on Sep 4 if you skip this.</span></div><div class="t-attention__actions"><button type="button" class="t-btn" data-size="sm" data-variant="primary">Reconnect</button></div></div>
           </div>
 
           <div class="t-stats t-stats--headline">
@@ -604,16 +604,16 @@
 
           <div class="l-stack" style="--stack-gap: var(--space-4)">
             <div class="t-tabs" role="tablist" aria-label="Dashboard sections" id="mockTabs">
-              <button class="t-tab" role="tab" aria-selected="true" aria-controls="mock-cash">Cash flow</button>
-              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-liq">Liquidity</button>
-              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-bud">Budgets <span class="t-tab__count">1</span></button>
-              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-goals">Goals</button>
-              <button class="t-tab" role="tab" aria-selected="false" aria-controls="mock-ins">Insights <span class="t-tab__count">2</span></button>
+              <button type="button" class="t-tab" role="tab" aria-selected="true" aria-controls="mock-cash">Cash flow</button>
+              <button type="button" class="t-tab" role="tab" aria-selected="false" aria-controls="mock-liq">Liquidity</button>
+              <button type="button" class="t-tab" role="tab" aria-selected="false" aria-controls="mock-bud">Budgets <span class="t-tab__count">1</span></button>
+              <button type="button" class="t-tab" role="tab" aria-selected="false" aria-controls="mock-goals">Goals</button>
+              <button type="button" class="t-tab" role="tab" aria-selected="false" aria-controls="mock-ins">Insights <span class="t-tab__count">2</span></button>
             </div>
 
             <div id="mock-cash" role="tabpanel" class="l-stack" style="--stack-gap: var(--space-5)">
               <div class="t-range">
-                <div class="t-seg" role="group" aria-label="Preset range"><button class="t-seg__opt" aria-pressed="false">This month</button><button class="t-seg__opt" aria-pressed="false">Last 3 months</button><button class="t-seg__opt" aria-pressed="false">YTD</button><button class="t-seg__opt" aria-pressed="true">All time</button></div>
+                <div class="t-seg" role="group" aria-label="Preset range"><button type="button" class="t-seg__opt" aria-pressed="false">This month</button><button type="button" class="t-seg__opt" aria-pressed="false">Last 3 months</button><button type="button" class="t-seg__opt" aria-pressed="false">YTD</button><button type="button" class="t-seg__opt" aria-pressed="true">All time</button></div>
                 <div class="t-range__dates"><input class="t-control" type="date" value="2026-05-21" aria-label="From"><span>to</span><input class="t-control" type="date" value="2026-08-20" aria-label="To"></div>
               </div>
               <div class="t-stats">
@@ -641,7 +641,7 @@
                 <div class="t-panel">
                   <div class="t-panel__head"><div class="t-panel__title">Linked accounts</div><a href="#" class="t-small">Manage</a></div>
                   <div class="t-acct"><span class="t-avatar" style="--_avatar:#ff6000">D</span><div><div class="t-acct__name">Discover</div><div class="t-acct__sub">Jack · 1 account <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
-                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Wells Fargo</div><div class="t-acct__sub">Jack · 3 accounts <span class="t-status" data-health="caution">Login required</span></div></div><button class="t-btn" data-size="sm">Reconnect</button></div>
+                  <div class="t-acct"><span class="t-avatar" style="--_avatar:#c8102e">WF</span><div><div class="t-acct__name">Wells Fargo</div><div class="t-acct__sub">Jack · 3 accounts <span class="t-status" data-health="caution">Login required</span></div></div><button type="button" class="t-btn" data-size="sm">Reconnect</button></div>
                   <div class="t-acct"><span class="t-avatar" style="--_avatar:#117aca">C</span><div><div class="t-acct__name">Chase</div><div class="t-acct__sub">Jack · 1 account <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
                   <div class="t-acct"><span class="t-avatar" style="--_avatar:#006fcf">AE</span><div><div class="t-acct__name">American Express</div><div class="t-acct__sub">Jack · 2 accounts <span class="t-status" data-health="good">Synced</span></div></div><span class="t-small t-muted u-num">Aug 19</span></div>
                 </div>
@@ -668,7 +668,7 @@
             </div>
 
             <div id="mock-bud" role="tabpanel" hidden class="t-panel">
-              <div class="t-panel__head"><div class="t-panel__title">August budgets</div><button class="t-btn" data-size="sm" data-variant="ai">✦ Help me set limits</button></div>
+              <div class="t-panel__head"><div class="t-panel__title">August budgets</div><button type="button" class="t-btn" data-size="sm" data-variant="ai">✦ Help me set limits</button></div>
               <div class="t-budget"><div><div class="t-budget__name">Groceries</div><div class="t-budget__left">$188 left · 11 days</div></div><div class="t-bar" data-health="good"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 69%"></div></div></div><span class="t-status" data-health="good">On track</span></div>
               <div class="t-budget"><div><div class="t-budget__name">Dining &amp; takeout</div><div class="t-budget__left">$62 left</div></div><div class="t-bar" data-health="caution"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 86%"></div></div></div><span class="t-status" data-health="caution">Watch</span></div>
               <div class="t-budget"><div><div class="t-budget__name">Shopping</div><div class="t-budget__left">$224 over</div></div><div class="t-bar" data-health="danger"><div class="t-bar__track"><div class="t-bar__fill" style="--pct: 100%"></div></div></div><span class="t-status" data-health="danger">Over</span></div>
@@ -695,7 +695,7 @@
 
           <div class="spec-mock__dock">
             <div class="t-ask">
-              <div class="t-ask__row"><span class="t-avatar" data-kind="member">✦</span><label class="u-visually-hidden" for="ask3">Ask about your budget</label><input class="t-control" id="ask3" placeholder="Ask about your budget… answers use live figures, never merchant names"><button class="t-btn" data-variant="primary">Ask</button></div>
+              <div class="t-ask__row"><span class="t-avatar" data-kind="member">✦</span><label class="u-visually-hidden" for="ask3">Ask about your budget</label><input class="t-control" id="ask3" placeholder="Ask about your budget… answers use live figures, never merchant names"><button type="button" class="t-btn" data-variant="primary">Ask</button></div>
             </div>
           </div>
         </div>

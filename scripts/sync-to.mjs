@@ -7,7 +7,7 @@
 //
 // The copy is meant to be committed in the consuming repo, reviewed in the
 // same diff as the change that needed it.
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const args = process.argv.slice(2);
@@ -47,4 +47,29 @@ if (check) {
 rmSync(dest, { recursive: true, force: true });
 mkdirSync(dest, { recursive: true });
 cpSync("dist", dest, { recursive: true });
-console.log(`vendored tally ${ours.version} → ${dest}`);
+
+// The catalogue ships with the primitives it documents. The consuming app
+// serves it at /dev, so a component's specimen page cannot drift from the
+// component -- which is the whole argument for moving it in-repo rather
+// than leaving it in a folder outside both.
+const catalogDest = path.join(dest, "catalog");
+cpSync("catalog", catalogDest, { recursive: true });
+
+// In this repo the catalogue sits beside dist/, so it links ../dist/tally.css.
+// Vendored, the bundle is its parent directory. Rewriting on copy keeps the
+// source page working locally against a fresh build and correct once
+// vendored, rather than picking one and breaking the other.
+const catalogIndex = path.join(catalogDest, "index.html");
+writeFileSync(
+  catalogIndex,
+  readFileSync(catalogIndex, "utf8").replaceAll("../dist/", "../"),
+  "utf8",
+);
+
+// The catalogue reads fixtures over fetch; without them it renders its
+// static sections and nothing else.
+if (existsSync("fixtures")) {
+  cpSync("fixtures", path.join(dest, "fixtures"), { recursive: true });
+}
+
+console.log(`vendored tally ${ours.version} (+ catalog, fixtures) → ${dest}`);
