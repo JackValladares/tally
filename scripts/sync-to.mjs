@@ -7,7 +7,7 @@
 //
 // The copy is meant to be committed in the consuming repo, reviewed in the
 // same diff as the change that needed it.
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const args = process.argv.slice(2);
@@ -55,16 +55,18 @@ cpSync("dist", dest, { recursive: true });
 const catalogDest = path.join(dest, "catalog");
 cpSync("catalog", catalogDest, { recursive: true });
 
-// In this repo the catalogue sits beside dist/, so it links ../dist/tally.css.
-// Vendored, the bundle is its parent directory. Rewriting on copy keeps the
-// source page working locally against a fresh build and correct once
-// vendored, rather than picking one and breaking the other.
-const catalogIndex = path.join(catalogDest, "index.html");
-writeFileSync(
-  catalogIndex,
-  readFileSync(catalogIndex, "utf8").replaceAll("../dist/", "../"),
-  "utf8",
-);
+// In this repo the catalogue sits beside dist/, so it references
+// ../dist/tally.js -- from index.html's tags and from catalog.js's import
+// alike. Vendored, the bundle is its parent directory. Rewriting every text
+// file on copy keeps the source page working locally against a fresh build
+// and correct once vendored, rather than picking one and breaking the other.
+for (const name of readdirSync(catalogDest)) {
+  if (!/\.(html|js|css)$/.test(name)) continue;
+  const file = path.join(catalogDest, name);
+  const before = readFileSync(file, "utf8");
+  const after = before.replaceAll("../dist/", "../");
+  if (after !== before) writeFileSync(file, after, "utf8");
+}
 
 // The catalogue reads fixtures over fetch; without them it renders its
 // static sections and nothing else.
