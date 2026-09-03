@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "VALIDATION_FAILED",
+    "message": "must be a calendar date, YYYY-MM-DD",
+    "details": [
+      {
+        "path": "query.from",
+        "message": "must be a calendar date, YYYY-MM-DD"
+      }
+    ]
+  }
+}

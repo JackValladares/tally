@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": "ALREADY_RUNNING",
-    "message": "A sync is already in progress",
-    "details": { "runId": "clx8run0008" }
-  }
-}

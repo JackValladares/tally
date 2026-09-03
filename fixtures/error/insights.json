@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "FEATURE_DISABLED",
+    "message": "AI-generated insights require ANTHROPIC_API_KEY to be set"
+  }
+}

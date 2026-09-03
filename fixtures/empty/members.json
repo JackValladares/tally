@@ -1,0 +1,9 @@
+[
+  {
+    "id": "mem_jack",
+    "name": "Jack",
+    "email": "jack@example.com",
+    "theme": "dark",
+    "isAdmin": true
+  }
+]

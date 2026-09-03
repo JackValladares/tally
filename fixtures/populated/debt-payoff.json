@@ -1,0 +1,23 @@
+[
+  {
+    "accountId": "acc_chase_cc_jack",
+    "name": "Chase Sapphire Preferred",
+    "balance": 1875.32,
+    "aprPercent": 24.99,
+    "minimumPayment": 45
+  },
+  {
+    "accountId": "acc_chase_cc_grace",
+    "name": "Chase Freedom Unlimited",
+    "balance": 640,
+    "aprPercent": 22.49,
+    "minimumPayment": 25
+  },
+  {
+    "accountId": "acc_ally_auto_loan",
+    "name": "Ally Auto Loan",
+    "balance": 18420,
+    "aprPercent": null,
+    "minimumPayment": 380
+  }
+]

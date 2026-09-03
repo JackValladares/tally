@@ -1,0 +1,20 @@
+{
+  "from": "2026-09-01",
+  "to": "2026-09-02",
+  "bucket": "month",
+  "actualThrough": "2026-09-01",
+  "expenseCumulative": [
+    {
+      "date": "2026-09-01",
+      "value": 0
+    }
+  ],
+  "incomeCumulative": [
+    {
+      "date": "2026-09-01",
+      "value": 0
+    }
+  ],
+  "referenceIncome": null,
+  "referenceLabel": null
+}

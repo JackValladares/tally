@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "UPSTREAM_ERROR",
+    "message": "Plaid did not respond in time"
+  }
+}

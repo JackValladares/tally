@@ -1,0 +1,22 @@
+[
+  {
+    "id": "budget_groceries",
+    "category": "Groceries",
+    "amount": 85.31
+  },
+  {
+    "id": "budget_dining",
+    "category": "Dining & Takeout",
+    "amount": 182
+  },
+  {
+    "id": "budget_entertainment",
+    "category": "Entertainment & Recreation",
+    "amount": 1160
+  },
+  {
+    "id": "budget_shopping",
+    "category": "Shopping",
+    "amount": 7565.75
+  }
+]

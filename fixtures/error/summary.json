@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "VALIDATION_FAILED",
+    "message": "to must be on or after from",
+    "details": [
+      {
+        "path": "query.to",
+        "message": "to must be on or after from"
+      }
+    ]
+  }
+}

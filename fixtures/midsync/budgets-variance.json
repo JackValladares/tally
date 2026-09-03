@@ -1,0 +1,38 @@
+[
+  {
+    "id": "budget_groceries",
+    "category": "Groceries",
+    "limit": 85.31,
+    "spent": 142.18,
+    "projected": 2132.7,
+    "percentUsed": 100,
+    "status": "danger"
+  },
+  {
+    "id": "budget_dining",
+    "category": "Dining & Takeout",
+    "limit": 182,
+    "spent": 36.4,
+    "projected": 546,
+    "percentUsed": 20,
+    "status": "caution"
+  },
+  {
+    "id": "budget_entertainment",
+    "category": "Entertainment & Recreation",
+    "limit": 1160,
+    "spent": 58,
+    "projected": 870,
+    "percentUsed": 5,
+    "status": "good"
+  },
+  {
+    "id": "budget_shopping",
+    "category": "Shopping",
+    "limit": 7565.75,
+    "spent": 302.63,
+    "projected": 4539.45,
+    "percentUsed": 4,
+    "status": "good"
+  }
+]

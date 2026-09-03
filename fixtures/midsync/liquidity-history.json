@@ -1,0 +1,422 @@
+[
+  {
+    "capturedAt": "2025-07-03T17:35:39.000Z",
+    "totalSaved": 28184.52,
+    "totalDebt": 28269.66,
+    "netLiquidity": -85.14
+  },
+  {
+    "capturedAt": "2025-07-04T21:54:01.000Z",
+    "totalSaved": 28055.89,
+    "totalDebt": 28201.72,
+    "netLiquidity": -145.83
+  },
+  {
+    "capturedAt": "2025-07-06T06:26:16.000Z",
+    "totalSaved": 28364.12,
+    "totalDebt": 28235.48,
+    "netLiquidity": 128.64
+  },
+  {
+    "capturedAt": "2025-07-14T06:04:21.000Z",
+    "totalSaved": 28684.01,
+    "totalDebt": 28096.6,
+    "netLiquidity": 587.41
+  },
+  {
+    "capturedAt": "2025-07-21T20:40:56.000Z",
+    "totalSaved": 29082.12,
+    "totalDebt": 28010.54,
+    "netLiquidity": 1071.58
+  },
+  {
+    "capturedAt": "2025-07-27T20:31:46.000Z",
+    "totalSaved": 28956.55,
+    "totalDebt": 27796.74,
+    "netLiquidity": 1159.81
+  },
+  {
+    "capturedAt": "2025-08-07T18:31:31.000Z",
+    "totalSaved": 29596.25,
+    "totalDebt": 27665.74,
+    "netLiquidity": 1930.51
+  },
+  {
+    "capturedAt": "2025-08-17T21:00:19.000Z",
+    "totalSaved": 30123.38,
+    "totalDebt": 27530.33,
+    "netLiquidity": 2593.05
+  },
+  {
+    "capturedAt": "2025-08-28T08:25:31.000Z",
+    "totalSaved": 30275.78,
+    "totalDebt": 27253.14,
+    "netLiquidity": 3022.64
+  },
+  {
+    "capturedAt": "2025-09-01T14:02:24.000Z",
+    "totalSaved": 30654.34,
+    "totalDebt": 27249.28,
+    "netLiquidity": 3405.06
+  },
+  {
+    "capturedAt": "2025-09-10T13:59:14.000Z",
+    "totalSaved": 31096.99,
+    "totalDebt": 27117.88,
+    "netLiquidity": 3979.11
+  },
+  {
+    "capturedAt": "2025-09-19T15:23:37.000Z",
+    "totalSaved": 31297.29,
+    "totalDebt": 26913.77,
+    "netLiquidity": 4383.52
+  },
+  {
+    "capturedAt": "2025-09-20T22:25:13.000Z",
+    "totalSaved": 31222.84,
+    "totalDebt": 26862.08,
+    "netLiquidity": 4360.76
+  },
+  {
+    "capturedAt": "2025-10-01T16:09:31.000Z",
+    "totalSaved": 31992.07,
+    "totalDebt": 26769.94,
+    "netLiquidity": 5222.13
+  },
+  {
+    "capturedAt": "2025-10-09T18:44:24.000Z",
+    "totalSaved": 32118.84,
+    "totalDebt": 26573.13,
+    "netLiquidity": 5545.71
+  },
+  {
+    "capturedAt": "2025-10-12T22:53:26.000Z",
+    "totalSaved": 32449.62,
+    "totalDebt": 26584.3,
+    "netLiquidity": 5865.32
+  },
+  {
+    "capturedAt": "2025-10-22T19:42:46.000Z",
+    "totalSaved": 32820.51,
+    "totalDebt": 26402.01,
+    "netLiquidity": 6418.5
+  },
+  {
+    "capturedAt": "2025-11-02T17:57:45.000Z",
+    "totalSaved": 33067.65,
+    "totalDebt": 26153.24,
+    "netLiquidity": 6914.41
+  },
+  {
+    "capturedAt": "2025-11-03T20:03:14.000Z",
+    "totalSaved": 33232.3,
+    "totalDebt": 26173.28,
+    "netLiquidity": 7059.02
+  },
+  {
+    "capturedAt": "2025-11-08T22:50:27.000Z",
+    "totalSaved": 33478.94,
+    "totalDebt": 26100.5,
+    "netLiquidity": 7378.44
+  },
+  {
+    "capturedAt": "2025-11-14T18:09:59.000Z",
+    "totalSaved": 33698.69,
+    "totalDebt": 25990.29,
+    "netLiquidity": 7708.4
+  },
+  {
+    "capturedAt": "2025-11-24T12:03:01.000Z",
+    "totalSaved": 33899.08,
+    "totalDebt": 25756.85,
+    "netLiquidity": 8142.23
+  },
+  {
+    "capturedAt": "2025-12-06T14:10:43.000Z",
+    "totalSaved": 34420.1,
+    "totalDebt": 25560.9,
+    "netLiquidity": 8859.2
+  },
+  {
+    "capturedAt": "2025-12-18T13:42:59.000Z",
+    "totalSaved": 34952.13,
+    "totalDebt": 25368.24,
+    "netLiquidity": 9583.89
+  },
+  {
+    "capturedAt": "2025-12-22T21:23:20.000Z",
+    "totalSaved": 35252.3,
+    "totalDebt": 25340.87,
+    "netLiquidity": 9911.43
+  },
+  {
+    "capturedAt": "2026-01-03T07:00:17.000Z",
+    "totalSaved": 35523.14,
+    "totalDebt": 25069.86,
+    "netLiquidity": 10453.28
+  },
+  {
+    "capturedAt": "2026-01-08T16:57:23.000Z",
+    "totalSaved": 35988.96,
+    "totalDebt": 25062.82,
+    "netLiquidity": 10926.14
+  },
+  {
+    "capturedAt": "2026-01-17T10:33:17.000Z",
+    "totalSaved": 36095.07,
+    "totalDebt": 24830.46,
+    "netLiquidity": 11264.61
+  },
+  {
+    "capturedAt": "2026-01-24T13:51:27.000Z",
+    "totalSaved": 36559.33,
+    "totalDebt": 24764.25,
+    "netLiquidity": 11795.08
+  },
+  {
+    "capturedAt": "2026-01-30T11:09:20.000Z",
+    "totalSaved": 36577.7,
+    "totalDebt": 24593.63,
+    "netLiquidity": 11984.07
+  },
+  {
+    "capturedAt": "2026-02-05T12:02:38.000Z",
+    "totalSaved": 37146.11,
+    "totalDebt": 24588.02,
+    "netLiquidity": 12558.09
+  },
+  {
+    "capturedAt": "2026-02-06T15:37:19.000Z",
+    "totalSaved": 37008.93,
+    "totalDebt": 24517.51,
+    "netLiquidity": 12491.42
+  },
+  {
+    "capturedAt": "2026-02-15T17:27:56.000Z",
+    "totalSaved": 37224.7,
+    "totalDebt": 24318.04,
+    "netLiquidity": 12906.66
+  },
+  {
+    "capturedAt": "2026-02-23T16:32:50.000Z",
+    "totalSaved": 37828.16,
+    "totalDebt": 24264.24,
+    "netLiquidity": 13563.92
+  },
+  {
+    "capturedAt": "2026-03-02T22:55:47.000Z",
+    "totalSaved": 37995.73,
+    "totalDebt": 24109.02,
+    "netLiquidity": 13886.71
+  },
+  {
+    "capturedAt": "2026-03-03T22:21:19.000Z",
+    "totalSaved": 37823.49,
+    "totalDebt": 24027.99,
+    "netLiquidity": 13795.5
+  },
+  {
+    "capturedAt": "2026-03-05T15:44:33.000Z",
+    "totalSaved": 37893.92,
+    "totalDebt": 23990.41,
+    "netLiquidity": 13903.51
+  },
+  {
+    "capturedAt": "2026-03-06T06:44:47.000Z",
+    "totalSaved": 38139.22,
+    "totalDebt": 24034.65,
+    "netLiquidity": 14104.57
+  },
+  {
+    "capturedAt": "2026-03-09T10:45:15.000Z",
+    "totalSaved": 38373.48,
+    "totalDebt": 24016.86,
+    "netLiquidity": 14356.62
+  },
+  {
+    "capturedAt": "2026-03-14T16:54:40.000Z",
+    "totalSaved": 38625.38,
+    "totalDebt": 23945.65,
+    "netLiquidity": 14679.73
+  },
+  {
+    "capturedAt": "2026-03-20T22:48:08.000Z",
+    "totalSaved": 38866.08,
+    "totalDebt": 23841.73,
+    "netLiquidity": 15024.35
+  },
+  {
+    "capturedAt": "2026-03-25T10:39:12.000Z",
+    "totalSaved": 39097.26,
+    "totalDebt": 23764.3,
+    "netLiquidity": 15332.96
+  },
+  {
+    "capturedAt": "2026-04-04T12:01:34.000Z",
+    "totalSaved": 39306.25,
+    "totalDebt": 23533.45,
+    "netLiquidity": 15772.8
+  },
+  {
+    "capturedAt": "2026-04-12T13:16:46.000Z",
+    "totalSaved": 39628.95,
+    "totalDebt": 23395.42,
+    "netLiquidity": 16233.53
+  },
+  {
+    "capturedAt": "2026-04-21T22:25:10.000Z",
+    "totalSaved": 40172.9,
+    "totalDebt": 23294.4,
+    "netLiquidity": 16878.5
+  },
+  {
+    "capturedAt": "2026-04-27T11:13:42.000Z",
+    "totalSaved": 40175.19,
+    "totalDebt": 23118.96,
+    "netLiquidity": 17056.23
+  },
+  {
+    "capturedAt": "2026-04-28T06:09:56.000Z",
+    "totalSaved": 40087.67,
+    "totalDebt": 23063.35,
+    "netLiquidity": 17024.32
+  },
+  {
+    "capturedAt": "2026-05-05T13:59:34.000Z",
+    "totalSaved": 40620.42,
+    "totalDebt": 23017.68,
+    "netLiquidity": 17602.74
+  },
+  {
+    "capturedAt": "2026-05-12T09:59:07.000Z",
+    "totalSaved": 40873.78,
+    "totalDebt": 22888.2,
+    "netLiquidity": 17985.58
+  },
+  {
+    "capturedAt": "2026-05-23T20:48:14.000Z",
+    "totalSaved": 41429.21,
+    "totalDebt": 22731.92,
+    "netLiquidity": 18697.29
+  },
+  {
+    "capturedAt": "2026-05-29T11:08:43.000Z",
+    "totalSaved": 41673.58,
+    "totalDebt": 22629.1,
+    "netLiquidity": 19044.48
+  },
+  {
+    "capturedAt": "2026-06-08T17:14:38.000Z",
+    "totalSaved": 41991.56,
+    "totalDebt": 22430.94,
+    "netLiquidity": 19560.62
+  },
+  {
+    "capturedAt": "2026-06-15T19:54:45.000Z",
+    "totalSaved": 42148.77,
+    "totalDebt": 22272.62,
+    "netLiquidity": 19876.15
+  },
+  {
+    "capturedAt": "2026-06-25T17:45:25.000Z",
+    "totalSaved": 42776.21,
+    "totalDebt": 22167.29,
+    "netLiquidity": 20608.92
+  },
+  {
+    "capturedAt": "2026-06-28T06:04:35.000Z",
+    "totalSaved": 42813.02,
+    "totalDebt": 22090.27,
+    "netLiquidity": 20722.75
+  },
+  {
+    "capturedAt": "2026-06-29T16:46:20.000Z",
+    "totalSaved": 42925.6,
+    "totalDebt": 22094.69,
+    "netLiquidity": 20830.91
+  },
+  {
+    "capturedAt": "2026-07-08T12:28:42.000Z",
+    "totalSaved": 43066.88,
+    "totalDebt": 21872.87,
+    "netLiquidity": 21194.01
+  },
+  {
+    "capturedAt": "2026-07-09T20:50:35.000Z",
+    "totalSaved": 43204.56,
+    "totalDebt": 21884.82,
+    "netLiquidity": 21319.74
+  },
+  {
+    "capturedAt": "2026-07-11T09:02:46.000Z",
+    "totalSaved": 43157.33,
+    "totalDebt": 21811.94,
+    "netLiquidity": 21345.39
+  },
+  {
+    "capturedAt": "2026-07-15T08:09:03.000Z",
+    "totalSaved": 43585.49,
+    "totalDebt": 21822.97,
+    "netLiquidity": 21762.52
+  },
+  {
+    "capturedAt": "2026-07-16T07:18:16.000Z",
+    "totalSaved": 43590.35,
+    "totalDebt": 21795.07,
+    "netLiquidity": 21795.28
+  },
+  {
+    "capturedAt": "2026-07-18T15:35:07.000Z",
+    "totalSaved": 43694.43,
+    "totalDebt": 21767.59,
+    "netLiquidity": 21926.84
+  },
+  {
+    "capturedAt": "2026-07-23T20:55:04.000Z",
+    "totalSaved": 43903.67,
+    "totalDebt": 21683.58,
+    "netLiquidity": 22220.09
+  },
+  {
+    "capturedAt": "2026-07-28T19:32:30.000Z",
+    "totalSaved": 44008.08,
+    "totalDebt": 21568.13,
+    "netLiquidity": 22439.95
+  },
+  {
+    "capturedAt": "2026-08-07T09:04:14.000Z",
+    "totalSaved": 44305.32,
+    "totalDebt": 21363.75,
+    "netLiquidity": 22941.57
+  },
+  {
+    "capturedAt": "2026-08-10T08:10:33.000Z",
+    "totalSaved": 44505.23,
+    "totalDebt": 21335.65,
+    "netLiquidity": 23169.58
+  },
+  {
+    "capturedAt": "2026-08-13T21:04:24.000Z",
+    "totalSaved": 44740.13,
+    "totalDebt": 21318.06,
+    "netLiquidity": 23422.07
+  },
+  {
+    "capturedAt": "2026-08-17T06:58:20.000Z",
+    "totalSaved": 44924.92,
+    "totalDebt": 21256.07,
+    "netLiquidity": 23668.85
+  },
+  {
+    "capturedAt": "2026-08-24T09:05:55.000Z",
+    "totalSaved": 45091.38,
+    "totalDebt": 21100.52,
+    "netLiquidity": 23990.86
+  },
+  {
+    "capturedAt": "2026-09-02T13:00:00.000Z",
+    "totalSaved": 45421.37,
+    "totalDebt": 20935.32,
+    "netLiquidity": 24486.05
+  }
+]

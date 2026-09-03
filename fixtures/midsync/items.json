@@ -43,8 +43,8 @@
     "institution": "Chase",
     "memberId": "mem_grace",
     "linkedBy": "Grace",
-    "status": "ACTIVE",
-    "needsReauth": false,
+    "status": "LOGIN_REQUIRED",
+    "needsReauth": true,
     "consentExpiresAt": "2026-11-01T00:00:00.000Z",
     "lastSyncedAt": "2026-09-02T13:05:00.000Z",
     "accounts": [

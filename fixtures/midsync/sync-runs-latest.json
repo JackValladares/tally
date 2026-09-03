@@ -1,0 +1,48 @@
+{
+  "runId": "syncrun_20260902_1500",
+  "status": "running",
+  "trigger": "manual",
+  "startedAt": "2026-09-02T15:00:00.000Z",
+  "finishedAt": null,
+  "items": [
+    {
+      "itemId": "item_chase_jack",
+      "institution": "Chase",
+      "status": "succeeded",
+      "added": 3,
+      "modified": 1,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "item_chase_grace",
+      "institution": "Chase",
+      "status": "failed",
+      "added": 0,
+      "modified": 0,
+      "removed": 0,
+      "error": {
+        "code": "ITEM_LOGIN_REQUIRED",
+        "message": "The item login is no longer valid and requires re-authentication."
+      }
+    },
+    {
+      "itemId": "item_ally_jack",
+      "institution": "Ally Bank",
+      "status": "running",
+      "added": 0,
+      "modified": 0,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "item_fidelity_grace",
+      "institution": "Fidelity",
+      "status": "running",
+      "added": 0,
+      "modified": 0,
+      "removed": 0,
+      "error": null
+    }
+  ]
+}

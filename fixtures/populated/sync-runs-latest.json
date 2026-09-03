@@ -1,0 +1,45 @@
+{
+  "runId": "syncrun_20260902_1305",
+  "status": "succeeded",
+  "trigger": "poll",
+  "startedAt": "2026-09-02T13:05:00.000Z",
+  "finishedAt": "2026-09-02T13:05:42.000Z",
+  "items": [
+    {
+      "itemId": "item_chase_jack",
+      "institution": "Chase",
+      "status": "succeeded",
+      "added": 1,
+      "modified": 1,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "item_chase_grace",
+      "institution": "Chase",
+      "status": "succeeded",
+      "added": 0,
+      "modified": 0,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "item_ally_jack",
+      "institution": "Ally Bank",
+      "status": "succeeded",
+      "added": 2,
+      "modified": 0,
+      "removed": 0,
+      "error": null
+    },
+    {
+      "itemId": "item_fidelity_grace",
+      "institution": "Fidelity",
+      "status": "succeeded",
+      "added": 4,
+      "modified": 2,
+      "removed": 0,
+      "error": null
+    }
+  ]
+}
