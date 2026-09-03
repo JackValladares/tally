@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "watch": "node scripts/build.mjs --watch",
-    "lint": "biome check . && stylelint \"src/**/*.css\" \"catalog/**/*.css\" && node scripts/check-tiers.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "biome check . && stylelint \"src/**/*.css\" \"catalog/**/*.css\" && node scripts/check-tiers.mjs && npm run typecheck",
     "lint:fix": "biome check --write . && stylelint \"src/**/*.css\" \"catalog/**/*.css\" --fix",
     "fixtures:serve": "node scripts/serve-fixtures.mjs",
     "catalog": "node scripts/serve-fixtures.mjs --catalog",
@@ -24,6 +25,7 @@
     "esbuild": "^0.28.0",
     "stylelint": "^16.0.0",
     "stylelint-config-standard": "^36.0.0",
-    "stylelint-order": "^6.0.0"
+    "stylelint-order": "^6.0.0",
+    "typescript": "^5.9.3"
   }
 }

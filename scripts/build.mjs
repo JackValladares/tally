@@ -11,7 +11,10 @@ const hasLib =
   existsSync("lib") && readdirSync("lib").some((f) => f.endsWith(".ts") || f.endsWith(".js"));
 
 const options = {
-  entryPoints: ["src/tally.css", ...(hasLib ? ["lib/index.ts"] : [])],
+  entryPoints: [
+    { in: "src/tally.css", out: "tally" },
+    ...(hasLib ? [{ in: "lib/index.ts", out: "tally" }] : []),
+  ],
   outdir: "dist",
   bundle: true,
   minify: false,
