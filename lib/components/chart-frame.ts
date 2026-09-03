@@ -167,10 +167,15 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       const elapsedDays = Math.max((throughT - t0) / DAY, 1);
       const remainingDays = (endT - throughT) / DAY;
       const projectedValue = lastReal.value + (lastReal.value / elapsedDays) * remainingDays;
+      // The x-scale spans the *data* (first to last bucket), but the
+      // projection runs to the end of the *requested* window, which is
+      // later -- so its endpoint lands past innerRight and takes its label
+      // off the edge with it. Clamped to the frame: the tail is a gesture
+      // at a pace, not a position that has to be read off the axis.
       projection = {
         x1: lastReal.x,
         y1: lastReal.y,
-        x2: xOf((endT - t0) / span),
+        x2: Math.min(xOf((endT - t0) / span), innerRight),
         y2: yOf(Math.min(projectedValue, yDomainMax)),
         label: `≈${fmtMoney(projectedValue)} projected`,
       };
@@ -260,10 +265,16 @@ function historyLength(input: ChartFrameInput): number {
  * row of the ten-state table (spec §5) — rather than an empty axis pair. */
 export function mountChartFrame(container: HTMLElement, input: ChartFrameInput): ChartFrameHandle {
   if (historyLength(input) < MIN_HISTORY_POINTS) {
-    render(
-      container,
-      html`<div class="t-empty"><strong>Not enough history yet</strong><span>Two syncs are needed before a trend can be drawn. Check back after the next one.</span></div>`,
-    );
+    // The two shapes run out of data for different reasons and deserve
+    // different sentences. Liquidity history accrues one point per sync, so
+    // a thin one really is "come back later". A series with one point means
+    // the range simply has nothing in it yet -- which is an ordinary state
+    // at the start of a month, not a wait.
+    const empty =
+      input.kind === "series"
+        ? html`<div class="t-empty"><strong>Nothing in this range yet</strong><span>No income or spending has been recorded for the dates selected.</span></div>`
+        : html`<div class="t-empty"><strong>Not enough history yet</strong><span>Two syncs are needed before a trend can be drawn. Check back after the next one.</span></div>`;
+    render(container, empty);
     return { destroy() {} };
   }
 
