@@ -34,8 +34,10 @@ export interface Series {
   actualThrough: string;
   expenseCumulative: SeriesPoint[];
   incomeCumulative: SeriesPoint[];
-  referenceIncome: number;
-  referenceLabel: string;
+  /** Null when there is no prior period. A zero line would read as a
+   *  claim that nothing was earned, which is why the server sends null. */
+  referenceIncome: number | null;
+  referenceLabel: string | null;
 }
 
 /** A liquidity snapshot captured at sync time. Spacing between points is
@@ -114,6 +116,16 @@ function areaFor(points: Point[], baselineY: number): string {
   return `${pathFor(points)} L${last.x.toFixed(1)},${baselineY} L${first.x.toFixed(1)},${baselineY} Z`;
 }
 
+/** The dashed "if this pace holds" tail, or null when the window has no
+ *  unelapsed remainder to project into. */
+interface Projection {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  label: string;
+}
+
 function buildGeometry(input: ChartFrameInput, width: number) {
   const height = width / ASPECT;
   const innerLeft = PAD.left;
@@ -132,7 +144,7 @@ function buildGeometry(input: ChartFrameInput, width: number) {
     const span = t1 - t0 || 1;
     const xOfDate = (d: string) => xOf((Date.parse(d) - t0) / span);
     const maxValue = Math.max(
-      referenceIncome,
+      referenceIncome ?? 0,
       ...expenseCumulative.map((p) => p.value),
       ...incomeCumulative.map((p) => p.value),
       1,
@@ -140,6 +152,29 @@ function buildGeometry(input: ChartFrameInput, width: number) {
     const yDomainMax = maxValue * 1.08;
     const yOf = scaleLinear([0, yDomainMax], [innerBottom, innerTop]);
     const expensePts = toPoints(expenseCumulative, xOfDate, yOf);
+
+    // "If this pace holds", carried flat from the last real datum to the end
+    // of the requested window. Deliberately not a forecast, and deliberately
+    // computed here rather than on the server: it is a presentation
+    // affordance, and the server should not appear to assert it -- which is
+    // exactly what `actualThrough` marks the boundary of.
+    const throughT = Date.parse(input.data.actualThrough);
+    const endT = Date.parse(input.data.to);
+    const lastReal = expensePts[expensePts.length - 1] ?? null;
+    const DAY = 86_400_000;
+    let projection: Projection | null = null;
+    if (lastReal && endT > throughT && throughT > t0) {
+      const elapsedDays = Math.max((throughT - t0) / DAY, 1);
+      const remainingDays = (endT - throughT) / DAY;
+      const projectedValue = lastReal.value + (lastReal.value / elapsedDays) * remainingDays;
+      projection = {
+        x1: lastReal.x,
+        y1: lastReal.y,
+        x2: xOf((endT - t0) / span),
+        y2: yOf(Math.min(projectedValue, yDomainMax)),
+        label: `≈${fmtMoney(projectedValue)} projected`,
+      };
+    }
     const ticks = niceTicks(yDomainMax, 5);
     const dateTicks = [
       first,
@@ -155,11 +190,15 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       innerBottom,
       valueTicks: ticks.map((v) => ({ y: yOf(v), label: fmtMoney(v) })),
       dateTicks: dateTicks.map((d) => ({ x: xOfDate(d), label: fmtDate(d) })),
-      referenceY: yOf(referenceIncome),
-      referenceLabel: `${referenceLabel} ${fmtMoney(referenceIncome)}`,
+      referenceY: referenceIncome === null ? null : yOf(referenceIncome),
+      referenceLabel:
+        referenceIncome === null
+          ? ""
+          : `${referenceLabel ?? "Reference"} ${fmtMoney(referenceIncome)}`,
       series: expensePts,
       areaPath: areaFor(expensePts, innerBottom),
       linePath: pathFor(expensePts),
+      projection,
       end: expensePts[expensePts.length - 1] ?? null,
       endLabel: expensePts.length
         ? `${fmtMoney(expensePts[expensePts.length - 1]?.value ?? 0)} spent`
@@ -202,6 +241,7 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       .map((p) => ({ x: p.x, label: p.label })),
     referenceY: null,
     referenceLabel: "",
+    projection: null,
     series: seriesPts,
     areaPath: areaFor(seriesPts, yOf(0)),
     linePath: pathFor(seriesPts),
@@ -255,6 +295,12 @@ export function mountChartFrame(container: HTMLElement, input: ChartFrameInput):
       g.referenceY === null
         ? ""
         : `<line class="t-chart__ref" x1="${g.innerLeft}" x2="${g.innerRight}" y1="${g.referenceY.toFixed(1)}" y2="${g.referenceY.toFixed(1)}"/><text class="t-chart__ref-label" x="${g.innerRight}" y="${(g.referenceY - 6).toFixed(1)}" text-anchor="end">${g.referenceLabel}</text>`;
+    // Dashed line, hollow dot: it must never read as recorded data.
+    const projection = g.projection
+      ? `<path class="t-chart__proj" d="M ${g.projection.x1.toFixed(1)} ${g.projection.y1.toFixed(1)} L ${g.projection.x2.toFixed(1)} ${g.projection.y2.toFixed(1)}"/>` +
+        `<circle class="t-chart__proj-dot" cx="${g.projection.x2.toFixed(1)}" cy="${g.projection.y2.toFixed(1)}" r="4"/>` +
+        `<text class="t-chart__proj-label" x="${g.projection.x2.toFixed(1)}" y="${(g.projection.y2 - 10).toFixed(1)}" text-anchor="end">${g.projection.label}</text>`
+      : "";
     const end = g.end
       ? `<circle class="t-chart__end" cx="${g.end.x.toFixed(1)}" cy="${g.end.y.toFixed(1)}" r="4"/><text class="t-chart__end-label" x="${(g.end.x - 8).toFixed(1)}" y="${(g.end.y - 6).toFixed(1)}" text-anchor="end">${g.endLabel}</text>`
       : "";
@@ -269,6 +315,7 @@ export function mountChartFrame(container: HTMLElement, input: ChartFrameInput):
           ${raw(reference)}
           <path class="t-chart__area" d="${g.areaPath}"/>
           <path class="t-chart__series" d="${g.linePath}" fill="none"/>
+          ${raw(projection)}
           ${raw(end)}
           <line class="t-chart__cross" data-cross-x x1="${g.innerLeft}" x2="${g.innerLeft}" y1="${g.innerTop}" y2="${g.innerBottom}"/>
           <circle class="t-chart__end" data-cross-dot cx="${g.innerLeft}" cy="${g.innerBottom}" r="4" style="opacity:0"/>

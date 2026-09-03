@@ -114,6 +114,11 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 .t-chart__area { fill: color-mix(in oklab, var(--expense) 10%, transparent); }
 .t-chart__end { fill: var(--expense); stroke: var(--card); stroke-width: 2; }
 .t-chart__end-label { fill: var(--ink); font-size: 11px; font-weight: 600; }
+/* The projection: dashed, translucent, hollow-dotted -- three signals that
+   it is an extrapolation and not something that happened. */
+.t-chart__proj { fill: none; stroke: var(--expense); stroke-width: 2; stroke-dasharray: 4 4; opacity: 0.55; }
+.t-chart__proj-dot { fill: var(--card); stroke: var(--expense); stroke-width: 2; opacity: 0.75; }
+.t-chart__proj-label { fill: var(--expense); font-size: 11px; font-weight: 600; opacity: 0.85; }
 .t-chart__cross { stroke: var(--ink-mute); stroke-width: 1; opacity: 0; }
 .t-chart__hit { fill: transparent; }
 .t-chart__tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font-size: var(--text--2); padding: 0.35rem 0.55rem; border-radius: var(--radius-1); white-space: nowrap; opacity: 0; transition: opacity var(--dur-1) var(--ease-out); translate: -50% -110%; font-variant-numeric: tabular-nums; }

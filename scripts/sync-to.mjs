@@ -7,7 +7,15 @@
 //
 // The copy is meant to be committed in the consuming repo, reviewed in the
 // same diff as the change that needed it.
-import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 
 const args = process.argv.slice(2);
