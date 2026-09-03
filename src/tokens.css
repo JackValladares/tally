@@ -56,7 +56,7 @@
   --surface-2: #ecedf4;
   --ink: #1d2029;
   --ink-soft: #5f6577;
-  --ink-mute: #8b91a1;
+  --ink-mute: #676d7d;
   --line: #e2e4ec;
   --line-strong: #c7cad7;
   --accent: #4f4ec4;
@@ -64,7 +64,7 @@
   --on-brand: #ffffff; /* text on institution/brand colours; same in every theme */
   --accent-soft: #ebebfa;
   --focus: #4f4ec4;
-  --income: #1f8a4c;
+  --income: #1a7a43;
   --expense: #c2483a;
   --transfer: #857a67;
   --caution: #a8720a;
@@ -89,7 +89,7 @@
   --surface-2: #23252e;
   --ink: #eceef3;
   --ink-soft: #9aa0af;
-  --ink-mute: #6c7282;
+  --ink-mute: #8b91a1;
   --line: #2b2e39;
   --line-strong: #3b404e;
   --accent: #8e8df2;
@@ -114,7 +114,7 @@
   :root:not([data-theme]) {
     color-scheme: dark;
     --paper: #141519; --card: #1b1d24; --surface-2: #23252e;
-    --ink: #eceef3; --ink-soft: #9aa0af; --ink-mute: #6c7282;
+    --ink: #eceef3; --ink-soft: #9aa0af; --ink-mute: #8b91a1;
     --line: #2b2e39; --line-strong: #3b404e;
     --accent: #8e8df2; --accent-ink: #0f1020; --accent-soft: #272a4a; --focus: #a3a2ff;
     --income: #5bcf86; --expense: #e58b7c; --transfer: #b4a98e; --caution: #e2b45c; --warn: #e58b7c;
@@ -135,7 +135,7 @@
   --surface-2: #e5ebe4;
   --ink: #17231b;
   --ink-soft: #55675b;
-  --ink-mute: #7d8d82;
+  --ink-mute: #647469;
   --line: #d8e0d8;
   --line-strong: #b7c5b9;
   --accent: #2c6b4b;
@@ -163,14 +163,14 @@
   --surface-2: #f2e7da;
   --ink: #2b211a;
   --ink-soft: #74655a;
-  --ink-mute: #9b8c7f;
+  --ink-mute: #75675c;
   --line: #e9dccc;
   --line-strong: #d3c0ab;
   --accent: #c4621d;
   --accent-ink: #ffffff;
   --accent-soft: #f9e3cf;
   --focus: #c4621d;
-  --income: #3b8c60;
+  --income: #2f7a55;
   --expense: #be4634;
   --transfer: #9c7457;
   --caution: #a86c0a;

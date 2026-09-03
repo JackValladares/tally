@@ -7,6 +7,8 @@ export type { TabsHandle } from "./components/tabs.js";
 export { initTabs } from "./components/tabs.js";
 export type { Interpolated, Raw } from "./html.js";
 export { html, raw, render } from "./html.js";
+export type { MoneyOptions, MoneySize, Valence } from "./money.js";
+export { money, moneyParts, stat } from "./money.js";
 export type { CalDate, QueryParams } from "./query.js";
 export { query } from "./query.js";
 export type { Fetcher, Resource, ResourceState } from "./resource.js";

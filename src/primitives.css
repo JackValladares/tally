@@ -20,8 +20,12 @@
 .t-money--xl { font-size: var(--text-5); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
 .t-money[data-valence="positive"] { color: var(--income); }
 .t-money[data-valence="negative"] { color: var(--expense); }
+/* Coloured money keeps currentcolor for its symbol and cents. Mixing them
+   30% toward the paper dropped them to 2.3:1 -- the recession was being
+   paid for in contrast. Size (0.72em) and weight (400) already separate
+   them from the integer, which is what "recede" was supposed to mean. */
 .t-money[data-valence="positive"] .t-money__cur, .t-money[data-valence="negative"] .t-money__cur,
-.t-money[data-valence="positive"] .t-money__cents, .t-money[data-valence="negative"] .t-money__cents { color: color-mix(in oklab, currentcolor 70%, var(--paper)); }
+.t-money[data-valence="positive"] .t-money__cents, .t-money[data-valence="negative"] .t-money__cents { color: inherit; }
 
 /* Button — six microstates, five variants */
 .t-btn {
