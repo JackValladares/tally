@@ -121,7 +121,7 @@ select.t-control { appearance: none; padding-inline-end: 2rem; background-image:
 .t-trend__arrow { font-size: 0.8em; }
 
 /* Avatar — institutions and members share one language */
-.t-avatar { display: inline-grid; place-items: center; inline-size: 1.75rem; block-size: 1.75rem; border-radius: 50%; background: var(--_avatar, var(--ink-soft)); color: var(--on-brand); font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; flex-shrink: 0; }
+.t-avatar { display: inline-grid; place-items: center; inline-size: 1.75rem; block-size: 1.75rem; border-radius: 50%; background: var(--_avatar, var(--avatar-bg)); color: var(--on-brand); font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; flex-shrink: 0; }
 .t-avatar[data-size="lg"] { inline-size: 2.5rem; block-size: 2.5rem; font-size: 0.85rem; }
 .t-avatar[data-size="sm"] { inline-size: 1.35rem; block-size: 1.35rem; font-size: 0.5rem; }
 .t-avatar[data-kind="member"] { border-radius: var(--radius-2); background: var(--accent-soft); color: var(--accent); }

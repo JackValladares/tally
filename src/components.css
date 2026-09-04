@@ -69,6 +69,13 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 .t-cat { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr minmax(5.5rem, auto); align-items: center; gap: var(--space-3); font-size: var(--text--1); }
 .t-cat__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .t-cat__track { block-size: 8px; background: var(--surface-2); border-radius: var(--radius-1); overflow: hidden; display: flex; gap: 2px; }
+/* A category's bar is scaled against the largest category, then split by
+   direction inside that width -- so a refund landing in a spend category
+   reads as a green segment on an otherwise red bar rather than quietly
+   shrinking the total. The group carries the scale; the fills carry the
+   split. Without it the two fills would each scale independently and the
+   category's size against its peers would be lost. */
+.t-cat__group { display: flex; gap: 2px; block-size: 100%; }
 .t-cat__fill { block-size: 100%; border-radius: 2px; }
 .t-cat__fill[data-direction="EXPENSE"] { background: var(--expense); }
 .t-cat__fill[data-direction="INCOME"] { background: var(--income); }
