@@ -42,13 +42,17 @@ if (check) {
     process.exit(1);
   }
   const theirs = JSON.parse(readFileSync(theirsPath, "utf8"));
-  if (theirs.cssSha256 !== ours.cssSha256) {
+  // payloadSha256 covers dist, catalog and fixtures; cssSha256 is kept as
+  // the fallback so a copy vendored before the payload hash existed still
+  // compares rather than silently passing.
+  const key = ours.payloadSha256 && theirs.payloadSha256 ? "payloadSha256" : "cssSha256";
+  if (theirs[key] !== ours[key]) {
     console.error(
       `stale: vendored ${theirs.version} (${theirs.builtAt}) ≠ dist ${ours.version} (${ours.builtAt}). Run sync-to.`,
     );
     process.exit(1);
   }
-  console.log(`up to date: ${theirs.version} @ ${theirs.cssSha256.slice(0, 12)}`);
+  console.log(`up to date: ${theirs.version} @ ${theirs[key].slice(0, 12)} (${key})`);
   process.exit(0);
 }
 
