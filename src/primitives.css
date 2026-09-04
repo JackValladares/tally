@@ -16,8 +16,15 @@
 .t-money__sign { font-weight: 400; margin-inline-end: 0.08em; }
 .t-money--sm { font-size: var(--text--1); }
 .t-money--md { font-size: var(--text-0); }
-.t-money--lg { font-size: var(--text-3); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.02em; }
-.t-money--xl { font-size: var(--text-5); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+/* The two statement sizes, re-spaced.
+   xl was --text-5 (up to 57px) against lg's --text-3 (up to 32px), and md
+   is --text-0 -- body size, because md is what a table cell and an account
+   row use. So a stat group could only pick 57, 32 or body, and stepping a
+   headline down by one landed its secondaries in running text. Moving xl to
+   --text-3 and lg to --text-2 gives a group of tiles a real pair of
+   adjacent steps that both still read as figures. */
+.t-money--lg { font-size: var(--text-2); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.02em; }
+.t-money--xl { font-size: var(--text-3); font-family: var(--font-figure); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
 .t-money[data-valence="positive"] { color: var(--income); }
 .t-money[data-valence="negative"] { color: var(--expense); }
 /* Coloured money keeps currentcolor for its symbol and cents. Mixing them
