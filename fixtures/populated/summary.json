@@ -10,6 +10,7 @@
       "total": 302.63,
       "expenseTotal": 302.63,
       "incomeTotal": 0,
+      "net": 302.63,
       "transactionCount": 2
     },
     {
@@ -17,6 +18,7 @@
       "total": 142.18,
       "expenseTotal": 142.18,
       "incomeTotal": 0,
+      "net": 142.18,
       "transactionCount": 1
     },
     {
@@ -24,6 +26,7 @@
       "total": 60.06,
       "expenseTotal": 60.06,
       "incomeTotal": 0,
+      "net": 60.06,
       "transactionCount": 1
     },
     {
@@ -31,6 +34,7 @@
       "total": 58,
       "expenseTotal": 58,
       "incomeTotal": 0,
+      "net": 58,
       "transactionCount": 1
     },
     {
@@ -38,6 +42,7 @@
       "total": 54.96,
       "expenseTotal": 54.96,
       "incomeTotal": 0,
+      "net": 54.96,
       "transactionCount": 1
     },
     {
@@ -45,6 +50,7 @@
       "total": 36.4,
       "expenseTotal": 36.4,
       "incomeTotal": 0,
+      "net": 36.4,
       "transactionCount": 1
     }
   ]

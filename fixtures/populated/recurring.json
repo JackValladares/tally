@@ -2,6 +2,7 @@
   {
     "key": "acc_chase_cc_jack::METRO COFFEE ROASTERS",
     "merchant": "Metro Coffee Roasters",
+    "label": "METRO COFFEE ROASTERS",
     "category": "Dining & Takeout",
     "averageAmount": 5.25,
     "cadence": "weekly",
@@ -16,6 +17,7 @@
   {
     "key": "acc_chase_cc_grace::PLANET FITNESS",
     "merchant": "Planet Fitness",
+    "label": "PLANET FITNESS",
     "category": "Health & Wellness",
     "averageAmount": 24.99,
     "cadence": "monthly",
@@ -30,6 +32,7 @@
   {
     "key": "acc_chase_checking::GREENLEAF LAWN CARE",
     "merchant": "GreenLeaf Lawn Care",
+    "label": "GREENLEAF LAWN CARE",
     "category": "Housing & Utilities",
     "averageAmount": 60,
     "cadence": "biweekly",
@@ -44,6 +47,7 @@
   {
     "key": "acc_chase_checking::COMCAST XFINITY",
     "merchant": "Comcast Xfinity",
+    "label": "COMCAST XFINITY",
     "category": "Housing & Utilities",
     "averageAmount": 89.99,
     "cadence": "monthly",
@@ -58,6 +62,7 @@
   {
     "key": "acc_chase_cc_jack::AAA MEMBERSHIP",
     "merchant": "AAA Membership",
+    "label": "AAA MEMBERSHIP",
     "category": "Subscriptions & Services",
     "averageAmount": 120,
     "cadence": "annual",

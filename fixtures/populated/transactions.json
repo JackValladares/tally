@@ -601,5 +601,6 @@
       "institution": "Chase"
     }
   ],
-  "nextCursor": "eyJkIjoiMjAyNi0wOC0wMyIsImkiOiJ0eF8wMDYxNiJ9"
+  "nextCursor": "eyJkIjoiMjAyNi0wOC0wMyIsImkiOiJ0eF8wMDYxNiJ9",
+  "total": 650
 }
