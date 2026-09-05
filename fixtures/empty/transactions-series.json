@@ -18,5 +18,8 @@
   "referenceIncome": null,
   "referenceLabel": null,
   "monthlyIncome": null,
-  "monthsRepresented": 0
+  "monthsRepresented": 0,
+  "monthlyCommitted": null,
+  "committedToDate": 0,
+  "committedRemaining": 0
 }

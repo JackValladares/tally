@@ -140,6 +140,14 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 .t-chart__axis text { fill: var(--ink-mute); font-size: 11px; font-variant-numeric: tabular-nums; }
 .t-chart__ref { stroke: var(--income); stroke-dasharray: 5 5; stroke-width: 1.5; fill: none; }
 .t-chart__ref-label { fill: var(--income); font-size: 11px; font-weight: 600; }
+/* A floor is not a ceiling. Income says "you have this much room" and
+   committed spend says "you cannot go below this", so they must not read as
+   the same line in a different place -- green in both would say the household
+   is doing well when it crossed either one. Denser dashes and the neutral
+   ink, because a floor being met is not good news or bad news, it is
+   arithmetic. */
+.t-chart__ref[data-kind="floor"] { stroke: var(--ink-mute); stroke-dasharray: 2 4; }
+.t-chart__ref-label[data-kind="floor"] { fill: var(--ink-mute); }
 .t-chart__series { fill: none; stroke: var(--expense); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .t-chart__area { fill: color-mix(in oklab, var(--expense) 10%, transparent); }
 .t-chart__end { fill: var(--expense); stroke: var(--card); stroke-width: 2; }

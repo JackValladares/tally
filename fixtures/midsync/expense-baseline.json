@@ -1,0 +1,78 @@
+{
+  "monthly": 267.73,
+  "monthlyCommitted": 267.73,
+  "hasBaseline": true,
+  "streams": [
+    {
+      "key": "acc_chase_checking::GREENLEAF LAWN CARE",
+      "source": "GREENLEAF LAWN CARE",
+      "cadence": "biweekly",
+      "cadenceLabel": "Biweekly",
+      "averageAmount": 60,
+      "monthlyEquivalent": 130,
+      "occurrenceCount": 31,
+      "lastSeenDate": "2026-09-02",
+      "nextExpectedDate": "2026-09-16",
+      "cadenceDays": 14,
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_checking::COMCAST XFINITY",
+      "source": "COMCAST XFINITY",
+      "cadence": "monthly",
+      "cadenceLabel": "Monthly",
+      "averageAmount": 89.99,
+      "monthlyEquivalent": 89.99,
+      "occurrenceCount": 15,
+      "lastSeenDate": "2026-08-31",
+      "nextExpectedDate": "2026-09-30",
+      "cadenceDays": 30,
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_cc_grace::PLANET FITNESS",
+      "source": "PLANET FITNESS",
+      "cadence": "monthly",
+      "cadenceLabel": "Monthly",
+      "averageAmount": 24.99,
+      "monthlyEquivalent": 24.99,
+      "occurrenceCount": 14,
+      "lastSeenDate": "2026-08-07",
+      "nextExpectedDate": "2026-09-06",
+      "cadenceDays": 30,
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_cc_jack::METRO COFFEE ROASTERS",
+      "source": "METRO COFFEE ROASTERS",
+      "cadence": "weekly",
+      "cadenceLabel": "Weekly",
+      "averageAmount": 5.25,
+      "monthlyEquivalent": 22.75,
+      "occurrenceCount": 61,
+      "lastSeenDate": "2026-08-30",
+      "nextExpectedDate": "2026-09-06",
+      "cadenceDays": 7,
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_cc_jack::AAA MEMBERSHIP",
+      "source": "AAA MEMBERSHIP",
+      "cadence": "annual",
+      "cadenceLabel": "Annual",
+      "averageAmount": 120,
+      "monthlyEquivalent": 10,
+      "occurrenceCount": 2,
+      "lastSeenDate": "2026-07-23",
+      "nextExpectedDate": "2027-07-23",
+      "cadenceDays": 365,
+      "status": "early_detection",
+      "countedTowardBaseline": false
+    }
+  ],
+  "countedStreams": 4
+}

@@ -42,6 +42,16 @@ export interface Series {
   monthlyIncome?: number | null;
   /** Fractional months the window spans. */
   monthsRepresented?: number;
+  /** Derived monthly committed outflow; null when none was detected. */
+  monthlyCommitted?: number | null;
+  /**
+   * Committed spend already landed in this window, and still due before the
+   * window ends. The projection needs both: it holds the committed part at
+   * what is actually still owed and extrapolates only the rest, instead of
+   * assuming a mortgage arrives a hundred and forty-eight dollars a day.
+   */
+  committedToDate?: number;
+  committedRemaining?: number;
 }
 
 /**
@@ -56,7 +66,19 @@ export interface Series {
  *
  * Same data, drawn two ways; it is a toggle, not a second endpoint.
  */
-export type IncomeMode = "total" | "incremental";
+/**
+ * What the chart compares cumulative spend against.
+ *
+ * One control rather than one per line: each of these is a different answer
+ * to the same question, and only one can usefully be on screen at a time.
+ * Two independent toggles would give four combinations, most of which are
+ * nobody's question.
+ *
+ *   total       a ceiling -- what this window is expected to bring in
+ *   incremental that income accruing, so the two lines race
+ *   committed   the floor -- the least this window can cost
+ */
+export type IncomeMode = "total" | "incremental" | "committed";
 
 /** A liquidity snapshot captured at sync time. Spacing between points is
  * whatever the sync schedule produced — never assumed regular. */
@@ -177,10 +199,16 @@ function buildGeometry(input: ChartFrameInput, width: number) {
     const months = input.data.monthsRepresented ?? 0;
     const monthly = input.data.monthlyIncome ?? null;
     const expectedIncome = monthly !== null && months > 0 ? monthly * months : null;
-    const mode: IncomeMode = input.incomeMode ?? "total";
+    const monthlyCommitted = input.data.monthlyCommitted ?? null;
+    const expectedCommitted = monthlyCommitted !== null && months > 0 ? monthlyCommitted * months : null;
+    const requested: IncomeMode = input.incomeMode ?? "total";
+    // A mode with nothing behind it falls back rather than drawing nothing:
+    // asking for the floor on an install with no detected recurring expenses
+    // should show the ceiling, not an empty frame.
+    const mode: IncomeMode = requested === "committed" && expectedCommitted === null ? "total" : requested;
 
     const maxValue = Math.max(
-      expectedIncome ?? referenceIncome ?? 0,
+      mode === "committed" ? (expectedCommitted ?? 0) : (expectedIncome ?? referenceIncome ?? 0),
       ...expenseCumulative.map((p) => p.value),
       ...incomeCumulative.map((p) => p.value),
       1,
@@ -202,7 +230,21 @@ function buildGeometry(input: ChartFrameInput, width: number) {
     if (lastReal && endT > throughT && throughT > t0) {
       const elapsedDays = Math.max((throughT - t0) / DAY, 1);
       const remainingDays = (endT - throughT) / DAY;
-      const projectedValue = lastReal.value + (lastReal.value / elapsedDays) * remainingDays;
+      // Recurring-aware. Extrapolating everything-so-far assumes spending is
+      // smooth, and it is not: a mortgage is one riser on the 1st and nothing
+      // for thirty days, so a straight line jumped by a fifth of the month on
+      // the 2nd and decayed for four weeks. Split it -- hold the committed
+      // part at what is actually still due, and extrapolate only the
+      // discretionary remainder, which really is roughly a daily rate.
+      //
+      // Falls back to the old arithmetic when the server sends no committed
+      // figures, which is what an install with no detected recurring expenses
+      // looks like, and what a stale fixture looks like.
+      const committedToDate = input.data.committedToDate ?? 0;
+      const committedRemaining = input.data.committedRemaining ?? 0;
+      const discretionarySoFar = Math.max(lastReal.value - committedToDate, 0);
+      const projectedValue =
+        lastReal.value + committedRemaining + (discretionarySoFar / elapsedDays) * remainingDays;
       // The x-scale spans the *data* (first to last bucket), but the
       // projection runs to the end of the *requested* window, which is
       // later -- so its endpoint lands past innerRight and takes its label
@@ -235,19 +277,27 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       // instead, so a flat line would be a second, contradictory answer to
       // the same question.
       referenceY:
-        mode === "incremental" && expectedIncome !== null
-          ? null
-          : expectedIncome !== null
-            ? yOf(expectedIncome)
-            : referenceIncome === null
-              ? null
-              : yOf(referenceIncome),
+        mode === "committed" && expectedCommitted !== null
+          ? yOf(Math.min(expectedCommitted, yDomainMax))
+          : mode === "incremental" && expectedIncome !== null
+            ? null
+            : expectedIncome !== null
+              ? yOf(expectedIncome)
+              : referenceIncome === null
+                ? null
+                : yOf(referenceIncome),
       referenceLabel:
-        expectedIncome !== null
-          ? `Expected income ${fmtMoney(expectedIncome)}`
-          : referenceIncome === null
-            ? ""
-            : `${referenceLabel ?? "Reference"} ${fmtMoney(referenceIncome)}`,
+        mode === "committed" && expectedCommitted !== null
+          ? `Committed ${fmtMoney(expectedCommitted)}`
+          : expectedIncome !== null
+            ? `Expected income ${fmtMoney(expectedIncome)}`
+            : referenceIncome === null
+              ? ""
+              : `${referenceLabel ?? "Reference"} ${fmtMoney(referenceIncome)}`,
+      // The floor is a different claim from the ceiling and says so: spend
+      // below the income line is fine and spend below the committed line is
+      // impossible, so they must not read as the same kind of line.
+      referenceKind: mode === "committed" && expectedCommitted !== null ? "floor" : "ceiling",
       incomeLine:
         mode === "incremental" && expectedIncome !== null
           ? ({
@@ -304,6 +354,7 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       )
       .map((p) => ({ x: p.x, label: p.label })),
     referenceY: null,
+    referenceKind: "ceiling" as const,
     referenceLabel: "",
     incomeLine: null,
     projection: null,
@@ -365,7 +416,7 @@ export function mountChartFrame(container: HTMLElement, input: ChartFrameInput):
     const reference =
       g.referenceY === null
         ? ""
-        : `<line class="t-chart__ref" x1="${g.innerLeft}" x2="${g.innerRight}" y1="${g.referenceY.toFixed(1)}" y2="${g.referenceY.toFixed(1)}"/><text class="t-chart__ref-label" x="${g.innerRight}" y="${(g.referenceY - 6).toFixed(1)}" text-anchor="end">${g.referenceLabel}</text>`;
+        : `<line class="t-chart__ref" data-kind="${g.referenceKind}" x1="${g.innerLeft}" x2="${g.innerRight}" y1="${g.referenceY.toFixed(1)}" y2="${g.referenceY.toFixed(1)}"/><text class="t-chart__ref-label" data-kind="${g.referenceKind}" x="${g.innerRight}" y="${(g.referenceY - 6).toFixed(1)}" text-anchor="end">${g.referenceLabel}</text>`;
     // The sloped income line: same green as the ceiling, drawn from origin
     // so the expense curve visibly races it rather than approaching a wall.
     const incomeLine = g.incomeLine

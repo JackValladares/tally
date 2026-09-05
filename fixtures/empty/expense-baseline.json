@@ -1,6 +1,6 @@
 {
   "monthly": 0,
-  "monthlyIncome": 0,
+  "monthlyCommitted": 0,
   "hasBaseline": false,
   "streams": [],
   "countedStreams": 0

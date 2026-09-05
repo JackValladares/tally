@@ -126,5 +126,8 @@
   "referenceIncome": null,
   "referenceLabel": null,
   "monthlyIncome": 7208.33,
-  "monthsRepresented": 14.03
+  "monthsRepresented": 14.03,
+  "monthlyCommitted": 267.73,
+  "committedToDate": 3756.25,
+  "committedRemaining": 0
 }
