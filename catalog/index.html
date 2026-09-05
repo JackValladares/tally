@@ -566,6 +566,54 @@
         </form>
       </div>
     </div>
+
+    <div class="l-switcher" style="--switcher-at: 56rem; --switcher-gap: var(--space-6)">
+      <div class="spec-block">
+        <h3>List row <code>.t-row · main, meta, trailing actions · data-inactive</code></h3>
+        <p>Three pages had each grown their own version of this — a household member, a merchant alias, a blocked pattern. One shape, and <code>.t-suggest</code> is its AI specialisation rather than a second copy. Inactive dims the item, never the actions that turn it back on.</p>
+        <div class="t-card">
+          <div class="t-row"><span class="t-avatar" data-kind="member">J</span><div class="t-row__main"><span class="t-row__name">Jack</span><span class="t-row__meta">jack@example.com · 3 linked accounts</span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm">Rename</button><button type="button" class="t-btn" data-size="sm" data-variant="danger">Remove</button></div></div>
+          <div class="t-row"><span class="t-avatar" data-kind="member">G</span><div class="t-row__main"><span class="t-row__name">Grace</span><span class="t-row__meta">grace@example.com · 1 linked account</span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm">Rename</button><button type="button" class="t-btn" data-size="sm" data-variant="danger">Remove</button></div></div>
+          <div class="t-row" data-inactive><span class="t-avatar" data-kind="member">R</span><div class="t-row__main"><span class="t-row__name">Robin</span><span class="t-row__meta">Paused · no accounts</span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm">Reactivate</button></div></div>
+        </div>
+        <h3 style="margin-block-start: var(--space-3)">Bounded list <code>.t-scroll · --scroll-max</code></h3>
+        <div class="t-scroll" style="--scroll-max: 8rem">
+          <div class="t-row" data-size="sm"><div class="t-row__main"><span class="t-row__name">Corner Market</span><span class="t-row__meta"><code>^SAFEWAY</code></span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm" data-variant="subtle">Edit</button></div></div>
+          <div class="t-row" data-size="sm"><div class="t-row__main"><span class="t-row__name">Hardware Store</span><span class="t-row__meta"><code>^HOME\s?DEPOT</code></span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm" data-variant="subtle">Edit</button></div></div>
+          <div class="t-row" data-size="sm" data-inactive><div class="t-row__main"><span class="t-row__name">Pharmacy</span><span class="t-row__meta"><code>^WALGREEN</code></span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm" data-variant="subtle">Enable</button></div></div>
+          <div class="t-row" data-size="sm"><div class="t-row__main"><span class="t-row__name">Coffee</span><span class="t-row__meta"><code>^BLUE\s?BOTTLE</code></span></div><div class="t-row__actions"><button type="button" class="t-btn" data-size="sm" data-variant="subtle">Edit</button></div></div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3>Callout <code>.t-callout · data-tone · prose, not an error envelope</code></h3>
+        <p>A standing note. <code>.t-error</code> reports something that went wrong and carries a code; this carries a sentence. Both read their colours from the same verified tone triples, so inline <code>code</code> inside one stays legible in all four themes.</p>
+        <div class="l-stack" style="--stack-gap: var(--space-2)">
+          <div class="t-callout">Merchant names are rewritten before they are stored. Set <code>ALIAS_ADMIN=1</code> to edit the list.</div>
+          <div class="t-callout" data-tone="caution">Two accounts have not synced since Aug 14.</div>
+          <div class="t-callout" data-tone="neutral">Figures update after each sync, not live.</div>
+        </div>
+        <h3 style="margin-block-start: var(--space-3)">Swatch, AI tag, skip link <code>.t-swatch · .t-badge[data-kind=ai] · .t-skiplink</code></h3>
+        <div class="l-cluster">
+          <button type="button" class="t-swatch" aria-pressed="true"><span class="t-swatch__dot" style="--_swatch:#4f4ec4"></span>Light</button>
+          <button type="button" class="t-swatch" aria-pressed="false"><span class="t-swatch__dot" style="--_swatch:#141519"></span>Dark</button>
+          <button type="button" class="t-swatch" aria-pressed="false"><span class="t-swatch__dot" style="--_swatch:#2c6b4b"></span>Green</button>
+          <button type="button" class="t-swatch" aria-pressed="false"><span class="t-swatch__dot" style="--_swatch:#c4621d"></span>Dusk</button>
+        </div>
+        <div class="l-cluster" style="margin-block-start: var(--space-3)">
+          <span class="t-badge" data-kind="ai">Suggested</span>
+          <span class="t-small t-muted">marks a value Claude proposed, wherever it lands in an otherwise ordinary form</span>
+        </div>
+        <div class="l-cluster" style="margin-block-start: var(--space-3); position: relative; min-block-size: 2.5rem">
+          <a class="t-skiplink" href="#components" style="position: static">Skip to content</a>
+          <span class="t-small t-muted">off-screen until focused; shown here in place</span>
+        </div>
+        <h3 style="margin-block-start: var(--space-3)">Disclosure <code>.t-disclose</code></h3>
+        <details class="t-disclose">
+          <summary>Where this figure comes from</summary>
+          <p class="t-small t-muted" style="margin-block-start: var(--space-2)">A section the page reads correctly without, and that opens in one click for the visits that need the whole derivation.</p>
+        </details>
+      </div>
+    </div>
   </section>
 
   <!-- ================================================================ -->

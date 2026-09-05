@@ -57,3 +57,10 @@ static asset; its own build and Docker pipeline carry it unchanged. No
   backend spec on every panel. Drawn on the catalogue page or it is not done.
 - Components take payloads and never fetch. Fixtures are the contract until
   the generated ones replace them.
+- A tone triple is verified as a pair. Do not tint text a second time on a
+  surface already wearing the tone -- `.t-callout code` did, with
+  `color-mix(currentcolor 12%)` behind foreground of that colour, and turned
+  a checked 5.13:1 into 4.2.
+- Prose containers are `display: block`. Flex on a box whose content is one
+  sentence with inline `<code>` in it makes each of those a flex item and
+  renders the sentence as columns. Compose `.l-cluster` for icon-beside-text.

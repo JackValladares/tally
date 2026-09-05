@@ -60,6 +60,9 @@
 .t-table .is-dim { color: var(--ink-mute); }
 .t-table .is-truncate { max-inline-size: 24ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .t-table tr[data-pending] td { color: var(--ink-soft); }
+/* A row that is shown but does not count toward the total above it. Colour,
+   not opacity: opacity takes the badge that explains why down with it. */
+.t-table tr[data-muted] td { color: var(--ink-mute); }
 tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 0.5em; font-size: var(--text--2); color: var(--ink-mute); font-style: italic; }
 .t-table .t-cell-acct { display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; }
 .t-table__foot { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding-block-start: var(--space-3); font-size: var(--text--2); color: var(--ink-mute); flex-wrap: wrap; }
@@ -149,12 +152,67 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 .t-ask__empty { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4); color: var(--ink-soft); font-size: var(--text--1); }
 .t-ask__empty strong { color: var(--ink); display: block; }
 
-/* Suggestion row (AI proposal awaiting a decision) */
-.t-suggest { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-block-start: var(--line-w) solid var(--line); }
-.t-suggest:first-child { border-block-start: 0; }
-.t-suggest__main { flex: 1; min-inline-size: 0; font-size: var(--text--1); }
-.t-suggest__why { font-size: var(--text--2); color: var(--ink-mute); }
-.t-suggest__actions { display: flex; gap: var(--space-1); flex-shrink: 0; }
+/* List row — one item in a rule-separated list, with a main block and
+   optional trailing actions. The generic shape three near-identical
+   page-local classes had each reinvented (a household member, an alias, a
+   blocked merchant); .t-suggest is the AI specialisation of it and shares
+   the base rather than restating it. Not .t-acct, which is a three-column
+   grid because a balance has to align down the column. */
+.t-row, .t-suggest { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-block-start: var(--line-w) solid var(--line); }
+.t-row:first-child, .t-suggest:first-child { border-block-start: 0; }
+.t-row__main, .t-suggest__main { flex: 1; min-inline-size: 0; font-size: var(--text--1); }
+.t-row__main { display: flex; flex-direction: column; gap: var(--row-gap, 2px); }
+.t-row__name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.t-row__meta, .t-suggest__why { font-size: var(--text--2); color: var(--ink-mute); }
+.t-row__actions, .t-suggest__actions { display: flex; gap: var(--space-1); flex-shrink: 0; }
+/* Inactive is a state of the thing, not of the row: dimming the whole row
+   would take the actions -- which are how you reactivate it -- with it. */
+.t-row[data-inactive] .t-row__main { opacity: 0.55; }
+.t-row[data-align="start"] { align-items: flex-start; }
+.t-row[data-size="sm"] { padding-block: var(--space-2); font-size: var(--text--1); }
+
+/* Bounded scroll region. A list that is allowed to grow past the fold and
+   scrolls in its own box instead of the page.
+   Rows that carry their own controls make it keyboard-reachable already.
+   A box of plain text does not: give that one tabindex="0" and a label, or
+   it is a scrollable region no keyboard can scroll. */
+.t-scroll { max-block-size: var(--scroll-max, 16rem); overflow-y: auto; border: var(--line-w) solid var(--line); border-radius: var(--radius-2); padding-inline: var(--space-3); }
+
+/* Disclosure — a section the page can answer without, opened in one click
+   by the visits that need the whole thing. */
+.t-disclose { border-block-start: var(--line-w) solid var(--line); padding-block-start: var(--space-3); }
+.t-disclose > summary { cursor: pointer; font-size: var(--text--1); color: var(--ink-soft); }
+.t-disclose > summary:hover { color: var(--ink); }
+.t-disclose > summary::marker { color: var(--ink-mute); }
+
+/* Callout — a standing note that is not an error and not a state change.
+   Separate from .t-error, which renders the error envelope and carries a
+   code; this carries prose. Tones read from the same verified triples, so
+   a callout's foreground has been checked against its own background in
+   every theme rather than inheriting the page's ink onto a tint. */
+/* Block, not flex. A callout's usual content is one sentence with inline
+   <code> or <strong> in it, and flex makes every one of those a flex item --
+   the sentence shatters into columns. An icon beside the text is composition:
+   add .l-cluster with --cluster-align: flex-start and wrap the prose. */
+.t-callout { display: block; padding: var(--space-3) var(--space-4); border-radius: var(--radius-3); font-size: var(--text--1); border: var(--line-w) solid var(--tone-info-bd); background: var(--tone-info-bg); color: var(--tone-info-fg); }
+.t-callout[data-tone="neutral"] { border-color: var(--tone-neutral-bd); background: var(--tone-neutral-bg); color: var(--tone-neutral-fg); }
+.t-callout[data-tone="positive"] { border-color: var(--tone-positive-bd); background: var(--tone-positive-bg); color: var(--tone-positive-fg); }
+.t-callout[data-tone="caution"] { border-color: var(--tone-caution-bd); background: var(--tone-caution-bg); color: var(--tone-caution-fg); }
+.t-callout[data-tone="danger"] { border-color: var(--tone-negative-bd); background: var(--tone-negative-bg); color: var(--tone-negative-fg); }
+/* base.css gives inline code --surface-2, the page's ground rather than this
+   one, so it has to be overridden -- but tinting it by currentcolor instead
+   was worse: 12% of the foreground behind the foreground moved a verified
+   5.13:1 pair to 4.2 and failed axe in two themes. The tone's own background
+   is already the separation, so the code takes no second one, and weight
+   carries what the tint was carrying. */
+.t-callout code { color: inherit; background: none; padding-inline: 0; font-weight: 600; }
+
+/* Skip link — the first thing in the tab order, off-screen until focused.
+   --accent-ink, not white: on the light and dusk accents white is the
+   readable pairing and on green it is too, but a hardcoded #fff is a claim
+   about every future accent, which is exactly what the token is for. */
+.t-skiplink { position: absolute; inset-block-start: 0; inset-inline-start: -9999px; z-index: 100; padding: var(--space-3) var(--space-4); background: var(--accent); color: var(--accent-ink); border-end-end-radius: var(--radius-2); font-size: var(--text--1); font-weight: 600; text-decoration: none; }
+.t-skiplink:focus { inset-inline-start: 0; }
 
 /* Empty state */
 .t-empty { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-5); border: 1px dashed var(--line-strong); border-radius: var(--radius-3); color: var(--ink-soft); font-size: var(--text--1); }
@@ -194,4 +252,11 @@ tr[data-pending] .t-cell-desc::after { content: "pending"; margin-inline-start: 
 .t-pagehead__title { font-size: var(--text-3); letter-spacing: -0.02em; }
 .t-pagehead__sub { color: var(--ink-soft); font-size: var(--text--1); margin-block-start: 2px; }
 .t-pagehead__actions { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.t-pagehead__nav { display: flex; gap: var(--space-4); font-size: var(--text--1); flex-wrap: wrap; }
+.t-pagehead__nav a { text-decoration: none; }
+.t-pagehead__nav a:hover { text-decoration: underline; }
+/* The page you are already on is named, not linked-looking: colour alone
+   would be the only thing saying so, and it is the one item here that is
+   not a destination. */
+.t-pagehead__nav [aria-current="page"] { color: var(--ink); font-weight: 600; }
 }

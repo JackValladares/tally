@@ -140,7 +140,9 @@
   --surface-2: #e5ebe4;
   --ink: #17231b;
   --ink-soft: #55675b;
-  --ink-mute: #647469;
+  /* 4.93:1 on paper, 4.51:1 on surface-2. #647469 was 4.46 -- close enough to
+     look fine and not close enough to pass. */
+  --ink-mute: #5e6d63;
   --line: #d8e0d8;
   --line-strong: #b7c5b9;
   --accent: #2c6b4b;
@@ -171,10 +173,16 @@
   --ink-mute: #75675c;
   --line: #e9dccc;
   --line-strong: #d3c0ab;
-  --accent: #c4621d;
+  /* 5.40:1 on this theme's paper as link/tab text and 5.94:1 under white as a
+     button fill. The brighter ember it replaced (#c4621d) was 3.73 and 4.11 --
+     it read as an accent and failed as both. Dusk is the one theme where the
+     accent's own hue is light enough that "looks like the brand colour" and
+     "can be typed on" pull apart, so the token takes the darker end and the
+     bright ember survives only as --accent-soft's tint. */
+  --accent: #a04c0c;
   --accent-ink: #ffffff;
   --accent-soft: #f9e3cf;
-  --focus: #c4621d;
+  --focus: #a04c0c;
   --income: #2f7a55;
   --expense: #be4634;
   --transfer: #9c7457;

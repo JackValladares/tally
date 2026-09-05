@@ -164,6 +164,14 @@ select.t-control { appearance: none; padding-inline-end: 2rem; background-image:
 .t-spark__line { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
 .t-spark__end { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
 
+/* Bar sparkline — a discrete series, one bar per observation. The line
+   above implies a continuous quantity between its points; a per-sync
+   snapshot has no value between two syncs, so bars are the honest shape.
+   Height is set inline per bar as a percentage. */
+.t-sparkbars { display: flex; align-items: flex-end; gap: 2px; block-size: var(--sparkbars-h, 2rem); }
+.t-sparkbars > * { flex: 1; background: var(--accent-soft); border-radius: var(--radius-1) var(--radius-1) 0 0; min-block-size: 2px; }
+.t-sparkbars > [data-emphasis] { background: var(--accent); }
+
 /* Skeleton */
 .t-skeleton { display: block; background: linear-gradient(90deg, var(--surface-2) 25%, color-mix(in oklab, var(--surface-2) 60%, var(--card)) 50%, var(--surface-2) 75%); background-size: 200% 100%; border-radius: var(--radius-1); animation: t-shimmer 1.4s ease infinite; block-size: 1em; }
 @keyframes t-shimmer { to { background-position: -200% 0; } }
@@ -175,4 +183,28 @@ select.t-control { appearance: none; padding-inline-end: 2rem; background-image:
 
 .t-divider { border: 0; border-block-start: var(--line-w) solid var(--line); }
 .t-kbd { font-family: var(--font-mono); font-size: 0.75em; padding: 0.1em 0.4em; border: var(--line-w) solid var(--line-strong); border-block-end-width: 2px; border-radius: var(--radius-1); background: var(--card); }
+
+/* Marks a value as model-proposed rather than user-entered. Same shape as
+   .t-badge, and deliberately the same verified tone pair as
+   data-tone="accent" rather than a fresh accent mix -- the caps and the
+   weight are what separate it, not a second set of colours to re-verify. */
+.t-badge[data-kind="ai"] { background: var(--tone-info-bg); color: var(--tone-info-fg); text-transform: uppercase; letter-spacing: var(--tracking-caps); font-weight: 700; }
+
+/* Swatch — a selectable option that carries a colour sample.
+   Theme pickers, category colours, account colours. The sample is set per
+   instance as --_swatch, the same way .t-avatar takes --_avatar.
+   Selection is never the sample's own colour doing the work: the ring and
+   the fill both change, and aria-pressed/aria-checked carries it to
+   assistive tech. */
+.t-swatch {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 0.3rem var(--space-3) 0.3rem var(--space-2);
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-round);
+  background: var(--card); color: var(--ink);
+  font-size: var(--text--2); font-weight: 600; line-height: 1.5;
+  transition: border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+}
+.t-swatch:hover { border-color: var(--ink-mute); }
+.t-swatch__dot { inline-size: 0.875rem; block-size: 0.875rem; border-radius: 50%; flex-shrink: 0; background: var(--_swatch, var(--accent)); border: var(--line-w) solid color-mix(in oklab, var(--ink) 22%, transparent); }
+.t-swatch[aria-pressed="true"], .t-swatch[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
 }
