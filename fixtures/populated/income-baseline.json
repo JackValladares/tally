@@ -1,0 +1,43 @@
+{
+  "monthlyIncome": 7208.33,
+  "hasBaseline": true,
+  "streams": [
+    {
+      "key": "acc_chase_checking::NORTHWIND SYSTEMS PAYROLL",
+      "source": "Northwind Systems Payroll",
+      "cadence": "biweekly",
+      "cadenceLabel": "Biweekly",
+      "averageAmount": 2450,
+      "monthlyEquivalent": 5308.33,
+      "occurrenceCount": 9,
+      "lastSeenDate": "2026-08-28",
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_checking::LUMEN HEALTH PAYROLL",
+      "source": "Lumen Health Payroll",
+      "cadence": "monthly",
+      "cadenceLabel": "Monthly",
+      "averageAmount": 1900,
+      "monthlyEquivalent": 1900,
+      "occurrenceCount": 5,
+      "lastSeenDate": "2026-08-28",
+      "status": "confirmed",
+      "countedTowardBaseline": true
+    },
+    {
+      "key": "acc_chase_checking::COPPERLINE CONSULTING",
+      "source": "Copperline Consulting",
+      "cadence": "monthly",
+      "cadenceLabel": "Monthly",
+      "averageAmount": 640,
+      "monthlyEquivalent": 640,
+      "occurrenceCount": 2,
+      "lastSeenDate": "2026-08-28",
+      "status": "early_detection",
+      "countedTowardBaseline": false
+    }
+  ],
+  "countedStreams": 2
+}

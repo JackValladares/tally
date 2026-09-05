@@ -3,6 +3,12 @@
 /* Text roles */
 .t-eyebrow { font-size: var(--text--2); font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--ink-mute); }
 .t-muted { color: var(--ink-soft); }
+/* Inline code inside muted text takes full ink. It names something the
+   reader has to type or match exactly -- an env-set letter, a command, a
+   field name -- so it is the least appropriate thing on the page to also be
+   the faintest. At --text--1 it fails contrast against every theme's page
+   ground otherwise. */
+.t-muted code { color: var(--ink); }
 .t-small { font-size: var(--text--1); }
 
 /* Money — the signature figure. One face; lg/xl step up to weight 600 and tighter tracking. */

@@ -16,5 +16,7 @@
     }
   ],
   "referenceIncome": null,
-  "referenceLabel": null
+  "referenceLabel": null,
+  "monthlyIncome": null,
+  "monthsRepresented": 0
 }

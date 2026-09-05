@@ -38,7 +38,25 @@ export interface Series {
    *  claim that nothing was earned, which is why the server sends null. */
   referenceIncome: number | null;
   referenceLabel: string | null;
+  /** Derived monthly income baseline; null when none was detected. */
+  monthlyIncome?: number | null;
+  /** Fractional months the window spans. */
+  monthsRepresented?: number;
 }
+
+/**
+ * How the income comparison is drawn.
+ *
+ * `total` is a ceiling: one horizontal line at what the window is expected
+ * to bring in, answering "will we clear the period". `incremental` is a
+ * sloped line rising at the monthly rate, so the cumulative expense curve
+ * races a competing green line rather than crawling toward a distant
+ * ceiling -- which answers "are we ahead or behind right now", the more
+ * useful question mid-period and one the ceiling view cannot show.
+ *
+ * Same data, drawn two ways; it is a toggle, not a second endpoint.
+ */
+export type IncomeMode = "total" | "incremental";
 
 /** A liquidity snapshot captured at sync time. Spacing between points is
  * whatever the sync schedule produced — never assumed regular. */
@@ -50,7 +68,7 @@ export interface LiquidityPoint {
 }
 
 export type ChartFrameInput =
-  | { kind: "series"; data: Series }
+  | { kind: "series"; data: Series; incomeMode?: IncomeMode }
   | { kind: "liquidity"; data: LiquidityPoint[] };
 
 export interface ChartFrameHandle {
@@ -118,6 +136,16 @@ function areaFor(points: Point[], baselineY: number): string {
 
 /** The dashed "if this pace holds" tail, or null when the window has no
  *  unelapsed remainder to project into. */
+/** The sloped income line: origin to the window's expected total. */
+interface IncomeLine {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  label: string;
+  mode: IncomeMode;
+}
+
 interface Projection {
   x1: number;
   y1: number;
@@ -143,8 +171,16 @@ function buildGeometry(input: ChartFrameInput, width: number) {
     const t1 = last ? Date.parse(last) : 1;
     const span = t1 - t0 || 1;
     const xOfDate = (d: string) => xOf((Date.parse(d) - t0) / span);
+    // The derived baseline, if there is one, is what the window is expected
+    // to bring in. It supersedes referenceIncome, which was the prior
+    // window's total and is defined only when a comparable one exists.
+    const months = input.data.monthsRepresented ?? 0;
+    const monthly = input.data.monthlyIncome ?? null;
+    const expectedIncome = monthly !== null && months > 0 ? monthly * months : null;
+    const mode: IncomeMode = input.incomeMode ?? "total";
+
     const maxValue = Math.max(
-      referenceIncome ?? 0,
+      expectedIncome ?? referenceIncome ?? 0,
       ...expenseCumulative.map((p) => p.value),
       ...incomeCumulative.map((p) => p.value),
       1,
@@ -195,11 +231,34 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       innerBottom,
       valueTicks: ticks.map((v) => ({ y: yOf(v), label: fmtMoney(v) })),
       dateTicks: dateTicks.map((d) => ({ x: xOfDate(d), label: fmtDate(d) })),
-      referenceY: referenceIncome === null ? null : yOf(referenceIncome),
+      // The ceiling line. In incremental mode income is drawn as a slope
+      // instead, so a flat line would be a second, contradictory answer to
+      // the same question.
+      referenceY:
+        mode === "incremental" && expectedIncome !== null
+          ? null
+          : expectedIncome !== null
+            ? yOf(expectedIncome)
+            : referenceIncome === null
+              ? null
+              : yOf(referenceIncome),
       referenceLabel:
-        referenceIncome === null
-          ? ""
-          : `${referenceLabel ?? "Reference"} ${fmtMoney(referenceIncome)}`,
+        expectedIncome !== null
+          ? `Expected income ${fmtMoney(expectedIncome)}`
+          : referenceIncome === null
+            ? ""
+            : `${referenceLabel ?? "Reference"} ${fmtMoney(referenceIncome)}`,
+      incomeLine:
+        mode === "incremental" && expectedIncome !== null
+          ? ({
+              x1: innerLeft,
+              y1: yOf(0),
+              x2: innerRight,
+              y2: yOf(Math.min(expectedIncome, yDomainMax)),
+              label: `Income at ${fmtMoney(monthly ?? 0)}/mo`,
+              mode,
+            } satisfies IncomeLine)
+          : null,
       series: expensePts,
       areaPath: areaFor(expensePts, innerBottom),
       linePath: pathFor(expensePts),
@@ -246,6 +305,7 @@ function buildGeometry(input: ChartFrameInput, width: number) {
       .map((p) => ({ x: p.x, label: p.label })),
     referenceY: null,
     referenceLabel: "",
+    incomeLine: null,
     projection: null,
     series: seriesPts,
     areaPath: areaFor(seriesPts, yOf(0)),
@@ -306,6 +366,13 @@ export function mountChartFrame(container: HTMLElement, input: ChartFrameInput):
       g.referenceY === null
         ? ""
         : `<line class="t-chart__ref" x1="${g.innerLeft}" x2="${g.innerRight}" y1="${g.referenceY.toFixed(1)}" y2="${g.referenceY.toFixed(1)}"/><text class="t-chart__ref-label" x="${g.innerRight}" y="${(g.referenceY - 6).toFixed(1)}" text-anchor="end">${g.referenceLabel}</text>`;
+    // The sloped income line: same green as the ceiling, drawn from origin
+    // so the expense curve visibly races it rather than approaching a wall.
+    const incomeLine = g.incomeLine
+      ? `<line class="t-chart__ref" x1="${g.incomeLine.x1.toFixed(1)}" y1="${g.incomeLine.y1.toFixed(1)}" x2="${g.incomeLine.x2.toFixed(1)}" y2="${g.incomeLine.y2.toFixed(1)}"/>` +
+        `<text class="t-chart__ref-label" x="${g.incomeLine.x2.toFixed(1)}" y="${(g.incomeLine.y2 - 6).toFixed(1)}" text-anchor="end">${g.incomeLine.label}</text>`
+      : "";
+
     // Dashed line, hollow dot: it must never read as recorded data.
     const projection = g.projection
       ? `<path class="t-chart__proj" d="M ${g.projection.x1.toFixed(1)} ${g.projection.y1.toFixed(1)} L ${g.projection.x2.toFixed(1)} ${g.projection.y2.toFixed(1)}"/>` +
@@ -324,6 +391,7 @@ export function mountChartFrame(container: HTMLElement, input: ChartFrameInput):
           <g class="t-chart__grid">${raw(gridLines)}</g>
           <g class="t-chart__axis">${raw(valueTicks + dateTicks)}</g>
           ${raw(reference)}
+          ${raw(incomeLine)}
           <path class="t-chart__area" d="${g.areaPath}"/>
           <path class="t-chart__series" d="${g.linePath}" fill="none"/>
           ${raw(projection)}

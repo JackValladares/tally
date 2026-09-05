@@ -124,5 +124,7 @@
     }
   ],
   "referenceIncome": null,
-  "referenceLabel": null
+  "referenceLabel": null,
+  "monthlyIncome": 7208.33,
+  "monthsRepresented": 14.03
 }
